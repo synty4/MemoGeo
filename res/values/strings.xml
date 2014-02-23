@@ -6,9 +6,10 @@
     <string name="newMemo">New memo</string>
     <string name="option">Options</string>
     <string name="save">Save</string>
+    <string name="dateHour">Date & hour</string>
     <string name="place">Place</string>
     <string name="here">Here</string>
-    <string name="openMap">Open Map</string>
+    <string name="openMap">Map</string>
     <string name="address">Address</string>
     <string name="gpsLoc">GPS Loc</string>
     <string name="range">Range</string>
