@@ -4,6 +4,7 @@
     android:layout_height="match_parent" >
 
     <!-- Saving button -->
+
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -13,16 +14,18 @@
         android:text="@string/save" />
 
     <!-- String Place -->
-	<TextView
+
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentLeft="true"
         android:text="@string/place"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<!-- Button Map -->
+    <!-- Button Map -->
+
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -31,8 +34,9 @@
         android:layout_below="@+id/button1"
         android:layout_marginTop="15dp"
         android:text="@string/openMap" />
-    
+
     <!-- Button Here -->
+
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
@@ -42,17 +46,23 @@
         android:text="@string/here" />
 
     <!-- EditText for Adress -->
+
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/button2"
-        android:layout_toRightOf="@+id/textView3"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/textView4"
         android:ems="10"
-        android:inputType="textPostalAddress" />
+        android:inputType="textPostalAddress" >
+
+        <requestFocus />
+    </EditText>
 
     <!-- String Adress -->
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -61,7 +71,133 @@
         android:layout_alignParentLeft="true"
         android:text="@string/address"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <!-- EditText for GPS Location -->
+
+    <!-- EditText GPS Location -->
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text" />
+
+    <!-- String GPS Location -->
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignParentLeft="true"
+        android:text="@string/gpsLoc"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <!-- String Range -->
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="15dp"
+        android:text="@string/range"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- EditText for Range -->
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/editText4"
+        android:ems="10"
+        android:inputType="number" />
+
+    <!-- Button Choose -->
+
+    <Button
+        android:id="@+id/button4"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_below="@+id/editText3"
+        android:layout_marginTop="15dp"
+        android:text="@string/choose" />
+
+    <!-- EditText for ringtone -->
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_toLeftOf="@+id/button4"
+        android:ems="10"
+        android:inputType="text" />
+
+    <!-- String Ring -->
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText4"
+        android:layout_alignBottom="@+id/editText4"
+        android:layout_alignParentLeft="true"
+        android:text="@string/ring"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- EditText for the date -->
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button4"
+        android:layout_below="@+id/button4"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/textView4"
+        android:inputType="date" />
+
+    <!-- String Date -->
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText5"
+        android:layout_alignParentLeft="true"
+        android:text="@string/date"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- EditText for the time -->
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_alignRight="@+id/editText5"
+        android:layout_below="@+id/editText5"
+        android:layout_marginTop="15dp"
+        android:inputType="time" />
+
+    <!-- String Time -->
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText6"
+        android:layout_alignParentLeft="true"
+        android:text="@string/time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
