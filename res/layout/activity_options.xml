@@ -72,15 +72,6 @@
 
             <!-- String Adress -->
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/editText1"
-                android:layout_alignParentLeft="true"
-                android:text="@string/address"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
             <!-- EditText GPS Location -->
 
             <EditText
@@ -94,15 +85,6 @@
                 android:inputType="text" />
 
             <!-- String GPS Location -->
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/editText2"
-                android:layout_alignParentLeft="true"
-                android:text="@string/gpsLoc"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <!-- String Range -->
 
@@ -208,6 +190,24 @@
                 android:layout_alignParentLeft="true"
                 android:text="@string/time"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/editText1"
+                android:layout_toRightOf="@+id/textView2"
+                android:text="@string/address"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/editText2"
+                android:layout_toRightOf="@+id/textView2"
+                android:text="@string/gpsLoc"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         
         </RelativeLayout>
         
