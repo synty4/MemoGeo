@@ -7,35 +7,29 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity 
-{
+public class MainActivity extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) 
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        final Button button = (Button) findViewById(R.id.button1);
-        button.setOnClickListener(new View.OnClickListener() 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		final Button NewMemo = (Button) findViewById(R.id.new_memo);
+		NewMemo.setOnClickListener(new View.OnClickListener() 
         {
             public void onClick(View v) 
             {               
-            	Intent OptionsActivity = new Intent(MainActivity.this, OptionsActivity.class);
-            	startActivity(OptionsActivity);
+            	Intent WriteNewMemo = new Intent(MainActivity.this, WriteNewMemo.class);
+            	startActivity(WriteNewMemo);
             }            	
         });
-    }
-    
-    
+	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.options, menu);
+		return true;
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) 
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
 }

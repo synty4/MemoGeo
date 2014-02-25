@@ -17,5 +17,11 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="title_activity_options">Options</string>
+    
+     <string name="title_new_memo">New Memo</string>
+     <string name="title_list_memo">List Memo</string>
+      <string name="title_activity_write_new_memo">Write a memo</string>
+     
+   
 
 </resources>
