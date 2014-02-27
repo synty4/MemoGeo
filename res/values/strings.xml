@@ -6,13 +6,11 @@
     <string name="newMemo">New memo</string>
     <string name="option">Options</string>
     <string name="save">Save</string>
-    <string name="place">Place</string>
+    <string name="where">Where</string>
+    <string name="when">When</string>
     <string name="here">Here</string>
     <string name="openMap">Map</string>
     <string name="address">Address</string>
-    <string name="gpsLoc">GPS Loc</string>
-    <string name="range">Range</string>
-    <string name="ring">Ring</string>
     <string name="choose">Choose</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
@@ -21,6 +19,5 @@
     <string name="title_list_memo">List Memo</string>
     <string name="title_activity_write_new_memo">Write a memo</string>
     <string name="title_activity_test">TestActivity</string>
-    <string name="hello_world">Hello world!</string>
 
 </resources>
