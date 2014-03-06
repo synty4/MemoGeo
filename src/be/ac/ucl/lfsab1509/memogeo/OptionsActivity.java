@@ -3,11 +3,11 @@ package be.ac.ucl.lfsab1509.memogeo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class OptionsActivity extends Activity implements View.OnClickListener {
 
@@ -15,6 +15,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private Button chooseDate;
 	private EditText selectTime;
 	private EditText selectDate;
+	private TextView test;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,12 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		this.chooseDate.setOnClickListener(this);
 		
 		this.selectDate = (EditText) findViewById(R.id.editTextDate);
+		
+		// Getting the intent.
+		Intent intent = getIntent();
+		
+		// Getting the memo object from the intent.
+		Memo memo = (Memo) intent.getParcelableExtra("memo");
 	}
 	
 	@Override

@@ -6,7 +6,7 @@ public class MemoInformation {
 	    //private variables
 	    private int id;
 	    private String title;
-	    private String  description;
+	    private String description;
 	    private String address;
 
 		
@@ -35,21 +35,21 @@ public class MemoInformation {
 	    	this.id = id;
 	    }
 	    
-	 // getter and setter for Title
+	    // getter and setter for Title
 	    public String getTitle() {
 	    	return title;
 	    }
 	    public void setTitle(String title) {
 	    	this.title = title;
 	    }
-	 // getter and setter for Description
+	    // getter and setter for Description
 	    public String getDescription() {
 	    	return description;
 	    }
 	    public void setDescription(String description) {
 	    	this.description = description;
 	    }
-	 // getter and setter for Address
+	    // getter and setter for Address
 	    public String getAddress() {
 	    	return address;
 	    }
