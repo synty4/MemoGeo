@@ -41,6 +41,10 @@
             android:name="be.ac.ucl.lfsab1509.memogeo.ListMemo"
             android:label="@string/title_activity_list_memo" >
         </activity>
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.TimeOptionActivity"
+            android:label="@string/title_activity_time_option" >
+        </activity>
     </application>
 
 </manifest>

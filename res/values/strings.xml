@@ -21,5 +21,6 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_list_memo">ListMemo</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_time_option">When</string>
 
 </resources>
