@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 	    db.addMemoInformation(memoInfoDeux); 
 	    Log.d("TWO ************************** ", "**********************"); 
     
-	    /*test suppression MemoInformation dans l'onglet log:  suppression et affichage après suppression*/
+	    /*test suppression MemoInformation dans l'onglet log:  suppression et affichage aprï¿½s suppression*/
 	   /* Log.d("************ DELETE ************** ", "**********************"); 
 	    Log.d("idd",String.valueOf(memoInfoUn.getId()));
 	    Log.d("titles",memoInfoUn.getTitle());*/
@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 	    
 	   
 	   
-		final Button NewMemo = (Button) findViewById(R.id.new_memo);
+		final Button NewMemo = (Button) findViewById(R.id.new_memo);// A changer par mÃ©thode plus propre
 		NewMemo.setOnClickListener(new View.OnClickListener() 
         {
             public void onClick(View v) 

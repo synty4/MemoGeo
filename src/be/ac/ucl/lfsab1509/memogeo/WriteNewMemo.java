@@ -18,7 +18,7 @@ public class WriteNewMemo extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_new_memo);
         
-        final Button button = (Button) findViewById(R.id.buttonOption);
+        final Button button = (Button) findViewById(R.id.buttonOption);// a changer avec une méthode plus propre.
         button.setOnClickListener(new View.OnClickListener() 
         {
             public void onClick(View v) 

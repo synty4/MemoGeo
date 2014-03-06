@@ -12,17 +12,24 @@ import android.widget.EditText;
 public class OptionsActivity extends Activity implements View.OnClickListener {
 
 	private Button chooseTime;
+	private Button chooseDate;
 	private EditText selectTime;
+	private EditText selectDate;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_options);
 		
-		this.chooseTime = (Button) findViewById(R.id.buttonTime);
+		this.chooseTime = (Button) findViewById(R.id.buttonTime);//Bouton et champ de l'heure
 		this.chooseTime.setOnClickListener(this);
 		
 		this.selectTime = (EditText) findViewById(R.id.editTextTime);
+		
+		this.chooseDate = (Button) findViewById(R.id.buttonDate);//Bouton et champ de la date
+		this.chooseDate.setOnClickListener(this);
+		
+		this.selectDate = (EditText) findViewById(R.id.editTextDate);
 	}
 	
 	@Override
@@ -33,6 +40,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	}
 
 	@Override
+	// Handles all the buttons.
 	public void onClick(View v) {
 		
 		switch (v.getId())
@@ -41,13 +49,24 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				ChooseTime chooseTime = new ChooseTime();
 				chooseTime.show(getFragmentManager(), "Time");
 				break;
+			
+			case R.id.buttonDate:
+				ChooseDate chooseDate = new ChooseDate();
+				chooseDate.show(getFragmentManager(), "Date");			
 		}
 		
 	}
 	
+	// Set the time in the EditText.
 	public void EditTextTime(String time)
 	{
 		this.selectTime.setText(time);
+	}
+	
+	//Set the date in the EditText.
+	public void EditTextDate(String date)
+	{
+		this.selectDate.setText(date);
 	}
 
 }
