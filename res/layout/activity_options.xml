@@ -165,7 +165,9 @@
                 android:layout_alignBaseline="@+id/textViewDate"
                 android:layout_alignBottom="@+id/textViewDate"
                 android:layout_toLeftOf="@+id/buttonDate"
-                android:layout_toRightOf="@+id/textViewTime" />
+                android:layout_toRightOf="@+id/textViewTime"
+                android:singleLine="true"
+                android:hint="@string/hintDate" />
 
             <!-- Champ pour choisir l'heure -->
             
@@ -176,7 +178,9 @@
                 android:layout_alignBaseline="@+id/textViewTime"
                 android:layout_alignBottom="@+id/textViewTime"
                 android:layout_alignLeft="@+id/editTextDate"
-                android:layout_alignRight="@+id/editTextDate" />
+                android:layout_alignRight="@+id/editTextDate"
+                android:singleLine="true"
+                android:hint="@string/hintTime" />
 
         </RelativeLayout>
 

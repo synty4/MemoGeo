@@ -22,5 +22,8 @@
     <string name="title_activity_list_memo">ListMemo</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_time_option">When</string>
+    <string name="hintTime">HH:MM</string>
+    <string name="hintDate">DD/MM/YYYY</string>
+    
 
 </resources>

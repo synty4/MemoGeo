@@ -7,10 +7,12 @@ import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class OptionsActivity extends Activity implements View.OnClickListener {
 
 	private Button chooseTime;
+	private EditText selectTime;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,8 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		
 		this.chooseTime = (Button) findViewById(R.id.buttonTime);
 		this.chooseTime.setOnClickListener(this);
+		
+		this.selectTime = (EditText) findViewById(R.id.editTextTime);
 	}
 	
 	@Override
@@ -39,6 +43,11 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				break;
 		}
 		
+	}
+	
+	public void EditTextTime(String time)
+	{
+		this.selectTime.setText(time);
 	}
 
 }
