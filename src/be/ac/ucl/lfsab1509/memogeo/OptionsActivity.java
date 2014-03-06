@@ -12,19 +12,7 @@ public class OptionsActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_options);
-		
-		// Bouton pour arriver dans le choix de la date et de l'heure.
-		
-		final Button When = (Button) findViewById(R.id.buttonChooseTime);
-		When.setOnClickListener(new View.OnClickListener() 
-        {
-            public void onClick(View v) 
-            {               
-            	Intent WriteNewMemo = new Intent(OptionsActivity.this, TimeOptionActivity.class);
-             	startActivity(WriteNewMemo);
-            }            	
-        });
+		setContentView(R.layout.activity_options);		
 	}
 	
 	@Override

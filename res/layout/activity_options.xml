@@ -97,26 +97,15 @@
                 <requestFocus />
             </EditText>
 
-            <!-- Bouton pour choisir la date et l'heure -->
-
-            <Button
-                android:id="@+id/buttonChooseTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/editTextAddress"
-                android:layout_marginTop="30dp"
-                android:text="@string/choose" />
-
             <!-- Titre When -->
 
             <TextView
                 android:id="@+id/textViewWhen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/buttonChooseTime"
-                android:layout_alignBottom="@+id/buttonChooseTime"
                 android:layout_alignParentLeft="true"
+                android:layout_below="@+id/editTextAddress"
+                android:layout_marginTop="15dp"
                 android:text="@string/when"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -133,20 +122,6 @@
                 android:text="@string/date"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <!-- Champ pour la date -->
-
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textViewDate"
-                android:layout_alignBottom="@+id/textViewDate"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@+id/textViewDate" >
-
-                <requestFocus />
-            </EditText>
-
             <!-- Titre Time -->
 
             <TextView
@@ -160,20 +135,51 @@
                 android:text="@string/time"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <!-- Champ pour l'heure -->
+            <!-- Bouton pour choisir la date -->
 
+            <Button
+                android:id="@+id/buttonDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textViewDate"
+                android:layout_alignBottom="@+id/textViewDate"
+                android:layout_alignParentRight="true"
+                android:text="@string/choose" />
+
+            <!-- Bouton pour choisir l'heure -->
+            
+            <Button
+                android:id="@+id/buttonTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/buttonDate"
+                android:text="@string/choose" />
+
+            <!-- Champ pour choisir la date -->
+            
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textViewDate"
+                android:layout_alignBottom="@+id/textViewDate"
+                android:layout_toLeftOf="@+id/buttonDate"
+                android:layout_toRightOf="@+id/textViewTime" />
+
+            <!-- Champ pour choisir l'heure -->
+            
             <EditText
                 android:id="@+id/editTextTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/textViewTime"
                 android:layout_alignBottom="@+id/textViewTime"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@+id/textViewTime" >
+                android:layout_alignLeft="@+id/editTextDate"
+                android:layout_alignRight="@+id/editTextDate" />
 
-                <requestFocus />
-            </EditText>
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>
