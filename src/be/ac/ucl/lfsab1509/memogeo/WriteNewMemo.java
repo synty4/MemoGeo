@@ -31,8 +31,8 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 
 		// 2. create memo object.
 		Memo memo = new Memo();
-		editTextMemo = (EditText) findViewById(R.id.editTextMem);
-		memo.setMemo(editTextMemo.getText().toString());
+		//editTextMemo = (EditText) findViewById(R.id.editTextMem);
+		//memo.setMemo(editTextMemo.getText().toString());
 
 		// 3. put object in the intent.
 		intent.putExtra("memo", memo);

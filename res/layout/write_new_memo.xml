@@ -8,45 +8,100 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
+    
+    <!-- Main Title's textview  -->
+   
 
     <TextView
         android:id="@+id/textViewNewMemo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="22dp"
         android:text="@string/newMemo"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+     <!-- Option button   -->
 
     <Button
         android:id="@+id/buttonOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginRight="22dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="@string/option" />
-
+        android:text="Option"/>
+    
+     <!-- Memo title textView  -->
+    
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewNewMemo"
+        android:layout_marginTop="62dp"
+        android:layout_alignLeft="@+id/textViewNewMemo"
+        android:text="Title:"
+        />
+     
+    <!-- Memo  title editText  -->
+    
+	<EditText
+	    android:id="@+id/editTextTitle"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/textViewTitle"
+	    android:layout_alignRight="@+id/buttonOption"
+	    android:layout_marginLeft="95dp"
+	    android:ems="100"
+	    android:gravity="top"
+	    android:inputType="text" />
+	
+	 <!-- Memo Description  textView  -->
+	
+	<TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_marginTop="42dp"
+        android:layout_alignLeft="@+id/textViewTitle"
+        android:text="Description:"
+        />
+     
+	
+	    
+	 <!-- Memo Description  editText with  ScrollView -->
+	 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonOption" >
+        android:layout_alignBaseline ="@+id/textViewDescription"
+        android:layout_alignRight="@+id/editTextTitle"
+      >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-
+            
             <EditText
-                android:id="@+id/editTextMem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:ems="20"
-                android:gravity="top"
-                android:inputType="textMultiLine" >
+        
+        android:id="@+id/editTextDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      
+        android:layout_marginLeft="95dp"
+        android:ems="100"
+        android:gravity="top"
+        android:inputType="textMultiLine" >
 
-                <requestFocus />
-            </EditText>
+        <requestFocus />
+    </EditText>
         </RelativeLayout>
     </ScrollView>
+   
+
+    
 
 </RelativeLayout>
