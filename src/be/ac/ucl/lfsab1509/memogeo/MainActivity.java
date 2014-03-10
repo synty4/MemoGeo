@@ -59,6 +59,16 @@ public class MainActivity extends Activity {
             }            	
         });
 		
+		
+		final Button OpenMap = (Button) findViewById(R.id.open_map);// A changer par méthode plus propre
+		OpenMap.setOnClickListener(new View.OnClickListener() 
+        {
+            public void onClick(View v) 
+            {               
+            	Intent Map = new Intent(MainActivity.this, Map.class);
+             	startActivity(Map);
+            }            	
+        });
 		     
 	}
 
