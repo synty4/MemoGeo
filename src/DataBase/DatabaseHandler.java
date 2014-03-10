@@ -23,7 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "memoDatabase";
     
- // Memo table name
+    // Memo table name
     private static final String TABLE_MEMO = "memo";
  
     // MemoDatabase Table Columns names
@@ -31,15 +31,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_TITLE = "title";
     private static final String KEY_DESCRIPTION = "description";
     private static final String KEY_ADDRESS = "address";
- 
-	
+     
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
 	}
 
-	
-// creating table 	
+    // creating a table 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 
@@ -61,27 +59,54 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		
 	}
 
-
+    //Opening a database
+	
+	//Closing a database
+	
     // Adding new memo
-public void addMemoInformation(MemoInformation MemoInformation) {
+public void addMemo(MemoInformation Memo) {
     SQLiteDatabase db = this.getWritableDatabase();
  
     ContentValues values = new ContentValues();
-    values.put(KEY_TITLE, MemoInformation.getTitle()); // Contact Name
-    values.put(KEY_DESCRIPTION, MemoInformation.getDescription()); // Contact Phone Number
-    values.put(KEY_ADDRESS, MemoInformation.getAddress());
+    values.put(KEY_TITLE, Memo.getTitle()); // Contact Name
+    values.put(KEY_DESCRIPTION, Memo.getDescription()); // Contact Phone Number
+    values.put(KEY_ADDRESS, Memo.getAddress());
     // Inserting Row
     
     db.insert(TABLE_MEMO, null, values);
     db.close(); // Closing database connection
 }
 
-// Getting single contact
-public MemoInformation getMemoInformation(int id) {
+/**The following method will read single row.  
+ * 
+ * @param id
+ * @return the matched row from the database
+ */
+//I changed the parameter to be a string....
+
+public MemoInformation getMemoInfo(String title) {
+	 SQLiteDatabase db = this.getReadableDatabase();
+
+		//null,//group by  null,//having  null,//order by  null//limit
+	 
+	 Cursor cursor = db.query(TABLE_MEMO, new String[] { KEY_ID,
+	         KEY_TITLE, KEY_DESCRIPTION, KEY_ADDRESS }, KEY_TITLE + "=?",
+	         new String[] { String.valueOf(title) }, null, null, null, null);
+	 if (cursor != null)
+	     cursor.moveToFirst();
+	MemoInformation memoT;
+	memoT = new MemoInformation(Integer.parseInt(cursor.getString(0)),cursor.getString(1), cursor.getString(2), cursor.getString(3));
+	 // return memo
+	Log.d("hello","hello");
+	Log.d("Hello",memoT.toString());
+	 return memoT;
+	}
+
+/**public MemoInformation getMemoInfo(int id) {
  SQLiteDatabase db = this.getReadableDatabase();
-/*
-	null,//group by  null,//having  null,//order by  null//limit
- * */
+
+	//null,//group by  null,//having  null,//order by  null//limit
+ 
  Cursor cursor = db.query(TABLE_MEMO, new String[] { KEY_ID,
          KEY_TITLE, KEY_DESCRIPTION, KEY_ADDRESS }, KEY_ID + "=?",
          new String[] { String.valueOf(id) }, null, null, null, null);
@@ -94,12 +119,18 @@ Log.d("hello","hello");
 Log.d("Hello",memoT.toString());
  return memoT;
 }
+**/
 
-// Getting All Memo
 
-public List<MemoInformation> getAllMemoInformation() {
+/***
+ * getAllMemoInfo 
+ * Uses a for loop to go through each memo
+ * @return all mémos from the database in an arrayList format
+ */
+
+public List<MemoInformation> getAllMemoInfo() {
 	
-   List<MemoInformation> memoInformationList = new ArrayList<MemoInformation>();
+   List<MemoInformation> memoList = new ArrayList<MemoInformation>();
    // Select All Query
    String selectQuery = "SELECT  * FROM " + TABLE_MEMO;
 
@@ -115,7 +146,7 @@ public List<MemoInformation> getAllMemoInformation() {
        memoInfo.setDescription(cursor.getString(2));
        memoInfo.setAddress(cursor.getString(3));
        // Adding MemoInfo to list
-       memoInformationList.add(memoInfo);
+       memoList.add(memoInfo);
        while (cursor.moveToNext()){
            memoInfo = new MemoInformation();
            memoInfo.setId(Integer.parseInt(cursor.getString(0)));
@@ -123,18 +154,66 @@ public List<MemoInformation> getAllMemoInformation() {
            memoInfo.setDescription(cursor.getString(2));
            memoInfo.setAddress(cursor.getString(3));
            // Adding MemoInfo to list
-           memoInformationList.add(memoInfo);
+           memoList.add(memoInfo);
        } 
    }
-   return memoInformationList;
+   return memoList;
+}
+
+/***
+ * updateContact() will update a single memo in the database
+ * @param memo is a MemoInformation class object
+ * @return
+ */
+
+public int updateMemo(MemoInformation memo) {
+ SQLiteDatabase db = this.getWritableDatabase();
+
+ //updating single contact
+ ContentValues values = new ContentValues();
+ values.put(KEY_TITLE, memo.getTitle());
+ values.put(KEY_DESCRIPTION, memo.getDescription());
+ values.put(KEY_ADDRESS, memo.getAddress());
+
+ // updating row
+ return db.update(TABLE_MEMO, values, KEY_ID + " = ?",
+         new String[] { String.valueOf(memo.getId()) });
 }
 
 
+
+/***
+ * deleteMemo() will delete a single memo from database
+ * @param memo = MemoInformation class object 
+ */
+// Deleting single contact
+public void deleteMemo(MemoInformation memo) {
+   SQLiteDatabase db = this.getWritableDatabase();
+   db.delete(TABLE_MEMO, KEY_ID + " = ?",
+           new String[] { String.valueOf(memo.getId()) });
+   db.close();
+}
+
+/***
 //Deleting single MemoInformation 
-public void deleteMemoInformation(int delmemo) {
+public void deleteMemo(int delmemo) {
     SQLiteDatabase db = this.getWritableDatabase();
     db.delete(TABLE_MEMO, KEY_ID + " = ?", new String[] {Integer.toString(delmemo)});
     db.close();
+}
+**/
+
+
+
+//Getting The number of mémo in the db
+public int getMemoCount() {
+   String countQuery = "SELECT  * FROM " + TABLE_MEMO;
+   SQLiteDatabase db = this.getReadableDatabase();
+   Cursor cursor = db.rawQuery(countQuery, null);
+   cursor.close();
+
+   // return count
+   return cursor.getCount();
 }
 	
 

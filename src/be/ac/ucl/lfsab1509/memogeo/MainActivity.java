@@ -20,14 +20,17 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		/*test affichage dans l'onglet log*/
-		DatabaseHandler db = new DatabaseHandler(this);
+		DatabaseHandler db;
+		
+		 db = new DatabaseHandler(this);
+		 
 		Log.d("Insert: ", "Inserting .."); 
 		MemoInformation memoInfoUn = new MemoInformation("Title: acheteer medicament","description: pour mal de tete ","Adresse: place ....");
-	    db.addMemoInformation(memoInfoUn); 
+	    db.addMemo(memoInfoUn); 
 	    Log.d("ONE ************************** ", "**********************"); 
 		
 	    MemoInformation memoInfoDeux = new MemoInformation("livre calculabiliterrrr","biblio ingifffff ","placeffff ste barbe 2");
-	    db.addMemoInformation(memoInfoDeux); 
+	    db.addMemo(memoInfoDeux); 
 	    Log.d("TWO ************************** ", "**********************"); 
     
 	    /*test suppression MemoInformation dans l'onglet log:  suppression et affichage apr�s suppression*/
@@ -36,7 +39,7 @@ public class MainActivity extends Activity {
 	    Log.d("titles",memoInfoUn.getTitle());*/
 	    
 	    Log.d("Reading: ", "Reading all memoInfo.."); 
-        List<MemoInformation> memoInfo = db.getAllMemoInformation(); 
+        List<MemoInformation> memoInfo = db.getAllMemoInfo(); 
          	for (MemoInformation i : memoInfo) {
          		String log = i.toString();
 	            

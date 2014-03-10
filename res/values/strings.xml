@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Memo Geo</string>
     <string name="action_settings">Settings</string>
@@ -22,8 +22,8 @@
     <string name="title_activity_list_memo">ListMemo</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_time_option">When</string>
-    <string name="hintTime">HH:MM</string>
-    <string name="hintDate">DD/MM/YYYY</string>
+    <string name="hintDate">DD/MM/YYYY</string><string name="hintTime">HH:MM</string>
+    
     
 
 </resources>

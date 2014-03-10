@@ -15,14 +15,20 @@ public class MemoInformation {
 			this.id = id;
 			this.title = title;
 			this.description = description;
-			this.address = address;
+			//this.address = address;
 		}
 		
 		public MemoInformation(String title, String description,String address) {
 			super();
 			this.title = title;
 			this.description = description;
-			this.address = address;
+			//this.address = address;
+		}
+		public MemoInformation(String title, String description) {
+			super();
+			this.title = title;
+			this.description = description;
+			//this.address = address;
 		}
 		public MemoInformation() {
 			// TODO Auto-generated constructor stub
@@ -59,7 +65,8 @@ public class MemoInformation {
 	    
 		@Override
 		public String toString() {
-			return "MemoInformation [id=" + id + ", title=" + title	+ ", description=" + description + ", address=" + address + "]";
+			//return "MemoInformation [id=" + id + ", title=" + title	+ ", description=" + description + ", address=" + address + "]";
+			return "MemoInformation [id=" + id + ", title=" + title	+ ", description=" + description  + "]";
 		}  
 	    
 	
