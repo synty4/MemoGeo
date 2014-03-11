@@ -13,6 +13,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 
 	private Button chooseTime;
 	private Button chooseDate;
+	private Button openMap;
 	private EditText selectTime;
 	private EditText selectDate;
 	private TextView test;
@@ -31,6 +32,9 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		this.chooseDate.setOnClickListener(this);
 		
 		this.selectDate = (EditText) findViewById(R.id.editTextDate);
+		
+		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton et champ de l'heure
+		this.openMap.setOnClickListener(this);
 		
 		// Getting the intent.
 		Intent intent = getIntent();
@@ -59,7 +63,12 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 			
 			case R.id.buttonDate:
 				ChooseDate chooseDate = new ChooseDate();
-				chooseDate.show(getFragmentManager(), "Date");			
+				chooseDate.show(getFragmentManager(), "Date");
+				break;
+				
+			case R.id.buttonMap:
+				Intent Map = new Intent(OptionsActivity.this, Map.class);
+             	startActivity(Map);
 		}
 		
 	}
