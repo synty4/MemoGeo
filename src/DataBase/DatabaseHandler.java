@@ -64,12 +64,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	//Closing a database
 	
     // Adding new memo
-public void addMemo(MemoInformation Memo) {
+public void addMemoInformation(MemoInformation Memo) {
     SQLiteDatabase db = this.getWritableDatabase();
  
     ContentValues values = new ContentValues();
-    values.put(KEY_TITLE, Memo.getTitle()); // Contact Name
-    values.put(KEY_DESCRIPTION, Memo.getDescription()); // Contact Phone Number
+    values.put(KEY_TITLE, Memo.getTitle()); // Memo title 
+    values.put(KEY_DESCRIPTION, Memo.getDescription()); // description of the memo
     values.put(KEY_ADDRESS, Memo.getAddress());
     // Inserting Row
     
@@ -84,7 +84,7 @@ public void addMemo(MemoInformation Memo) {
  */
 //I changed the parameter to be a string....
 
-public MemoInformation getMemoInfo(String title) {
+public MemoInformation getMemoInformation(String title) {
 	 SQLiteDatabase db = this.getReadableDatabase();
 
 		//null,//group by  null,//having  null,//order by  null//limit
@@ -128,7 +128,7 @@ Log.d("Hello",memoT.toString());
  * @return all mémos from the database in an arrayList format
  */
 
-public List<MemoInformation> getAllMemoInfo() {
+public List<MemoInformation> getAllMemoInformation() {
 	
    List<MemoInformation> memoList = new ArrayList<MemoInformation>();
    // Select All Query
@@ -166,10 +166,10 @@ public List<MemoInformation> getAllMemoInfo() {
  * @return
  */
 
-public int updateMemo(MemoInformation memo) {
+public int updateMemoInformation(MemoInformation memo) {
  SQLiteDatabase db = this.getWritableDatabase();
 
- //updating single contact
+ //updating single memo
  ContentValues values = new ContentValues();
  values.put(KEY_TITLE, memo.getTitle());
  values.put(KEY_DESCRIPTION, memo.getDescription());
@@ -186,8 +186,8 @@ public int updateMemo(MemoInformation memo) {
  * deleteMemo() will delete a single memo from database
  * @param memo = MemoInformation class object 
  */
-// Deleting single contact
-public void deleteMemo(MemoInformation memo) {
+// Deleting single memo
+public void deleteMemoInformation(MemoInformation memo) {
    SQLiteDatabase db = this.getWritableDatabase();
    db.delete(TABLE_MEMO, KEY_ID + " = ?",
            new String[] { String.valueOf(memo.getId()) });
@@ -206,7 +206,7 @@ public void deleteMemo(int delmemo) {
 
 
 //Getting The number of mémo in the db
-public int getMemoCount() {
+public int getMemoInformationCount() {
    String countQuery = "SELECT  * FROM " + TABLE_MEMO;
    SQLiteDatabase db = this.getReadableDatabase();
    Cursor cursor = db.rawQuery(countQuery, null);

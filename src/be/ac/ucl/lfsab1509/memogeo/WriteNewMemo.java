@@ -59,7 +59,7 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 		
 		MemoInformation myMemo= new MemoInformation(titleBox.getText().toString(), descriptionBox.getText().toString());
 		
-		db.addMemo(myMemo);
+		db.addMemoInformation(myMemo);
 	
 		myMemo.setTitle("");
 		myMemo.setDescription("");
@@ -71,9 +71,9 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
     public void view (View view) {
     	DatabaseHandler db = new DatabaseHandler(this);
 	
-	     MemoInformation myMemo= db.getMemoInfo(titleBox.getText().toString());
+	     MemoInformation myMemo= db.getMemoInformation(titleBox.getText().toString());
 			
-			db.addMemo(myMemo);
+			db.addMemoInformation(myMemo);
 
 	     if (myMemo != null) {
 		   titleBox.setText(String.valueOf(myMemo.getTitle()));
