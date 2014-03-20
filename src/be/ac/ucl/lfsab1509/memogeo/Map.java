@@ -5,7 +5,15 @@ import android.app.Activity;
 import android.view.Menu;
 import com.google.android.maps.MapActivity;
 
-public class Map extends MapActivity {
+public class Map extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+    }
+
+/** public class Map extends MapActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +37,5 @@ public class Map extends MapActivity {
 	  protected boolean isLocationDisplayed() {
 	    return true;
 	  }
-	  
+	  */
 }

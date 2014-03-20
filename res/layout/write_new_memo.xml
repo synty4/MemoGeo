@@ -66,7 +66,8 @@
         android:layout_alignLeft="@+id/textViewTitle"
         android:layout_below="@+id/textViewTitle"
         android:layout_marginTop="42dp"
-        android:text="Description:" />
+        android:text="Description:" 
+      />
     	<!-- android:text="@string/Description:"--> 
 
     <!-- Memo Description  editText with  ScrollView -->
@@ -115,33 +116,11 @@
            android:layout_marginTop="250dp"
            android:text="Save" 
            android:onClick="add"/>
-           <!-- android:text="@string/Save:"--> 
+          
 
-         <!-- view button -->
          
-       <Button
-           android:id="@+id/buttonView"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_toRightOf="@+id/buttonSave1"
-           android:layout_marginLeft="16dp"
-           android:layout_alignBaseline="@+id/buttonSave1"
-           android:text="View"
-           android:onClick="view" />
-           <!-- android:text="@string/View:"--> 
-       
-         <!-- Delete   button -->
 
-       <Button
-           android:id="@+id/buttonDelete"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignBaseline="@+id/buttonSave1"
-           android:layout_marginLeft="16dp"
-           android:layout_toRightOf="@+id/buttonView"
-           android:text="Delete" 
-           android:onClick="delete"/>
-           <!-- android:text="@string/Delete:"--> 
+   
    </RelativeLayout>
 
 </RelativeLayout>
