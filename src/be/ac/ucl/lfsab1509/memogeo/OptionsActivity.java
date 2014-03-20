@@ -53,7 +53,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	@Override
 	// Handles all the buttons.
 	public void onClick(View v) {
-		
+		/*
 		switch (v.getId())
 		{
 			case R.id.buttonTime:
@@ -70,7 +70,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				Intent Map = new Intent(OptionsActivity.this, Map.class);
              	startActivity(Map);
 		}
-		
+		*/
 	}
 	
 	// Set the time in the EditText.
