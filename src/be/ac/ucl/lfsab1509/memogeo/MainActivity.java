@@ -10,66 +10,78 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
+	private Button newMemo;
+	private Button map;
+	private Button memoList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		/*test affichage dans l'onglet log*/
-		DatabaseHandler db;
-		
-		 db = new DatabaseHandler(this);
-		 
-		Log.d("Insert: ", "Inserting .."); 
-		MemoInformation memoInfoUn = new MemoInformation("Title: acheteer medicament","description: pour mal de tete ","Adresse: place ....");
-	    db.addMemo(memoInfoUn); 
-	    Log.d("ONE ************************** ", "**********************"); 
-		
-	    MemoInformation memoInfoDeux = new MemoInformation("livre calculabiliterrrr","biblio ingifffff ","placeffff ste barbe 2");
-	    db.addMemo(memoInfoDeux); 
-	    Log.d("TWO ************************** ", "**********************"); 
-    
-	    /*test suppression MemoInformation dans l'onglet log:  suppression et affichage apr�s suppression*/
-	   /* Log.d("************ DELETE ************** ", "**********************"); 
-	    Log.d("idd",String.valueOf(memoInfoUn.getId()));
-	    Log.d("titles",memoInfoUn.getTitle());*/
-	    
-	    Log.d("Reading: ", "Reading all memoInfo.."); 
-        List<MemoInformation> memoInfo = db.getAllMemoInfo(); 
-         	for (MemoInformation i : memoInfo) {
-         		String log = i.toString();
-	            
-         		// Writing MemoInformation to log
-	            Log.d("Title: ", log);
-         	}
-	    
-	   
-	   
-		final Button NewMemo = (Button) findViewById(R.id.new_memo);// A changer par méthode plus propre
-		NewMemo.setOnClickListener(new View.OnClickListener() 
-        {
-            public void onClick(View v) 
-            {               
-            	Intent WriteNewMemo = new Intent(MainActivity.this, WriteNewMemo.class);
-             	startActivity(WriteNewMemo);
-            }            	
-        });
-		
-		
-		final Button OpenMap = (Button) findViewById(R.id.open_map);// A changer par méthode plus propre
-		OpenMap.setOnClickListener(new View.OnClickListener() 
-        {
-            public void onClick(View v) 
-            {               
-            	Intent Map = new Intent(MainActivity.this, Map.class);
-             	startActivity(Map);
-            }            	
-        });
-		     
+
+		this.newMemo = (Button) findViewById(R.id.new_memo);
+		this.newMemo.setOnClickListener(this);
+
+		this.map = (Button) findViewById(R.id.open_map);
+		this.map.setOnClickListener(this);
+
+		this.memoList = (Button) findViewById(R.id.list_memo);
+		this.memoList.setOnClickListener(this);
+
+		/* test affichage dans l'onglet log */
+		/*
+		 * DatabaseHandler db;
+		 * 
+		 * db = new DatabaseHandler(this);
+		 * 
+		 * Log.d("Insert: ", "Inserting .."); MemoInformation memoInfoUn = new
+		 * MemoInformation
+		 * ("Title: acheteer medicament","description: pour mal de tete "
+		 * ,"Adresse: place ...."); db.addMemo(memoInfoUn);
+		 * Log.d("ONE ************************** ", "**********************");
+		 * 
+		 * MemoInformation memoInfoDeux = new
+		 * MemoInformation("livre calculabiliterrrr"
+		 * ,"biblio ingifffff ","placeffff ste barbe 2");
+		 * db.addMemo(memoInfoDeux); Log.d("TWO ************************** ",
+		 * "**********************");
+		 * 
+		 * /*test suppression MemoInformation dans l'onglet log: suppression et
+		 * affichage apr�s suppression
+		 */
+		/*
+		 * Log.d("************ DELETE ************** ",
+		 * "**********************");
+		 * Log.d("idd",String.valueOf(memoInfoUn.getId()));
+		 * Log.d("titles",memoInfoUn.getTitle());
+		 */
+
+		/*
+		 * Log.d("Reading: ", "Reading all memoInfo.."); List<MemoInformation>
+		 * memoInfo = db.getAllMemoInfo(); for (MemoInformation i : memoInfo) {
+		 * String log = i.toString();
+		 * 
+		 * // Writing MemoInformation to log Log.d("Title: ", log); }
+		 */
+	}
+
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.new_memo:
+			Intent WriteNewMemo = new Intent(MainActivity.this,WriteNewMemo.class);
+			startActivity(WriteNewMemo);
+			break;
+		case R.id.open_map:
+			Intent Map = new Intent(MainActivity.this, Map.class);
+			startActivity(Map);
+			break;
+		case R.id.list_memo:
+			break;
+		}
 	}
 
 	@Override

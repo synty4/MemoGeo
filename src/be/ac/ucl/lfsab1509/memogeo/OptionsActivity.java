@@ -19,7 +19,8 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private TextView test;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_options);
 		
