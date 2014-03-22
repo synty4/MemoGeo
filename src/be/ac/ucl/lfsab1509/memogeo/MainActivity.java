@@ -10,13 +10,13 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 	private Button newMemo;
 	private Button map;
 	private Button memoList;
+	private Button timers;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 		this.memoList = (Button) findViewById(R.id.list_memo);
 		this.memoList.setOnClickListener(this);
+		
+		this.timers = (Button) findViewById(R.id.timers);
+		this.timers.setOnClickListener(this);
 
 		/* test affichage dans l'onglet log */
 		/*
@@ -80,6 +83,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			startActivity(Map);
 			break;
 		case R.id.list_memo:
+			break;
+		case R.id.timers:
+			Intent Timers = new Intent(MainActivity.this, TimersActivity.class );
+			startActivity(Timers);
 			break;
 		}
 	}

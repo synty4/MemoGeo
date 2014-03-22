@@ -15,7 +15,9 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="test">Test</string>
+    <string name="timers">Timers</string>
     <string name="list_memo">List Memo</string>
+    <string name="launch">Launch</string>
     <string name="write_new_memo">Write a memo</string>
     <string name="hello_world">Hello world!</string>
     <string name="hintTime">HH:MM</string>
