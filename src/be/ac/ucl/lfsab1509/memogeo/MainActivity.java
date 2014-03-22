@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 		
 		 db = new DatabaseHandler(this);
 		 
+		 
 		Log.d("Insert: ", "Inserting .."); 
 		MemoInformation memoInfoUn = new MemoInformation("Title: acheter medicament","description: pour mal de tete ","Traverse d'Esope 5, 1348");
 	    db.addMemoInformation(memoInfoUn); 

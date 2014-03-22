@@ -53,7 +53,12 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 			// 4. Start the next activity.
 			startActivity(intent);
 	}
-	
+	public void clear(){
+
+		titleBox.setText("");
+		descriptionBox.setText("");
+		
+	}
 	public void add(View view){
 		DatabaseHandler db = new DatabaseHandler(this);
 		
@@ -61,8 +66,7 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 		
 		db.addMemoInformation(myMemo);
 	
-		myMemo.setTitle("");
-		myMemo.setDescription("");
+		clear();
 		
 		Log.d("Inserting",myMemo.toString());
 		
