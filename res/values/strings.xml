@@ -28,6 +28,6 @@
      <string name="map">Map</string>
     <string name="API_key">AIzaSyDi_gj56nXHbM3TNZF09UzBEEhCvkd5zHg</string>
     <string name="debug">C1:21:C8:60:93:10:52:A5:9E:48:27:34:B8:D1:55:B6:CD:D7:17:D1</string>
-    
+    <string name="titleMain">Home</string>
 
 </resources>

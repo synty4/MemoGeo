@@ -24,22 +24,23 @@ public class MainActivity extends Activity {
 		
 		 db = new DatabaseHandler(this);
 		 
+		 
 		Log.d("Insert: ", "Inserting .."); 
-		MemoInformation memoInfoUn = new MemoInformation("Title: acheteer medicament","description: pour mal de tete ","Adresse: place ....");
-	    db.addMemo(memoInfoUn); 
+		MemoInformation memoInfoUn = new MemoInformation("Title: acheter medicament","description: pour mal de tete ","Traverse d'Esope 5, 1348");
+	    db.addMemoInformation(memoInfoUn); 
 	    Log.d("ONE ************************** ", "**********************"); 
 		
-	    MemoInformation memoInfoDeux = new MemoInformation("livre calculabiliterrrr","biblio ingifffff ","placeffff ste barbe 2");
-	    db.addMemo(memoInfoDeux); 
+	    MemoInformation memoInfoDeux = new MemoInformation("livre calculabilité","biblio INGI "," Place Sainte Barbe 2, 1348");
+	    db.addMemoInformation(memoInfoDeux); 
 	    Log.d("TWO ************************** ", "**********************"); 
     
-	    /*test suppression MemoInformation dans l'onglet log:  suppression et affichage aprï¿½s suppression*/
+	    /*test suppression MemoInformation dans l'onglet log:  suppression et affichage après suppression*/
 	   /* Log.d("************ DELETE ************** ", "**********************"); 
 	    Log.d("idd",String.valueOf(memoInfoUn.getId()));
 	    Log.d("titles",memoInfoUn.getTitle());*/
 	    
 	    Log.d("Reading: ", "Reading all memoInfo.."); 
-        List<MemoInformation> memoInfo = db.getAllMemoInfo(); 
+        List<MemoInformation> memoInfo = db.getAllMemoInformation(); 
          	for (MemoInformation i : memoInfo) {
          		String log = i.toString();
 	            
@@ -49,7 +50,7 @@ public class MainActivity extends Activity {
 	    
 	   
 	   
-		final Button NewMemo = (Button) findViewById(R.id.new_memo);// A changer par mÃ©thode plus propre
+		final Button NewMemo = (Button) findViewById(R.id.new_memo);// A changer par méthode plus propre
 		NewMemo.setOnClickListener(new View.OnClickListener() 
         {
             public void onClick(View v) 
@@ -60,7 +61,7 @@ public class MainActivity extends Activity {
         });
 		
 		
-		final Button OpenMap = (Button) findViewById(R.id.open_map);// A changer par mÃ©thode plus propre
+		final Button OpenMap = (Button) findViewById(R.id.open_map);// A changer par méthode plus propre
 		OpenMap.setOnClickListener(new View.OnClickListener() 
         {
             public void onClick(View v) 
@@ -69,6 +70,18 @@ public class MainActivity extends Activity {
              	startActivity(Map);
             }            	
         });
+		
+		// button to list memo  in the main activity
+					final Button ListMemo = (Button) findViewById(R.id.list_memo);// A changer par méthode plus propre
+					ListMemo.setOnClickListener(new View.OnClickListener() 
+			        {
+			            public void onClick(View v) 
+			            {               
+			            	Intent ListMemo = new Intent(MainActivity.this, ListMemo.class);
+			            	startActivity(ListMemo);
+			            }            	
+			        });
+		
 		     
 	}
 
