@@ -64,6 +64,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.TimersActivity"
+            android:label="@string/timers"
+            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intentaction.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="be.ac.ucl.lfsab1509.memogeo.TestActivity"
             android:label="@string/test" >
         </activity>

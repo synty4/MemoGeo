@@ -17,7 +17,8 @@
     <string name="test">Test</string>
     <string name="timers">Timers</string>
     <string name="list_memo">List Memo</string>
-    <string name="launch">Launch</string>
+    <string name="geoTimer">Geo Timer</string>
+    <string name="timeTimer">Time Timer</string>
     <string name="write_new_memo">Write a memo</string>
     <string name="hello_world">Hello world!</string>
     <string name="hintTime">HH:MM</string>

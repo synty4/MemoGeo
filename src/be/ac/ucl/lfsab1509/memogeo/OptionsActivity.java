@@ -16,7 +16,6 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private Button openMap;
 	private EditText selectTime;
 	private EditText selectDate;
-	private TextView test;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -34,7 +33,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		
 		this.selectDate = (EditText) findViewById(R.id.editTextDate);
 		
-		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton et champ de l'heure
+		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton de la map
 		this.openMap.setOnClickListener(this);
 		
 		// Getting the intent.
@@ -59,11 +58,13 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		{
 			case R.id.buttonTime:
 				ChooseTime chooseTime = new ChooseTime();
+				chooseTime.putParentActivity(1);
 				chooseTime.show(getFragmentManager(), "Time");
 				break;
 			
 			case R.id.buttonDate:
 				ChooseDate chooseDate = new ChooseDate();
+				chooseDate.putParentActivity(1);
 				chooseDate.show(getFragmentManager(), "Date");
 				break;
 				
@@ -71,7 +72,6 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				Intent Map = new Intent(OptionsActivity.this, Map.class);
              	startActivity(Map);
 		}
-		
 	}
 	
 	// Set the time in the EditText.
