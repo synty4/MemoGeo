@@ -1,7 +1,10 @@
 package be.ac.ucl.lfsab1509.memogeo;
 
+import java.io.IOException;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +19,7 @@ public class TimersActivity extends Activity implements View.OnClickListener
 	private Button timeTimer;
 	private EditText selectTime;
 	private EditText selectDate;
+	private MediaPlayer mp = new MediaPlayer();
 	
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -34,12 +38,18 @@ public class TimersActivity extends Activity implements View.OnClickListener
 		
 		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton de la map
 		this.openMap.setOnClickListener(this);
+		
+		this.timeTimer = (Button) findViewById(R.id.buttonTimeTimer);//Bouton Time Timer
+		this.timeTimer.setOnClickListener(this);
+		
+		this.geoTimer = (Button) findViewById(R.id.buttonGeoTimer);//Bouton Geo Timer
+		this.geoTimer.setOnClickListener(this);
 	}
 	
 	
 	@Override
 	public void onClick(View v) 
-	{
+	{	
 		switch (v.getId())
 		{
 			case R.id.buttonTime:
@@ -57,6 +67,32 @@ public class TimersActivity extends Activity implements View.OnClickListener
 			case R.id.buttonMap:
 				Intent Map = new Intent(TimersActivity.this, Map.class);
              	startActivity(Map);
+             	break;
+             	
+			case R.id.buttonTimeTimer:
+				
+				if(mp.isPlaying())//TEST d'une sonnerie ne fonctionne qu'une seule fois.
+		        {  
+		            mp.stop();
+		            mp.reset();
+		        } 
+		        try {
+
+		            AssetFileDescriptor afd;
+		            afd = getAssets().openFd("game over.mp3");
+		            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+		            mp.prepare();
+		            mp.start();
+		        } catch (IllegalStateException e) {
+		            e.printStackTrace();
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        } 
+				
+				break;
+			case R.id.buttonGeoTimer:
+				//TODO
+				break;
 		}
 	}
 	
