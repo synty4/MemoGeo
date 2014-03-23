@@ -6,18 +6,73 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ListMemo" >
-
-	<ListView  
-         android:id="@android:id/list"
-         android:layout_width="fill_parent" 
-         android:layout_height="wrap_content" 
-    />
-	
-	
-    <TextView
+    tools:context=".ListMemo"  >
+   
+  
+  		 <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/title_memo_list" />
+        
+        <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+       	android:layout_marginTop="2dip"
+        android:layout_marginBottom="2dip"
+        android:drawSelectorOnTop="false"
+        android:visibility="visible" />
+        "
+	<!--android:layout_height="wrap_content" /-->
+	
+     <!-- RelativeLayout  for control buttons -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="106dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:onClick="add"
+            android:text="@string/Add_button" />
+        
+		 <Button
+		     android:id="@+id/buttonEdit"
+		     android:layout_width="wrap_content"
+		     android:layout_height="wrap_content"
+		     android:layout_alignBaseline="@+id/buttonAdd"
+		     android:layout_toRightOf="@+id/buttonAdd"
+		     android:layout_marginLeft="5dp"
+		     android:text="@string/Edit" />
+		 
+        <Button
+            android:id="@+id/buttonView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/buttonAdd"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/buttonEdit"
+            android:onClick="view"
+            android:text="@string/View" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/buttonAdd"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/buttonView"
+            android:onClick="delete"
+            android:text="@string/Delete" />
+    </RelativeLayout>
+    
 
 </RelativeLayout>

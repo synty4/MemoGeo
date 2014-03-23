@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,8 +28,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="22dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/option" />
+        android:layout_marginTop="282dp"
+        android:text="@string/next_new_memo" />
 
     <!-- Memo title textView -->
 
@@ -41,8 +40,9 @@
         android:layout_alignLeft="@+id/textViewNewMemo"
         android:layout_below="@+id/textViewNewMemo"
         android:layout_marginTop="62dp"
-        android:text="Title:"/>
-        <!-- android:text="@string/Title:"--> 
+        android:text="@string/textViewTitle" />
+
+      
 
     <!-- Memo  title editText -->
 
@@ -54,6 +54,8 @@
         android:layout_alignRight="@+id/buttonOption"
         android:layout_marginLeft="95dp"
         android:ems="100"
+        android:maxLength="20"
+        android:lines="2"
         android:gravity="top"
         android:inputType="text" />
 
@@ -66,7 +68,7 @@
         android:layout_alignLeft="@+id/textViewTitle"
         android:layout_below="@+id/textViewTitle"
         android:layout_marginTop="42dp"
-        android:text="Description:" />
+        android:text="@string/textViewDescription" />
     	<!-- android:text="@string/Description:"--> 
 
     <!-- Memo Description  editText with  ScrollView -->
@@ -96,52 +98,6 @@
         </RelativeLayout>
     </ScrollView>
 	
-     <!--  Control buttons added for testing purpose to be removed later -->
-     
-     <!-- RelativeLayout  for control buttons -->
-     
-   <RelativeLayout
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:layout_alignLeft="@+id/textViewDescription" 
-       android:layout_centerHorizontal="true">
-
-       <!-- Save button named buttonSave1 to avoid any conflict with the activity_options's Save button -->
-       <Button
-           android:id="@+id/buttonSave1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-       	   android:layout_marginLeft="300dp"
-           android:layout_marginTop="250dp"
-           android:text="Save" 
-           android:onClick="add"/>
-           <!-- android:text="@string/Save:"--> 
-
-         <!-- view button -->
-         
-       <Button
-           android:id="@+id/buttonView"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_toRightOf="@+id/buttonSave1"
-           android:layout_marginLeft="16dp"
-           android:layout_alignBaseline="@+id/buttonSave1"
-           android:text="View"
-           android:onClick="view" />
-           <!-- android:text="@string/View:"--> 
-       
-         <!-- Delete   button -->
-
-       <Button
-           android:id="@+id/buttonDelete"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignBaseline="@+id/buttonSave1"
-           android:layout_marginLeft="16dp"
-           android:layout_toRightOf="@+id/buttonView"
-           android:text="Delete" 
-           android:onClick="delete"/>
-           <!-- android:text="@string/Delete:"--> 
-   </RelativeLayout>
+    
 
 </RelativeLayout>

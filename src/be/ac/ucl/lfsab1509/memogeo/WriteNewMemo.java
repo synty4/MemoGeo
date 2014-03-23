@@ -17,42 +17,16 @@ import android.widget.EditText;
 public class WriteNewMemo extends Activity implements View.OnClickListener {
 	
 	private Button options;
-	private EditText titleBox;
-	private EditText descriptionBox;
-	private Button save;
-	private Button delete;
-	private Button view;
-	//DatabaseAdapter dbAdapter;
-	//private ArrayList memoList;
-	//private DatabaseHandler db;
-	//private MemoInformation myMemo;
-	List<MemoInformation> memoList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.write_new_memo);
 		
-		titleBox=(EditText)findViewById(R.id.editTextTitle);
-		descriptionBox=(EditText)findViewById(R.id.editTextDescription);
 		
-	    save=(Button)findViewById(R.id.buttonSave1);
-	  //  save.setOnClickListener(this);
-	    
-	    delete=(Button)findViewById(R.id.buttonDelete);
-	  //  delete.setOnClickListener(this);
-	    
-	    view=(Button)findViewById(R.id.buttonView);
-	  //  view.setOnClickListener(this);
-	    
 		this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure
 																
 		this.options.setOnClickListener(this);
-		
-		//memoList = new ArrayList()
-		//myMemo = new MemoInformation();
-		memoList = new ArrayList<MemoInformation>();
-			
 		
 	}	
 	
@@ -84,92 +58,6 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 		
 	}
 	
-	public void add(View view){
-		DatabaseHandler db = new DatabaseHandler(this);
-		
-		MemoInformation myMemo= new MemoInformation(titleBox.getText().toString(), descriptionBox.getText().toString());
-		
-		db.addMemoInformation(myMemo);
-		
-		//Get the values provided by the user via the UI
-		//String title = titleBox.getText().toString();
-		//String description= descriptionBox.getText().toString();
-		
-		// Pass above values to the setter methods in memoInformation class
-		//myMemo.setTitle(title);
-		//myMemo.setDescription(description);
+	
 
-		// Add a memo with its all details to an ArrayList
-		//memoList.add(myMemo);
-
-		// Inserting undergraduate details to the database is doing in a separate method
-		
-		//db.addMemo(myMemo);	
-		//db.close();
-		myMemo.setTitle("");
-		myMemo.setDescription("");
-		
-		Log.d("Inserting",myMemo.toString());
-		
-		//DatabaseHandler dbHandler = new DatabaseHandler(this);  	
-  	  // MemoInformation myMemo = new MemoInformation(titleBox.getText().toString(), descriptionBox.getText().toString());
-  	  // db.addMemo(myMemo);
-  	  // titleBox.setText("");
-  	   //descriptionBox.setText("");
-	}
-	
-    public void view (View view) {
-    	DatabaseHandler db = new DatabaseHandler(this);
-	
-	     MemoInformation myMemo= db.getMemoInformation(titleBox.getText().toString());
-			
-			db.addMemoInformation(myMemo);
-
-	     if (myMemo != null) {
-		   titleBox.setText(String.valueOf(myMemo.getTitle()));
-		   descriptionBox.setText(String.valueOf(myMemo.getDescription()));
-      } else {
-	         titleBox.setText("No Match Found");
-      }        	
-  }
-	
-	
-	/**public void view(){
-	
-		
-		MemoInformation memoFromDb = db.getMemoInfo(myMemo.getId());
-		String titleFromDb = memoFromDb.getTitle().toString();
-		String descriptionFromDb = memoFromDb.getDescription().toString();
-		titleBox.setText(titleFromDb);
-		descriptionBox.setText(descriptionFromDb);
-	    //Si un memo est retourné (donc si le memo à bien été ajouté à la BDD)
-	        if(memoFromDb != null){
-	        	//On affiche les infos du memo dans les editText du titre et de la description
-	        	titleBox.setText(titleFromDb);
-	    		descriptionBox.setText(descriptionFromDb);
-	        	
-	        }
-	        
-	        db.close();
-	}
-	
-	public void delete(){}
-	
-	public void update(){
-		
-		//On modifie le titre du livre
-    	//memoFromDb.setTitle("J'ai modifié le titre du livre");
-    	//Puis on met à jour la BDD
-       // db.updateMemo(memoFromDb);
-	}
-	
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.writenewmemo, menu);
-
-		return true;
-	}
-**/
 }
