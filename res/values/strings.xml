@@ -25,18 +25,19 @@
     <string name="title_activity_time_option">When</string>
     <string name="hintTime">HH:MM</string>
     <string name="hintDate">DD/MM/YYYY</string>
-     <string name="map">Map</string>
+    <string name="map">Map</string>
     <string name="API_key">AIzaSyDi_gj56nXHbM3TNZF09UzBEEhCvkd5zHg</string>
     <string name="debug">C1:21:C8:60:93:10:52:A5:9E:48:27:34:B8:D1:55:B6:CD:D7:17:D1</string>
     <string name="titleMain">Home</string>
     <string name="textViewTitle">Title:</string>
     <string name="textViewDescription">Description:</string>
-<string name="next_new_memo">Next</string>
-<string name="title_memo_list">Memo List</string>
-<string name="Save">Save</string>
-<string name="View">View</string>
-<string name="Delete">Delete</string>
-<string name="Edit">Edit</string>
-<string name="Add_button">Add</string>
+    <string name="next_new_memo">Next</string>
+    <string name="title_memo_list">Memo List</string>
+    <string name="Save">Save</string>
+    <string name="View">View</string>
+    <string name="Delete">Delete</string>
+    <string name="Edit">Edit</string>
+    <string name="Add_button">Add</string>
+    <string name="title_activity_window">WindowActivity</string>
 
 </resources>

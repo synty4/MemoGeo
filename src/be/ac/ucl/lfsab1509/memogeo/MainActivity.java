@@ -11,13 +11,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		@Override
+		public void onCreate(Bundle savedInstanceState)
+		{
+			super.onCreate(savedInstanceState); 
+			setContentView(R.layout.activity_main);
+			//TextView windowTitle = (TextView) findViewById(R.id.titleHeading);
+			//windowTitle.setText("MemoGeo");
+			
 		
 		/*test affichage dans l'onglet log*/
 		DatabaseHandler db;
