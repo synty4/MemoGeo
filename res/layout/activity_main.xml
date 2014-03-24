@@ -23,7 +23,7 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="-50dp"
-        style="@style/MyButton.Blue"
+        style="@style/MyButton.Large"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/title_new_memo" />
       <Button
@@ -32,7 +32,7 @@
         android:layout_height="80dp"
         android:text="@string/map"
         android:layout_marginTop="50dp" 
-        style="@style/MyButton.Blue"
+        style="@style/MyButton.Large"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <Button
@@ -40,7 +40,7 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="50dp"
-         style="@style/MyButton.Blue"
+        style="@style/MyButton.Large"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/title_list_memo" />
     

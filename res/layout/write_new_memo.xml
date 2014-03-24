@@ -29,6 +29,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="22dp"
         android:layout_marginTop="282dp"
+        style="@style/MyButton.Small"
         android:text="@string/next_new_memo" />
 
     <!-- Memo title textView -->

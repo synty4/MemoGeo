@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        style="@style/MyButton.Small"
         android:text="@string/save" />
 
     <!-- Permet de scroller les options. (contient un seul objet) -->
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                style="@style/MyButton.Small"
                 android:text="@string/openMap" />
 
             <!-- Titre Where -->
@@ -68,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/buttonMap"
                 android:layout_toLeftOf="@+id/buttonMap"
+                style="@style/MyButton.Small"
                 android:text="@string/here" />
 
             <!-- Titre Adresse -->
@@ -144,6 +147,7 @@
                 android:layout_alignBaseline="@+id/textViewDate"
                 android:layout_alignBottom="@+id/textViewDate"
                 android:layout_alignParentRight="true"
+                style="@style/MyButton.Small"
                 android:text="@string/choose" />
 
             <!-- Bouton pour choisir l'heure -->
@@ -154,6 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/buttonDate"
+                style="@style/MyButton.Small"
                 android:text="@string/choose" />
 
             <!-- Champ pour choisir la date -->

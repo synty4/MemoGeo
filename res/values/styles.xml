@@ -20,7 +20,6 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
          <item name="android:windowBackground">@drawable/background</item>
          <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
-         
     	 	<!--  item name="android:button">@style/ButtonStyle</item-->
     </style>
     
@@ -29,29 +28,31 @@
         <item name="android:background">@color/mediumturquoise</item>
     </style>	
     
+     <!-- Style for widget buttons  -->
     <style name="MyButton" parent="android:Widget.Button">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">@color/white</item>
          <item name="android:textSize">22sp</item>
     </style>
     
-    <style name="MyButton.Blue">
-        <item name="android:background">@drawable/ic_blue_button</item>
+    <!-- Style for large buttons  -->
+    <style name="MyButton.Large">
+        <item name="android:background">@drawable/button_large</item>
     </style>
     
-    <!-- purple button's background  to which the buton's background will change if selected -->
+    <!-- Style for small buttons -->
+     <style name="MyButton.Small">
+         <item name="android:background">@drawable/button_small</item>
+    </style>
+    
+    
+    
+      <!-- purple button's background  to which the buton's background will change if selected -->
     <style name="MyButton.Purple.Selector">
      <item name="android:background">@drawable/button_selector</item>
 	</style>
 	
-    
-    <style name="ButtonStyle">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@color/royalblue</item>
-        
-    </style>
-    
     
     
     <style name="MyTextViewStyle" parent="@android:style/TextAppearance.Large">
