@@ -85,4 +85,29 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		this.selectDate.setText(date);
 	}
 
+	
+public void backOptions(View v) {
+		
+		//if(v.getId() == R.id.buttonSave1){
+			
+		//}else if(v.getId() == R.id.buttonOption){
+			// code pour lancer les options.
+			// 1. create intent.
+			Intent intent = new Intent(OptionsActivity.this, WriteNewMemo.class);
+
+			// 2. create memo object.
+			Memo memo = new Memo();
+			//editTextMemo = (EditText) findViewById(R.id.editTextMem);
+			//memo.setMemo(editTextMemo.getText().toString());
+
+			// 3. put object in the intent.
+			intent.putExtra("memo", memo);
+
+			// 4. Start the next activity.
+			startActivity(intent);
+			
+		
+		
+		
+	}
 }

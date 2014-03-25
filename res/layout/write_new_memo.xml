@@ -7,19 +7,31 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-
-    <!-- Main Title's textview -->
-
-    <TextView
+    
+  	<Button
+  	    android:id="@+id/buttonBack"
+  	    style="@style/MyButton.Menu"
+  	    android:layout_width="60dp"
+  	    android:layout_height="wrap_content"
+  	    android:layout_marginLeft="16dp"
+  	    android:layout_marginTop="32dp"
+  	    android:onClick="back"
+  	    android:text="@string/back_button" />
+  	 
+  	  <TextView
         android:id="@+id/textViewNewMemo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/newMemo"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
        
-
+        android:layout_marginTop="32dp"
+        android:layout_alignBaseline="@+id/buttonBack"
+        android:layout_marginLeft="370dp"
+      
+        android:text="@string/newMemo"
+        style="@style/TextViewStyle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+  	
+  
     <!-- Option button -->
 
     <Button
@@ -29,8 +41,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="22dp"
-        android:layout_marginTop="350dp"
-        style="@style/MyButton.Small"
+        android:layout_marginTop="32dp"
+        style="@style/MyButton.Menu"
         android:text="@string/next_new_memo" />
 
     <!-- Memo title textView -->
@@ -39,9 +51,9 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewNewMemo"
-        android:layout_below="@+id/textViewNewMemo"
-        android:layout_marginTop="62dp"
+        
+        android:layout_marginTop="132dp"
+        android:layout_marginLeft="16dp"
         android:text="@string/textViewTitle" />
 
       

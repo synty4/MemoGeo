@@ -44,5 +44,6 @@
     <string name="back_button">Back</string>
     <string name="next_button">Next</string>
     <string name="heading">Memo Geo</string>
+    <string name="backOption">Back</string>
 
 </resources>

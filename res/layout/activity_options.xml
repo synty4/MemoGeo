@@ -11,27 +11,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+  	    android:layout_marginTop="32dp"
         android:text="@string/option"
+        style="@style/TextViewStyle"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <!-- Bouton pour passer àla vue précédente-->
 
-    <!-- Saving button -->
-
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        style="@style/MyButton.Small"
-        android:text="@string/save" />
-
+            <Button
+                android:id="@+id/back2"
+                style="@style/MyButton.Menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:onClick="backOptions"
+                android:text="@string/backOption" />
+  
     <!-- Permet de scroller les options. (contient un seul objet) -->
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonSave" >
+        android:layout_below="@+id/textViewOption"
+         >
 
         <!-- Permet d'avoir un seul objet dans le scrollview. -->
 
@@ -47,6 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="40dp"
                 style="@style/MyButton.Small"
                 android:text="@string/openMap" />
 
@@ -57,8 +66,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/buttonHere"
-                android:layout_alignBottom="@+id/buttonHere"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_alignBottom="@+id/buttonHere"
+                
                 android:text="@string/where"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -68,8 +82,12 @@
                 android:id="@+id/buttonHere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/buttonMap"
-                android:layout_toLeftOf="@+id/buttonMap"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="80dp"
+                android:layout_alignTop="@+id/buttonMap"
+                android:layout_alignLeft="@+id/buttonMap"
                 style="@style/MyButton.Small"
                 android:text="@string/here" />
 
@@ -79,10 +97,11 @@
                 android:id="@+id/textViewAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textViewWhere"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/address"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -95,6 +114,7 @@
                 android:layout_alignBaseline="@+id/textViewAddress"
                 android:layout_alignBottom="@+id/textViewAddress"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
                 android:layout_toRightOf="@+id/textViewAddress" >
 
                 <requestFocus />
@@ -108,7 +128,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/editTextAddress"
-                android:layout_marginTop="15dp"
+                
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="170dp"
                 android:text="@string/when"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -120,8 +143,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textViewWhen"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/date"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -133,8 +156,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textViewDate"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/time"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -147,6 +170,7 @@
                 android:layout_alignBaseline="@+id/textViewDate"
                 android:layout_alignBottom="@+id/textViewDate"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
                 style="@style/MyButton.Small"
                 android:text="@string/choose" />
 
@@ -157,6 +181,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="40dp"
                 android:layout_below="@+id/buttonDate"
                 style="@style/MyButton.Small"
                 android:text="@string/choose" />
@@ -190,5 +216,18 @@
         </RelativeLayout>
 
     </ScrollView>
+      <!-- Save button -->
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="400dp"
+        style="@style/MyButton.Small"
+        android:text="@string/save" />
+    
 
 </RelativeLayout>
