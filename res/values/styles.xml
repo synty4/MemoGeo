@@ -21,38 +21,43 @@
          <item name="android:windowBackground">@drawable/background</item>
          
          
+         <!--Custom Window title  -->
          
-         <!--Adding a Custom Window title style -->
-         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
-         <item name="android:textColor">#444444</item>        
-         <item name="android:windowTitleBackgroundStyle">@style/titleBarBackground</item>
-         <item name="android:windowTitleSize">44dip</item>            
+         <item name="android:windowTitleBackgroundStyle">@style/titleBackground</item>   
+         <item name="android:windowTitleStyle">@style/WindowTitle</item>    
+         <item name="android:windowTitleSize">44dip</item>  
+         
+          <!--Text-->
+         <item name="android:textAppearance">@style/TextStyle</item>
+                
     </style>
     
-    	  <!--titleBarHeading sytle for Custom Window title  -->
-    <style name="titleBarHeading" parent="@android:style/TextAppearance">
+    
+    
+    <!--WindowTitle sytle for Custom Window title  -->
+    <style name="WindowTitle" parent="@android:style/TextAppearance">
         <item name="android:textSize">17sp</item>    
         <item name="android:textStyle">bold</item>  
-        <item name="android:textColor">#444444</item>    
+        <item name="android:textColor">@color/white</item>  
+        <item name="android:shadowColor">@color/silver</item>
+        <item name="android:shadowRadius">2.75</item> 
     </style>
     
-    <style name="titleBarBackground">
-        <item name="android:background">@android:color/transparent</item>
+    
+    <!--titleBackground sytle for Custom Window title  -->
+    <style name="titleBackground">
+        <item name="android:background">@color/royalblue</item>
         <item name="android:padding">0px</item>
     </style>
  
     
-     <!-- WindowTitleBackground theme. -->
-    <style name="WindowTitleBackground">     
-        <item name="android:background">@color/mediumturquoise</item>
-    </style>	
     
      <!-- Style for widget buttons  -->
     <style name="MyButton" parent="android:Widget.Button">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
-         <item name="android:textSize">22sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
     
     <!-- Style for large buttons  -->
@@ -65,51 +70,43 @@
          <item name="android:background">@drawable/button_small</item>
     </style>
     
-    
+      <style name="MyButton.Menu">
+         <item name="android:background">@drawable/button_menu</item>
+    </style>
     
       <!-- purple button's background  to which the buton's background will change if selected -->
-    <style name="MyButton.Purple.Selector">
+    <style name="MyButton.Large.Selector">
      <item name="android:background">@drawable/button_selector</item>
 	</style>
 	
+    <!--textStyle style -->
     
+     <style name="TextStyle" parent="android:TextAppearance.Large">
+        <item name="android:textSize">22sp</item>     
+        <item name="android:typeface">monospace</item> 
+        <item name="android:textColor">@color/darkblue</item>  
+        
+    </style>
     
-    <style name="MyTextViewStyle" parent="@android:style/TextAppearance.Large">
+    <!--TextView style -->
+    <style name="TextViewStyle" parent="android:Widget.TextView">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#006633</item>
-        <item name="android:typeface">monospace</item>
-        <item name="android:background">#f0f0f0</item>
-        <item name="android:textStyle">italic</item>
         <item name="android:padding">5dp</item>
-</style>
-    
-    
- 
-     
- 
-      <style name="MyButton.Purple">
-       <item name="android:background">@drawable/ic_purple_button</item>
+        <item name="android:textColor">@color/darkblue</item>
+        <item name="android:typeface">monospace</item>
+         <item name="android:textStyle">bold</item>
     </style>
- 
+   
+   
+  <!--EditText style -->  
+  <style name= "EditTextStyle"  parent="android:Widget.EditText">
+     <item name="android:textColor">#006633</item>
+     <item name="android:typeface">monospace</item>
+     <item name="android:background">#f0f0f0</item>
+     <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+     <item name="android:gravity">center_vertical</item>
 
-   <style name="textTitle">
-        <item name="android:padding">4dip</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-        <item name="android:textColor">#000000</item>
-    </style>
- 
-    
-       
-   <style name="text">
-        <item name="android:padding">4dip</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-        <item name="android:textColor">#000000</item>
-    </style>
- 
-    <style name="layout">
-        <item name="android:background">#000000</item>
-    </style>
- 
+ </style>
 
 </resources>

@@ -18,7 +18,7 @@
         <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="320dp"
        	android:layout_marginTop="2dip"
         android:layout_marginBottom="2dip"
         android:drawSelectorOnTop="false"
@@ -30,17 +30,20 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="106dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+   
+        android:layout_marginTop="300dip"
+       
+        android:layout_centerVertical="false" >
 
         <Button
             android:id="@+id/buttonAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginLeft="40dp"
+             
             style="@style/MyButton.Small"
             android:onClick="add"
             android:text="@string/Add_button" />
@@ -52,7 +55,7 @@
 		     android:layout_alignBaseline="@+id/buttonAdd"
 		     android:layout_toRightOf="@+id/buttonAdd"
 		     style="@style/MyButton.Small"
-		     android:layout_marginLeft="5dp"
+		     android:layout_marginLeft="30dp"
 		     android:text="@string/Edit" />
 		 
         <Button
@@ -60,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/buttonAdd"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="30dp"
             android:layout_toRightOf="@+id/buttonEdit"
             style="@style/MyButton.Small"
             android:onClick="view"
@@ -71,7 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/buttonAdd"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="40dp"
             android:layout_toRightOf="@+id/buttonView"
             style="@style/MyButton.Small"
             android:onClick="delete"

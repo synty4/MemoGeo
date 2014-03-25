@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,9 +20,11 @@ public class MainActivity extends Activity {
 		public void onCreate(Bundle savedInstanceState)
 		{
 			super.onCreate(savedInstanceState); 
-			setContentView(R.layout.activity_main);
-			//TextView windowTitle = (TextView) findViewById(R.id.titleHeading);
-			//windowTitle.setText("MemoGeo");
+			//requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+			setContentView(R.layout.activity_main);  
+			//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.title_layout);
+			
+			
 			
 		
 		/*test affichage dans l'onglet log*/

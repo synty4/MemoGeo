@@ -39,5 +39,10 @@
     <string name="Edit">Edit</string>
     <string name="Add_button">Add</string>
     <string name="title_activity_window">WindowActivity</string>
+    <string name="title_activity_cutom">CutomActivity</string>
+    <string name="title_activity_custom">CustomActivity</string>
+    <string name="back_button">Back</string>
+    <string name="next_button">Next</string>
+    <string name="heading">Memo Geo</string>
 
 </resources>

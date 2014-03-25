@@ -18,6 +18,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/newMemo"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+       
 
     <!-- Option button -->
 
@@ -28,7 +29,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="22dp"
-        android:layout_marginTop="282dp"
+        android:layout_marginTop="350dp"
         style="@style/MyButton.Small"
         android:text="@string/next_new_memo" />
 
@@ -55,10 +56,11 @@
         android:layout_alignRight="@+id/buttonOption"
         android:layout_marginLeft="95dp"
         android:ems="100"
-        android:maxLength="20"
-        android:lines="2"
+ 		
         android:gravity="top"
         android:inputType="text" />
+    
+    
 
     <!-- Memo Description  textView -->
 
@@ -92,6 +94,7 @@
                 android:layout_marginLeft="95dp"
                 android:ems="100"
                 android:gravity="top"
+                android:lines="5"
                 android:inputType="textMultiLine" >
 
                 <requestFocus />

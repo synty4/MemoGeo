@@ -30,7 +30,6 @@
 
     <application
         android:allowBackup="true"
-        
         android:theme="@style/AppTheme" >
 
         <!-- android:debuggable="true" -->
@@ -90,6 +89,14 @@
         <activity
             android:name="be.ac.ucl.lfsab1509.memogeo.WindowActivity"
             android:label="@string/title_activity_window" >
+        </activity>
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.CutomActivity"
+            android:label="@string/title_activity_cutom" >
+        </activity>
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.CustomActivity"
+            android:label="@string/title_activity_custom" >
         </activity>
     </application>
 
