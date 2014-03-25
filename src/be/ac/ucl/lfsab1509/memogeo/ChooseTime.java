@@ -5,9 +5,11 @@ import java.util.Calendar;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTimeSetListener
 {	
@@ -52,6 +54,7 @@ public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTim
 		// Generate the string Time for the optionsActivity class
 		if (parentActivity == 1)
 		{
+
 			((OptionsActivity) getActivity()).EditTextTime(hour+":"+min);
 		}
 		else

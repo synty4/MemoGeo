@@ -53,6 +53,7 @@ public class ChooseDate extends DialogFragment implements DatePickerDialog.OnDat
 		if (parentActivity==1)
 	    {
 			((OptionsActivity) getActivity()).EditTextDate(days+"/"+mon+"/"+year);
+			
 	    }
 		else
 		{

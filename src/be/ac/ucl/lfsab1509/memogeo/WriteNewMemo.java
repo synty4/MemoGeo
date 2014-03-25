@@ -45,7 +45,7 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 	    view=(Button)findViewById(R.id.buttonView);
 	  //  view.setOnClickListener(this);
 	    
-		this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure
+		this.options = (Button) findViewById(R.id.buttonOption);
 																
 		this.options.setOnClickListener(this);
 		
@@ -142,7 +142,7 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 		String descriptionFromDb = memoFromDb.getDescription().toString();
 		titleBox.setText(titleFromDb);
 		descriptionBox.setText(descriptionFromDb);
-	    //Si un memo est retourné (donc si le memo à bien été ajouté à la BDD)
+	    //Si un memo est retournï¿½ (donc si le memo ï¿½ bien ï¿½tï¿½ ajoutï¿½ ï¿½ la BDD)
 	        if(memoFromDb != null){
 	        	//On affiche les infos du memo dans les editText du titre et de la description
 	        	titleBox.setText(titleFromDb);
@@ -158,8 +158,8 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 	public void update(){
 		
 		//On modifie le titre du livre
-    	//memoFromDb.setTitle("J'ai modifié le titre du livre");
-    	//Puis on met à jour la BDD
+    	//memoFromDb.setTitle("J'ai modifiï¿½ le titre du livre");
+    	//Puis on met ï¿½ jour la BDD
        // db.updateMemo(memoFromDb);
 	}
 	
