@@ -11,17 +11,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity {	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		/*test affichage dans l'onglet log*/
 		DatabaseHandler db;
-		
+		/*test affichage dans l'onglet log*/
+
 		 db = new DatabaseHandler(this);
 		 
 		 
@@ -76,7 +76,8 @@ public class MainActivity extends Activity {
 					ListMemo.setOnClickListener(new View.OnClickListener() 
 			        {
 			            public void onClick(View v) 
-			            {               
+			            {   
+			            	
 			            	Intent ListMemo = new Intent(MainActivity.this, ListMemo.class);
 			            	startActivity(ListMemo);
 			            }            	
