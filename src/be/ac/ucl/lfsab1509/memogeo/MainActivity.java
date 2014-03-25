@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 		 
 		 
 		Log.d("Insert: ", "Inserting .."); 
-		MemoInformation memoInfoUn = new MemoInformation("Title: acheter medicament","description: pour mal de tete ","Traverse d'Esope 5, 1348");
+		MemoInformation memoInfoUn = new MemoInformation(" acheter medicament","pour mal de tete ","Traverse d'Esope 5, 1348");
 	    db.addMemoInformation(memoInfoUn); 
 	    Log.d("ONE ************************** ", "**********************"); 
 		

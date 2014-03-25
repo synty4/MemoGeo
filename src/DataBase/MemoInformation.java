@@ -66,7 +66,7 @@ public class MemoInformation {
 		@Override
 		public String toString() {
 			//return "MemoInformation [id=" + id + ", title=" + title	+ ", description=" + description + ", address=" + address + "]";
-			return "MemoInformation [id=" + id + ", title=" + title	+ ", description=" + description  + "]";
+			return "" + id + " - " + title	+ ": " + description  + "";
 		}  
 	    
 	
