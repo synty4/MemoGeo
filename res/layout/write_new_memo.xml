@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
     
+     <!-- Save button named buttonSave1 to avoid any conflict with the activity_options's Save button -->
+
+     <Button
+        android:id="@+id/buttonSave1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_toRightOf="@+id/buttonBack"
+        android:onClick="add"
+        android:text="Save" />
+    
   	<Button
   	    android:id="@+id/buttonBack"
   	    style="@style/MyButton.Menu"
@@ -15,18 +28,22 @@
   	    android:layout_height="wrap_content"
   	    android:layout_marginLeft="16dp"
   	    android:layout_marginTop="32dp"
+  	    android:layout_marginRight="150dp"
+  	    android:layout_toLeftOf="@+id/textViewNewMemo"
   	    android:onClick="back"
   	    android:text="@string/back_button" />
   	 
   	  <TextView
         android:id="@+id/textViewNewMemo"
+        android:layout_toLeftOf="@+id/buttonOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        
         android:layout_marginTop="32dp"
         android:layout_alignBaseline="@+id/buttonBack"
-        android:layout_marginLeft="370dp"
-      
+        
+        android:layout_marginLeft="50dp"
+      	android:layout_marginRight="50dp"
         android:text="@string/newMemo"
         style="@style/TextViewStyle"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -41,6 +58,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="22dp"
+        android:layout_marginLeft="150dp"
         android:layout_marginTop="32dp"
         style="@style/MyButton.Menu"
         android:text="@string/next_new_memo" />
@@ -51,12 +69,10 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        
         android:layout_marginTop="132dp"
         android:layout_marginLeft="16dp"
         android:text="@string/textViewTitle" />
 
-      
 
     <!-- Memo  title editText -->
 
@@ -68,10 +84,8 @@
         android:layout_alignRight="@+id/buttonOption"
         android:layout_marginLeft="95dp"
         android:ems="100"
- 		
         android:gravity="top"
         android:inputType="text" />
-    
     
 
     <!-- Memo Description  textView -->
@@ -87,6 +101,8 @@
     	<!-- android:text="@string/Description:"--> 
 
     <!-- Memo Description  editText with  ScrollView -->
+    
+      
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -106,14 +122,17 @@
                 android:layout_marginLeft="95dp"
                 android:ems="100"
                 android:gravity="top"
-                android:lines="5"
-                android:inputType="textMultiLine" >
-
+                android:inputType="textMultiLine"
+                android:lines="5" >
+                
+            
                 <requestFocus />
             </EditText>
         </RelativeLayout>
+        
     </ScrollView>
 	
-    
+   
+          
 
 </RelativeLayout>

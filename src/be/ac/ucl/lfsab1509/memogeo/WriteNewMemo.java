@@ -17,18 +17,29 @@ import android.widget.EditText;
 public class WriteNewMemo extends Activity implements View.OnClickListener {
 	
 	private Button options;
+ 	private EditText titleBox;
+ 	private EditText descriptionBox;
+ 	private Button save;
+ 	
+ 	List<MemoInformation> memoList;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.write_new_memo);
-		
-		
-		this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure
-																
-		this.options.setOnClickListener(this);
-		
-	}	
+ 	protected void onCreate(Bundle savedInstanceState) {
+ 		super.onCreate(savedInstanceState);
+ 		setContentView(R.layout.write_new_memo);
+ 		
+ 		titleBox=(EditText)findViewById(R.id.editTextTitle);
+ 		descriptionBox=(EditText)findViewById(R.id.editTextDescription);
+ 		
+ 	    save = (Button) findViewById(R.id.buttonSave1);
+ 	  // view=(Button)findViewById(R.id.buttonView);
+ 	    
+ 		this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure													
+ 		this.options.setOnClickListener(this);
+ 		memoList = new ArrayList<MemoInformation>();	
+ 		
+ 	}	
+ 	
 	
 	@Override
 	public void onClick(View v) {
@@ -85,5 +96,44 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 	}
 	
 	
+	public void clear(){
 
-}
+		titleBox.setText("");
+		descriptionBox.setText("");
+		
+	}
+	
+	public void add(View view){
+ 		DatabaseHandler db = new DatabaseHandler(this);
+ 		
+ 		MemoInformation myMemo= new MemoInformation(titleBox.getText().toString(), descriptionBox.getText().toString());
+ 		
+
+		db.addMemoInformation(myMemo);
+ 	
+ 		myMemo.setTitle("");
+ 		myMemo.setDescription("");
+ 		clear();
+ 		
+ 		Log.d("Inserting",myMemo.toString());
+ 		
+ 	}
+	
+
+    public void view (View view) {
+     	DatabaseHandler db = new DatabaseHandler(this);
+ 	
+	     //MemoInformation myMemo= db.getMemoInfo(titleBox.getText().toString());
+	     MemoInformation myMemo= db.getMemoInformation(titleBox.getText().toString());
+ 			
+			
+			db.addMemoInformation(myMemo);
+ 
+ 	     if (myMemo != null) {
+ 		   titleBox.setText(String.valueOf(myMemo.getTitle()));
+ 		   descriptionBox.setText(String.valueOf(myMemo.getDescription()));
+       } else {
+ 	         titleBox.setText("No Match Found");
+       }        	
+   }
+ }

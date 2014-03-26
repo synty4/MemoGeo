@@ -43,7 +43,7 @@
         
         <ListView
         android:id="@android:id/list"
-      
+    
         android:layout_width="fill_parent"
         android:layout_height="320dp"
        	android:layout_marginTop="2dip"
@@ -61,7 +61,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
    
-        android:layout_marginTop="300dip"
+        android:layout_marginTop="420dip"
        
         android:layout_centerVertical="false" >
         
