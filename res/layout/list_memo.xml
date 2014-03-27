@@ -49,7 +49,8 @@
        	android:layout_marginTop="2dip"
         android:layout_marginBottom="2dip"
         android:drawSelectorOnTop="false"
-        android:visibility="visible" />
+        android:visibility="visible" 
+         android:choiceMode="multipleChoice"/>
    </RelativeLayout>
 	
 	
@@ -97,18 +98,21 @@
             style="@style/MyButton.Small"
             android:onClick="view"
             android:text="@string/View" />
-
-        <Button
-            android:id="@+id/buttonDelete"
+		
+        
+  
+     <Button
+           android:id="@+id/delete_list_memo"
+           android:text="@string/title_delete_list_memo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/buttonAdd"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="40dp"
             android:layout_toRightOf="@+id/buttonView"
-            style="@style/MyButton.Small"
-            android:onClick="delete"
-            android:text="@string/Delete" />
+            style="@style/MyButton.Small"  />    
+        
+       
     </RelativeLayout>
     
 

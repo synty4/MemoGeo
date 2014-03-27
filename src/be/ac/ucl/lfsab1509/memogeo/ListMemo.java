@@ -23,7 +23,8 @@ public class ListMemo extends ListActivity  implements View.OnClickListener
 {    
 	
 	
-	
+	private Button deleteListMemo;
+	private Button chooseDate;
 	   
 		 public void onCreate(Bundle savedInstanceState) {
 		    super.onCreate(savedInstanceState);
@@ -35,8 +36,23 @@ public class ListMemo extends ListActivity  implements View.OnClickListener
 		    setListAdapter(adapter);
 	
 			    
-		 }
-	 
+		    // button to delete  list memo  in list memo activity
+		    	/*final Button ListMemo = (Button) findViewById(R.id.delete_list_memo);// A changer par m�thode plus propre
+		    		ListMemo.setOnClickListener(new View.OnClickListener() 
+		            {
+		                public void onClick(View v) 
+		                {               
+		                	Intent WriteNewMemo = new Intent(ListMemo.this, WriteNewMemo.class);
+		                	startActivity(WriteNewMemo);
+		                }            	
+		            });*/
+		     		    
+		    	// delete 2
+		    	    final Button deleteListMemo = (Button) findViewById(R.id.delete_list_memo);
+		    		this.deleteListMemo = (Button) findViewById(R.id.delete_list_memo);//Bouton et champ de la date
+		    		this.deleteListMemo.setOnClickListener(this);
+		    	 	
+		     	 }
 	 
 	 @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
