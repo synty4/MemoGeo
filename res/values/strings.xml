@@ -23,7 +23,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="hintTime">HH:MM</string>
     <string name="hintDate">DD/MM/YYYY</string>
-    <string name="API_key">AIzaSyDi_gj56nXHbM3TNZF09UzBEEhCvkd5zHg</string>
+    <string name="API_key_Adrien">AIzaSyDi_gj56nXHbM3TNZF09UzBEEhCvkd5zHg</string>
+    <string name="API_key_Olivier">AIzaSyAJVQ-drhijcMdPBp1O1gIJ5HYlHptmw4U</string>
+    <string name="API_key_Syntyche">TODO</string>
+    <string name="API_key_Merlin">TODO</string>
     <string name="debug">C1:21:C8:60:93:10:52:A5:9E:48:27:34:B8:D1:55:B6:CD:D7:17:D1</string>
     
 

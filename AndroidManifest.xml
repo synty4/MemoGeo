@@ -5,7 +5,7 @@
     android:versionName="1.2" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
     
     <!-- Les permissions MAP_RECIEVE sont superflues mais je prefere les garder au cas ou -->
@@ -90,7 +90,7 @@
          <!-- on lie la clef API (pour le meilleur ou pour le pire) -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/API_key" />
+        	android:value="@string/API_key_Olivier"/>
         
         <meta-data
             android:name="com.google.android.gms.version"

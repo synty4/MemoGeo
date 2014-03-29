@@ -2,6 +2,8 @@ package be.ac.ucl.lfsab1509.memogeo;
 
 import java.util.Calendar;
 
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -153,7 +155,8 @@ public class TimersActivity extends Activity implements View.OnClickListener {
 
 		case R.id.buttonGeoTimer:
 			// TODO
-			// alarmSound();
+			GooglePlayServicesUtil.isGooglePlayServicesAvailable(mContext);
+			
 			break;
 		}
 	}
