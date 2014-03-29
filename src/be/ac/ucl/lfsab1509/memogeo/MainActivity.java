@@ -24,8 +24,7 @@ public class MainActivity extends Activity {
 			setContentView(R.layout.activity_main);  
 			//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.title_layout);
 			
-			
-			
+		
 		
 		/*test affichage dans l'onglet log*/
 		DatabaseHandler db;
