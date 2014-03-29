@@ -64,13 +64,23 @@
         android:text="@string/choose" />
 
     <Button
-        android:id="@+id/buttonLaunch"
+      
+        android:id="@+id/buttonTimeTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonTime"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:text="@string/launch" />
+        android:text="@string/timeTimer"/>
+    
+     <Button
+       android:id="@+id/buttonGeoTimer"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/buttonTimeTimer"
+       android:layout_below="@+id/buttonTimeTimer"
+       android:text="@string/geoTimer" />
+
 
     <EditText
         android:id="@+id/editTextWhere"
