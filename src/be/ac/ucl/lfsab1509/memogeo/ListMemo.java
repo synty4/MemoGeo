@@ -14,26 +14,38 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
 
 
 
-public class ListMemo extends ListActivity  implements View.OnClickListener
+//public class ListMemo extends ListActivity  implements View.OnClickListener
+public class ListMemo extends Activity implements View.OnClickListener
 {    
 	
-	
+	private CustomCursorAdapter customAdapter;
+    DatabaseHandler db;
+	private ListView listdata;
 	private Button deleteListMemo;
 	private Button chooseDate;
 	   
 		 public void onCreate(Bundle savedInstanceState) {
 		    super.onCreate(savedInstanceState);
 		    setContentView(R.layout.list_memo);
-		    DatabaseHandler db = new DatabaseHandler(this);
-		    List<MemoInformation> liste = db.getAllMemoInformation();
+		    db = new DatabaseHandler(this);
+
+		    listdata = (ListView)findViewById(R.id.list_data);
+		    Cursor c = db.getAllTable1();
+		    customAdapter = new CustomCursorAdapter(this.getApplicationContext(),c);
+		    listdata.setAdapter(customAdapter);
+		     // DatabaseHandler db = new DatabaseHandler(this);
+		    // List<MemoInformation> liste = db.getAllMemoInformation();
 		  
-		    ArrayAdapter<MemoInformation> adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,liste);
-		    setListAdapter(adapter);
+		   // ArrayAdapter<MemoInformation> adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,liste);
+		    //setListAdapter(adapter);
 	
 			    
 		    // button to delete  list memo  in list memo activity

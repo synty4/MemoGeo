@@ -27,8 +27,7 @@ public class MainActivity extends Activity {
 		
 		
 		/*test affichage dans l'onglet log*/
-		DatabaseHandler db;
-		
+		 DatabaseHandler db;
 		 db = new DatabaseHandler(this);
 		 
 		 

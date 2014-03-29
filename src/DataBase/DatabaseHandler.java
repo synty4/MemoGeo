@@ -77,6 +77,37 @@ public void addMemoInformation(MemoInformation Memo) {
     db.close(); // Closing database connection
 }
 
+
+public Cursor getAllData () {
+
+	SQLiteDatabase db = this.getWritableDatabase();
+
+	Cursor cursor;
+
+    String selectQuery = "SELECT * FROM " + TABLE_MEMO;
+
+    cursor = db.rawQuery(selectQuery, null);
+
+    return  cursor;
+
+}
+
+
+
+public Cursor getAllTable1() {
+
+	SQLiteDatabase db = this.getWritableDatabase();
+
+	Cursor cur =  db.rawQuery( "select "+KEY_ID+" _id , "+KEY_TITLE+" from "+TABLE_MEMO, null);
+
+	return cur;
+
+}
+
+
+
+
+
 /**The following method will read single row.  
  * 
  * @param id
