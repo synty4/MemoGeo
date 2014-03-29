@@ -47,5 +47,10 @@
     <string name="next_button">Next</string>
     <string name="heading">Memo Geo</string>
     <string name="backOption">Back</string>
+    <string name="timers">Timers</string>
+    <string name="list_memo">List Memo</string>
+    <string name="launch">Launch</string>
+
+   
 
 </resources>
