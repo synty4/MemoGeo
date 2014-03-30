@@ -34,7 +34,9 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
  	    save = (Button) findViewById(R.id.buttonSave1);
  	  // view=(Button)findViewById(R.id.buttonView);
  	    
- 		this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure													
+ 		//this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure													
+ 		
+ 	    this.options = (Button) findViewById(R.id.buttonOption);
  		this.options.setOnClickListener(this);
  		memoList = new ArrayList<MemoInformation>();	
  		
