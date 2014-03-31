@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="be.ac.ucl.lfsab1509.memogeo"
-    android:versionCode="2"
-   
+    android:versionCode="2"  
     android:versionName="3.0" >
 
     <uses-sdk
@@ -82,10 +81,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="be.ac.ucl.lfsab1509.memogeo.TestActivity"
-            android:label="@string/title_activity_test" >
-        </activity>
+
         <activity
             android:name="be.ac.ucl.lfsab1509.memogeo.ListMemo"
             android:label="@string/title_activity_list_memo" >
@@ -94,27 +90,23 @@
             android:name="be.ac.ucl.lfsab1509.memogeo.Map"
             android:label="@string/title_activity_map" >
         </activity>
-
-        <!-- on lie la clef API (pour le meilleur ou pour le pire) -->
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.WindowActivity"
+            android:label="@string/title_activity_window" >
+        </activity>
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.CustomActivity"
+            android:label="@string/title_activity_custom" >
+        </activity>
+        
+         <!-- on lie la clef API (pour le meilleur ou pour le pire) -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/API_key" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <activity
-            android:name="be.ac.ucl.lfsab1509.memogeo.WindowActivity"
-            android:label="@string/title_activity_window" >
-        </activity>
-        <activity
-            android:name="be.ac.ucl.lfsab1509.memogeo.CutomActivity"
-            android:label="@string/title_activity_cutom" >
-        </activity>
-        <activity
-            android:name="be.ac.ucl.lfsab1509.memogeo.CustomActivity"
-            android:label="@string/title_activity_custom" >
-        </activity>
+        
     </application>
 
 </manifest>

@@ -41,7 +41,7 @@
         android:layout_alignBottom="@+id/where"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
-        android:text="@string/openMap" />
+        android:text="@string/map" />
 
     <Button
         android:id="@+id/buttonDate"

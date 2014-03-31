@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:gravity="center"
- >
+    android:orientation="vertical" >
 
-    <!-- TextView
+    <!--
+         TextView
         android:id="@+id/textViewTitleMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,44 +15,43 @@
     	android:layout_marginTop="-100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:capitalize="characters"
-        android:textColor="@color/darkblue" /-->
-    
+        android:textColor="@color/darkblue" /
+    -->
+
     <Button
         android:id="@+id/new_memo"
+        style="@style/MyButton.Large"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="-50dp"
-        style="@style/MyButton.Large"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_new_memo" />
-      <Button
-        android:id="@+id/open_map"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:text="@string/map"
-        android:layout_marginTop="50dp" 
-        style="@style/MyButton.Large"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
-      
-      <Button
-          android:id="@+id/timers"
-          style="@style/MyButton.Large"
-          android:layout_width="300dp"
-          android:layout_height="80dp"
-          android:layout_marginTop="50dp"
-          android:text="@string/timers"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/newMemo"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/list_memo"
+        android:id="@+id/open_map"
+        style="@style/MyButton.Large"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="50dp"
+        android:text="@string/map"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/timers"
         style="@style/MyButton.Large"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_list_memo" />
-    
-  
-   
-    
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/timers"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/list_memo"
+        style="@style/MyButton.Large"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/memoList"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </LinearLayout>

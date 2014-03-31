@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
   	android:layout_width="match_parent"
   	android:layout_height="match_parent"
   	android:gravity="center_horizontal"
   	android:orientation="horizontal">
+  	 <!--android:text="@string/heading"-->
+
+  	<Button
+  	    android:id="@+id/buttonNext"
+  	    style="@style/MyButton.Menu"
+  	    android:layout_width="60dp"
+  	    android:layout_height="wrap_content"
+  	    android:layout_alignParentRight="true"
+  	    android:layout_alignParentTop="true"
+  	    android:layout_marginRight="16dp"
+  	    android:layout_marginTop="16dp"
+  	    android:text="@string/next" />
 
   	<Button
   	    android:id="@+id/buttonBack"
+  	    style="@style/MyButton.Menu"
   	    android:layout_width="60dp"
   	    android:layout_height="wrap_content"
+  	    android:layout_alignParentLeft="true"
+  	    android:layout_alignParentTop="true"
   	    android:layout_marginLeft="16dp"
-  	    android:layout_marginRight="150dp"
-  	    style="@style/MyButton.Menu"
-  	    android:text="@string/back_button" />
-  	
-  	 <TextView
-        android:id="@+id/textViewHeading"
-        android:layout_width="wrap_content"
-        android:text="@string/app_name"
-        style="@style/TextViewStyle"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-  	 <!--android:text="@string/heading"--> 
-  	
-  	<Button
-  	    android:id="@+id/buttonNext"
-  	    android:layout_width="60dp"
-  	    android:layout_height="wrap_content"
-  	    android:layout_marginLeft="150dp"
-  	    android:layout_marginRight="16dp"
-  	    style="@style/MyButton.Menu"
-  	    android:text="@string/next_button" />
+  	    android:layout_marginTop="16dp"
+  	    android:text="@string/back" />
+
+  	<TextView
+  	    android:id="@+id/textViewHeading"
+  	    style="@style/TextViewStyle"
+  	    android:layout_width="wrap_content"
+  	    android:layout_alignBaseline="@+id/buttonBack"
+  	    android:layout_alignBottom="@+id/buttonBack"
+  	    android:layout_centerHorizontal="true"
+  	    android:text="@string/app_name"
+  	    android:textAppearance="?android:attr/textAppearanceLarge" />
   
-</LinearLayout>
+</RelativeLayout>
