@@ -2,10 +2,12 @@ package be.ac.ucl.lfsab1509.memogeo;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Fragment;
 import android.view.Menu;
 import com.google.android.maps.MapActivity;
 
-public class Map extends Activity {
+
+public class Map extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
