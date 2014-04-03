@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/where"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/where" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/where"
+        android:layout_below="@+id/where"
+        android:layout_marginTop="20dp"
+        android:text="@string/date" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/date"
+        android:layout_below="@+id/date"
+        android:layout_marginTop="20dp"
+        android:text="@string/time" />
+
+    <Button
+        android:id="@+id/buttonMap"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/where"
+        android:layout_alignBottom="@+id/where"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="@string/map" />
+
+    <Button
+        android:id="@+id/buttonDate"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/date"
+        android:layout_alignBottom="@+id/date"
+        android:layout_alignRight="@+id/buttonMap"
+        android:text="@string/choose" />
+
+    <Button
+        android:id="@+id/buttonTime"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/time"
+        android:layout_alignBottom="@+id/time"
+        android:layout_alignRight="@+id/buttonDate"
+        android:text="@string/choose" />
+
+    <Button
+      
+        android:id="@+id/buttonTimeTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/timeTimer"/>
+    
+     <Button
+       android:id="@+id/buttonGeoTimer"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/buttonTimeTimer"
+       android:layout_below="@+id/buttonTimeTimer"
+       android:text="@string/geoTimer" />
+
+
+    <EditText
+        android:id="@+id/editTextWhere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/where"
+        android:layout_alignBottom="@+id/where"
+        android:layout_toLeftOf="@+id/buttonDate"
+        android:layout_toRightOf="@+id/where"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/date"
+        android:layout_alignBottom="@+id/date"
+        android:layout_alignLeft="@+id/editTextWhere"
+        android:layout_toLeftOf="@+id/buttonDate"
+        android:ems="10" 
+        android:hint="@string/hintDate"/>
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/time"
+        android:layout_alignBottom="@+id/time"
+        android:layout_alignLeft="@+id/editTextDate"
+        android:layout_alignRight="@+id/editTextDate"
+        android:ems="10" 
+        android:hint="@string/hintTime"/>
+
+</RelativeLayout>
