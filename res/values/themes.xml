@@ -1,0 +1,22 @@
+<resources>
+
+    <!--style name="AppBaseTheme" parent="android:style/Theme.Translucent"-->
+    <style name="AppBaseTheme" parent="android:Theme">  
+    </style>
+    
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        
+         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+         <item name="android:windowBackground">@drawable/background</item>
+        
+         <!--Custom Window title  -->
+         <item name="android:windowTitleBackgroundStyle">@style/titleBackground</item>   
+         <item name="android:windowTitleStyle">@style/WindowTitle</item>    
+         <item name="android:windowTitleSize">50dp</item>  
+         
+          <!--Text-->
+         <item name="android:textAppearance">@style/TextStyle</item>        
+    </style>
+    
+</resources>

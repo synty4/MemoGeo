@@ -23,15 +23,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
  	private Button memoList;
     private Button timers;
 
-
+ 
 		@Override
 		public void onCreate(Bundle savedInstanceState)
 		{
 		    super.onCreate(savedInstanceState); 
-			//requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-			setContentView(R.layout.activity_main);  
-			//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,    R.layout.title_layout);
-		
+		    setContentView(R.layout.activity_main);  
+			
 		    /*test affichage dans l'onglet log*/
 		    DatabaseHandler db;
 		    db = new DatabaseHandler(this);
@@ -48,6 +46,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	 		
 	 		this.timers = (Button) findViewById(R.id.timers);
             this.timers.setOnClickListener(this);
+           
             
          
 
@@ -128,6 +127,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                         	TimersActivity.class );
 				            startActivity(Timers);
 				            break;
+				        
 
 				 		}
 

@@ -1,6 +1,4 @@
 
-
-
 package be.ac.ucl.lfsab1509.memogeo;
 
 import java.util.ArrayList;

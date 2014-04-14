@@ -1,39 +1,4 @@
 <resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <!--style name="AppBaseTheme" parent="android:style/Theme.Translucent"-->
-    <style name="AppBaseTheme" parent="android:Theme.Light">  
-        
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-        
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-         <item name="android:windowBackground">@drawable/background</item>
-         
-         
-         <!--Custom Window title  -->
-         
-         <item name="android:windowTitleBackgroundStyle">@style/titleBackground</item>   
-         <item name="android:windowTitleStyle">@style/WindowTitle</item>    
-         <item name="android:windowTitleSize">44dip</item>  
-         
-          <!--Text-->
-         <item name="android:textAppearance">@style/TextStyle</item>
-                
-    </style>
-    
-    
-    
     <!--WindowTitle sytle for Custom Window title  -->
     <style name="WindowTitle" parent="@android:style/TextAppearance">
         <item name="android:textSize">17sp</item>    
@@ -42,14 +7,13 @@
         <item name="android:shadowColor">@color/silver</item>
         <item name="android:shadowRadius">2.75</item> 
     </style>
-    
+
     
     <!--titleBackground sytle for Custom Window title  -->
     <style name="titleBackground">
         <item name="android:background">@color/royalblue</item>
         <item name="android:padding">0px</item>
     </style>
- 
     
     
      <!-- Style for widget buttons  -->
