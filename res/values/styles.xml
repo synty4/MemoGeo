@@ -1,20 +1,76 @@
 <resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <!--WindowTitle sytle for Custom Window title  -->
+    <style name="WindowTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">17sp</item>    
+        <item name="android:textStyle">bold</item>  
+        <item name="android:textColor">@color/white</item>  
+        <item name="android:shadowColor">@color/silver</item>
+        <item name="android:shadowRadius">2.75</item> 
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    
+    <!--titleBackground sytle for Custom Window title  -->
+    <style name="titleBackground">
+        <item name="android:background">@color/royalblue</item>
+        <item name="android:padding">0px</item>
     </style>
+    
+    
+     <!-- Style for widget buttons  -->
+    <style name="MyButton" parent="android:Widget.Button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    
+    <!-- Style for large buttons  -->
+    <style name="MyButton.Large">
+        <item name="android:background">@drawable/button_large</item>
+    </style>
+    
+    <!-- Style for small buttons -->
+     <style name="MyButton.Small">
+         <item name="android:background">@drawable/button_small</item>
+    </style>
+    
+      <style name="MyButton.Menu">
+         <item name="android:background">@drawable/button_menu</item>
+    </style>
+    
+      <!-- purple button's background  to which the buton's background will change if selected -->
+    <style name="MyButton.Large.Selector">
+     <item name="android:background">@drawable/button_selector</item>
+	</style>
+	
+    <!--textStyle style -->
+    
+     <style name="TextStyle" parent="android:TextAppearance.Large">
+        <item name="android:textSize">22sp</item>     
+        <item name="android:typeface">monospace</item> 
+        <item name="android:textColor">@color/darkblue</item>  
+        
+    </style>
+    
+    <!--TextView style -->
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/darkblue</item>
+        <item name="android:typeface">monospace</item>
+         <item name="android:textStyle">bold</item>
+    </style>
+   
+   
+  <!--EditText style -->  
+  <style name= "EditTextStyle"  parent="android:Widget.EditText">
+     <item name="android:textColor">#006633</item>
+     <item name="android:typeface">monospace</item>
+     <item name="android:background">#f0f0f0</item>
+     <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+     <item name="android:gravity">center_vertical</item>
+
+ </style>
 
 </resources>

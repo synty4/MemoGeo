@@ -5,14 +5,20 @@ import java.util.Calendar;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
 
 public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTimeSetListener
 {
-	@Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	private int parentActivity;
+		
+		public Dialog onCreateDialog(Bundle savedInstanceState)
+		{
+		
         // Use the current time as the default values for the picker
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -22,6 +28,13 @@ public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTim
         return new TimePickerDialog(getActivity(), this, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
     }
+		
+		public void putParentActivity(int x)
+		
+			{
+				parentActivity = x;
+			}
+			
 	
 	@Override
 	public void onTimeSet(TimePicker view, int hourOfDay, int minute) 
@@ -42,7 +55,17 @@ public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTim
 		}
 		
 		// Generate the string Time for the optionsActivity class
-		((OptionsActivity) getActivity()).EditTextTime(hour+":"+min);
+		//((OptionsActivity) getActivity()).EditTextTime(hour+":"+min);
+		
+		if (parentActivity == 1)
+			
+				{
+						((OptionsActivity) getActivity()).editTextTime(hour+":"+min);
+					}
+					else
+					{
+						((TimersActivity) getActivity()).editTextTime(hour+":"+min);
+					}
 		
 	}
 
