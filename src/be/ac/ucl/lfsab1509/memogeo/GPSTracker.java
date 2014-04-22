@@ -1,10 +1,16 @@
 package be.ac.ucl.lfsab1509.memogeo;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -106,6 +112,29 @@ public class GPSTracker extends Service implements LocationListener {
         return location;
     }
      
+    public String getAddress(double lat, double lng) {
+		String addr = "error";
+		try {
+			Geocoder here = new Geocoder(mContext, Locale.getDefault());
+			List<Address> address = here.getFromLocation(lat, lng, 1);
+			if (address.isEmpty()) {
+				addr = "error";
+			} else {
+				if (address.size() > 0) {
+					
+					addr = address.get(0).getThoroughfare() + ","
+						 + address.get(0).getPostalCode() + ","
+						 + address.get(0).getLocality() + ","
+						 + address.get(0).getCountryName();
+						
+					}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return addr;
+	}
     /**
      * Stop using GPS listener
      * Calling this function will stop using GPS in your app
