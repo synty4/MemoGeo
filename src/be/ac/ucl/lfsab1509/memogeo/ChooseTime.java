@@ -60,11 +60,11 @@ public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTim
 		if (parentActivity == 1)
 			
 				{
-						((OptionsActivity) getActivity()).EditTextTime(hour+":"+min);
+						((OptionsActivity) getActivity()).editTextTime(hour+":"+min);
 					}
 					else
 					{
-						((TimersActivity) getActivity()).EditTextTime(hour+":"+min);
+						((TimersActivity) getActivity()).editTextTime(hour+":"+min);
 					}
 		
 	}

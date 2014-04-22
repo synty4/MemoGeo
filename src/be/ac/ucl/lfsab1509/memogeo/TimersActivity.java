@@ -41,7 +41,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 	double longTestHome = 4.648526;
 	double latTestBarbe = 50.668491;
 	double longTestBarbe = 4.621887;
-	float radius = 5;
+	float radius = 10;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -217,12 +217,12 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 
 	// Set the time in the EditText.
 
-	public void EditTextTime(String time) {
+	public void editTextTime(String time) {
 		this.selectTime.setText(time);
 	}
 
 	// Set the date in the EditText.
-	public void EditTextDate(String date) {
+	public void editTextDate(String date) {
 		this.selectDate.setText(date);
 	}
 }
