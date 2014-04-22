@@ -87,6 +87,12 @@
         </activity>
         <activity
             android:name="be.ac.ucl.lfsab1509.memogeo.Map"
+            <intent-filter>
+               <action android:name="android.intentaction.MAIN" />
+
+
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
             android:label="@string/map" >
         </activity>
         <activity

@@ -126,11 +126,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 	}
 
-	/**
-	 * { public void onClick(View v) { Intent ListMemo = new
-	 * Intent(MainActivity.this, ListMemo.class); startActivity(ListMemo); } });
-	 **/
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
