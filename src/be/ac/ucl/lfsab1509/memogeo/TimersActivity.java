@@ -39,7 +39,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 	double longTest = 4.647869;
 	double latTestHome = 50.768219;// Ma maison
 	double longTestHome = 4.648526;
-	double latTestBarbe = 50668491;
+	double latTestBarbe = 50.668491;
 	double longTestBarbe = 4.621887;
 	float radius = 5;
 
