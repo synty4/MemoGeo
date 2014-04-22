@@ -4,21 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.location.GpsStatus;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
-import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
-import com.google.android.gms.location.Geofence;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationClient.OnAddGeofencesResultListener;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -42,12 +34,14 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 	PendingIntent timePendingIntent, geoPendingIntent;
 	Context mContext;
 	BroadcastReceiver br;
-
+	
 	double latTest = 50.768229;// Arbre de la maison
 	double longTest = 4.647869;
 	double latTestHome = 50.768219;// Ma maison
 	double longTestHome = 4.648526;
-	float radius = 10;
+	double latTestBarbe = 50668491;
+	double longTestBarbe = 4.621887;
+	float radius = 5;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -178,7 +172,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 
 		case R.id.buttonGeoTimer:
 
-			/**
+			
 			Toast.makeText(getApplicationContext(), "Launch géo timer",
 					Toast.LENGTH_LONG).show();
 
@@ -191,10 +185,16 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 					"be.ac.ucl.lfsab1509.memogeo"), 0);
 			// On ajoute une alerte de proximité si on est à 15m du point.
 			LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-			lm.addProximityAlert(latTest, longTest, radius, -1,
+			
+			GPSTracker gps = new GPSTracker(this);
+			
+			lm.addProximityAlert(latTestBarbe, longTestBarbe, radius, -1,
 					geoPendingIntent);
 					
-			**/
+			
+			
+			/*
+			//Test pour montrer la position actuelle avec un toast
 			GPSTracker gps = new GPSTracker(this);
 			
 			if(gps.canGetLocation()){
@@ -209,7 +209,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
                 // GPS or Network is not enabled
                 // Ask user to enable GPS/network in settings
                 gps.showSettingsAlert();
-            }
+            }*/
 
 			break;
 		}
