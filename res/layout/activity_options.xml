@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+    <!-- Titre du menu -->
+
+    <TextView
+        android:id="@+id/textViewOption"
+        style="@style/TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/option"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <!-- Bouton pour passer àla vue précédente -->
+
+    <Button
+        android:id="@+id/back2"
+        style="@style/MyButton.Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:onClick="backOptions"
+        android:text="@string/back" />
+
+    <!-- Permet de scroller les options. (contient un seul objet) -->
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewOption" >
+
+        <!-- Permet d'avoir un seul objet dans le scrollview. -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp" >
+
+            <!-- Bouton pour passer sur la carte -->
+
+            <Button
+                android:id="@+id/buttonMap"
+                style="@style/MyButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/map" />
+
+            <!-- Titre Where -->
+
+            <TextView
+                android:id="@+id/textViewWhere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/buttonHere"
+                android:layout_alignBottom="@+id/buttonHere"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/where"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <!-- Bouton pour directement choisir l'endroit où l'on est. -->
+
+            <Button
+                android:id="@+id/buttonHere"
+                style="@style/MyButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/buttonMap"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignTop="@+id/buttonMap"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="80dp"
+                android:text="@string/here" />
+
+            <!-- Titre Adresse -->
+
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textViewWhere"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/address"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <!-- Champ pour l'adresse -->
+
+            <EditText
+                android:id="@+id/editTextAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textViewAddress"
+                android:layout_alignBottom="@+id/textViewAddress"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/textViewAddress" >
+
+                <requestFocus />
+            </EditText>
+
+            <!-- Titre When -->
+
+            <TextView
+                android:id="@+id/textViewWhen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_below="@+id/editTextAddress"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="170dp"
+                android:text="@string/when"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <!-- Titre Date -->
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textViewWhen"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/date"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <!-- Titre Time -->
+
+            <TextView
+                android:id="@+id/textViewTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textViewDate"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/time"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <!-- Bouton pour choisir la date -->
+
+            <Button
+                android:id="@+id/buttonDate"
+                style="@style/MyButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textViewDate"
+                android:layout_alignBottom="@+id/textViewDate"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:text="@string/choose" />
+
+            <!-- Bouton pour choisir l'heure -->
+
+            <Button
+                android:id="@+id/buttonTime"
+                style="@style/MyButton.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/buttonDate"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/choose" />
+
+            <!-- Champ pour choisir la date -->
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textViewDate"
+                android:layout_alignBottom="@+id/textViewDate"
+                android:layout_toLeftOf="@+id/buttonDate"
+                android:layout_toRightOf="@+id/textViewTime"
+                android:hint="@string/hintDate"
+                android:singleLine="true" />
+
+            <!-- Champ pour choisir l'heure -->
+
+            <EditText
+                android:id="@+id/editTextTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textViewTime"
+                android:layout_alignBottom="@+id/textViewTime"
+                android:layout_alignLeft="@+id/editTextDate"
+                android:layout_alignRight="@+id/editTextDate"
+                android:hint="@string/hintTime"
+                android:singleLine="true" />
+        </RelativeLayout>
+    </ScrollView>
+    <!-- Save button -->
+
+    <Button
+        android:id="@+id/buttonSave"
+        style="@style/MyButton.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="400dp"
+        android:text="@string/save" />
+
+</RelativeLayout>

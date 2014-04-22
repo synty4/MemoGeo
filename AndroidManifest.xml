@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="be.ac.ucl.lfsab1509.memogeo"
+    android:versionCode="2"  
+    android:versionName="3.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <!-- Les permissions MAP_RECIEVE sont superflues mais je prefere les garder au cas ou -->
+    <permission
+        android:name="be.ac.ucl.lfsab1509.memogeo.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="be.ac.ucl.lfsab1509.memogeo.permission.MAPS_RECEIVE" />
+
+    <!-- Permissions pour google maps -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- version d'OpenGL (pour maps) -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name"
+        android:icon="@drawable/icon">
+
+        <!-- android:debuggable="true" -->
+
+        <uses-library android:name="com.google.android.maps" />
+
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.MainActivity"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.OptionsActivity"
+            android:label="@string/option">
+            <intent-filter>
+                <action android:name="android.intentaction.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.TimersActivity"
+            android:label="@string/timers">
+           <intent-filter>
+               <action android:name="android.intentaction.MAIN" />
+
+
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+       </activity>
+        
+        
+          
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.WriteNewMemo"
+            android:label="@string/title_activity_write_new_memo">
+            <intent-filter>
+                <action android:name="android.intentaction.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.ListMemo"
+            android:label="@string/list_memo" >
+        </activity>
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.Map"
+            android:label="@string/map" >
+        </activity>
+        <activity
+            android:name="be.ac.ucl.lfsab1509.memogeo.CustomActivity"
+            android:label="@string/title_activity_custom" >
+        </activity>
+        
+         <!-- on lie la clef API (pour le meilleur ou pour le pire) -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/API_key_Adrien2" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        
+    </application>
+
+</manifest>
