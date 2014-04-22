@@ -6,113 +6,71 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Toast;
 
+import com.google.android.maps.MapActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.maps.MapActivity;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Map extends FragmentActivity {
+	
+	private GoogleMap mapObject;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+		
+		try{
+			initializeMap();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
-
-	// Global constants
-	/*
-	 * Define a request code to send to Google Play services This code is
-	 * returned in Activity.onActivityResult
-	 */
-	private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
-	// Define a DialogFragment that displays the error dialog
-	public static class ErrorDialogFragment extends DialogFragment {
-		// Global field to contain the error dialog
-		private Dialog mDialog;
-
-		// Default constructor. Sets the dialog field to null
-		public ErrorDialogFragment() {
-			super();
-			mDialog = null;
-		}
-
-		// Set the dialog to display
-		public void setDialog(Dialog dialog) {
-			mDialog = dialog;
-		}
-
-		// Return a Dialog to the DialogFragment.
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
-			return mDialog;
-		}
-	}
-
-	/*
-	 * Handle results returned to the FragmentActivity by Google Play services
-	 */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// Decide what to do based on the original request code
-		switch (requestCode) {
-
-		case CONNECTION_FAILURE_RESOLUTION_REQUEST:
-			/*
-			 * If the result code is Activity.RESULT_OK, try to connect again
-			 */
-			switch (resultCode) {
-			case Activity.RESULT_OK:
-				/*
-				 * Try the request again
-				 */
-
-				break;
-			}
-
-		}
-	}
-
-	private boolean servicesConnected() 
-	{
-		// Check that Google Play services is available
-		int resultCode = GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(this);
-		// If Google Play services is available
-		if (ConnectionResult.SUCCESS == resultCode)
-		{
-			// In debug mode, log the status
-			Log.d("Location Updates", "Google Play services is available.");
-			// Continue
-			return true;
-			// Google Play services was not available for some reason
-		} 
-		else 
-		{
-			// Get the error code
-            // Get the error dialog from Google Play services
-            Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
-                    resultCode,
-                    this,
-                    CONNECTION_FAILURE_RESOLUTION_REQUEST);
-
-            // If Google Play services can provide an error dialog
-            if (errorDialog != null) {
-                // Create a new DialogFragment for the error dialog
-                ErrorDialogFragment errorFragment =
-                        new ErrorDialogFragment();
-                // Set the dialog in the DialogFragment
-                errorFragment.setDialog(errorDialog);
-                // Show the error dialog in the DialogFragment
-                errorFragment.show(
-                        getFragmentManager(),
-                        "Geofence Detection");
+	
+	private void initializeMap(){
+		if (mapObject == null) {
+			mapObject = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+			
+			mapObject.setOnMapClickListener(new OnMapClickListener(){
+				
+				@Override
+				public void onMapClick(LatLng point) {
+			        mapObject.addMarker(new MarkerOptions().position(point)
+			        										.draggable(true));
+			    }
+			});
+ 
+            // check if map is created successfully or not
+            if (mapObject == null) {
+                Toast.makeText(getApplicationContext(),
+                        "Sorry! unable to create maps", Toast.LENGTH_SHORT)
+                        .show();
             }
-	        
-	        return false;
-		}
-	}
+        }
+    }
+	
+	
+ 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initializeMap();
+    }
+	
+	
 }
