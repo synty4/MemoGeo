@@ -14,9 +14,11 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private Button chooseTime;
 	private Button chooseDate;
 	private Button openMap;
+	private Button here;
 	private EditText selectTime;
 	private EditText selectDate;
-	private TextView test;
+	private EditText selectAddress;
+	//private TextView test;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,14 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		
 		this.selectDate = (EditText) findViewById(R.id.editTextDate);
 		
-		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton et champ de l'heure
+		
+		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton de la map
 		this.openMap.setOnClickListener(this);
+		
+		this.here = (Button) findViewById(R.id.buttonHere);//Bouton et champ de l'heure
+		this.here.setOnClickListener(this);
+		
+		this.selectAddress = (EditText) findViewById(R.id.editTextAddress);
 		
 		// Getting the intent.
 		Intent intent = getIntent();
@@ -58,31 +66,78 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		{
 			case R.id.buttonTime:
 				ChooseTime chooseTime = new ChooseTime();
+				chooseTime.putParentActivity(1);
 				chooseTime.show(getFragmentManager(), "Time");
 				break;
 			
 			case R.id.buttonDate:
 				ChooseDate chooseDate = new ChooseDate();
+				chooseDate.putParentActivity(1);
 				chooseDate.show(getFragmentManager(), "Date");
 				break;
 				
 			case R.id.buttonMap:
-				Intent Map = new Intent(OptionsActivity.this, Map.class);
-             	startActivity(Map);
+				Intent StartMap = new Intent(OptionsActivity.this, Map.class);
+             	startActivity(StartMap);
+             	break;
+			case R.id.buttonHere : 
+				
+				GPSTracker gps = new GPSTracker(this);
+				
+				if(gps.canGetLocation()){
+	                
+	                editTextAddress(gps.getAddress(gps.getLatitude(), gps.getLongitude()));
+	                
+	            }else{
+	                // can't get location
+	                // GPS or Network is not enabled
+	                // Ask user to enable GPS/network in settings
+	                gps.showSettingsAlert();
+	            }
 		}
 		
 	}
 	
 	// Set the time in the EditText.
-	public void EditTextTime(String time)
+	public void editTextTime(String time)
 	{
 		this.selectTime.setText(time);
 	}
 	
 	//Set the date in the EditText.
-	public void EditTextDate(String date)
+	public void editTextDate(String date)
 	{
 		this.selectDate.setText(date);
 	}
 
+	//Set the address in the EditText.
+	public void editTextAddress(String address)
+	{
+		this.selectAddress.setText(address);
+	}
+	
+public void backOptions(View v) {
+		
+		//if(v.getId() == R.id.buttonSave1){
+			
+		//}else if(v.getId() == R.id.buttonOption){
+			// code pour lancer les options.
+			// 1. create intent.
+			Intent intent = new Intent(OptionsActivity.this, WriteNewMemo.class);
+
+			// 2. create memo object.
+			Memo memo = new Memo();
+			//editTextMemo = (EditText) findViewById(R.id.editTextMem);
+			//memo.setMemo(editTextMemo.getText().toString());
+
+			// 3. put object in the intent.
+			intent.putExtra("memo", memo);
+
+			// 4. Start the next activity.
+			startActivity(intent);
+			
+		
+		
+		
+	}
 }
