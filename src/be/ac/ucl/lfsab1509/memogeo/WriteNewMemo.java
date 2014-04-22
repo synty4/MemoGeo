@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -21,44 +20,35 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
  	private EditText titleBox;
  	private EditText descriptionBox;
  	private Button save;
- 	private Button buttonNext;
- 	private Button buttonBack;
+ 	
  	List<MemoInformation> memoList;
 	
 	@Override
  	protected void onCreate(Bundle savedInstanceState) {
  		super.onCreate(savedInstanceState);
  		setContentView(R.layout.write_new_memo);
- 		// Set a custom titlebar.
-	    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-	   //Lets set the R.layout.customtitlebar to the window.
-	    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title_layout);
-		
-	    memoList = new ArrayList<MemoInformation>();
  		
  		titleBox=(EditText)findViewById(R.id.editTextTitle);
  		descriptionBox=(EditText)findViewById(R.id.editTextDescription);
  		
- 		this.save = (Button) findViewById(R.id.buttonSave1);
- 		this.save.setOnClickListener(this);
+ 	    save = (Button) findViewById(R.id.buttonSave1);
+ 	  // view=(Button)findViewById(R.id.buttonView);
+ 	    
+ 		//this.options = (Button) findViewById(R.id.buttonOption);// Bouton // champ de // l'heure// l'heure													
  		
- 	    // view=(Button)findViewById(R.id.buttonView);
  	    this.options = (Button) findViewById(R.id.buttonOption);
  		this.options.setOnClickListener(this);
- 		
-        this.buttonNext = (Button) findViewById(R.id.buttonNext);
-        this.buttonNext.setOnClickListener(this);
-        
-        this.buttonBack = (Button) findViewById(R.id.buttonBack);
-        this.buttonBack.setOnClickListener(this); 
- 			
+ 		memoList = new ArrayList<MemoInformation>();	
  		
  	}	
  	
 	
-	/**@Override
+	@Override
 	public void onClick(View v) {
 	
+		//if(v.getId() == R.id.buttonSave1){
+			
+		//}else if(v.getId() == R.id.buttonOption){
 			// code pour lancer les options.
 			// 1. create intent.
 			Intent intent = new Intent(WriteNewMemo.this, OptionsActivity.class);
@@ -73,32 +63,14 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 
 			// 4. Start the next activity.
 			startActivity(intent);
+			
+		//}
+		//else if(v.getId() == R.id.buttonDelete){}
+		//else{}
+		
 		
 	}
-	*/
 	
-	@Override
- 	public void onClick(View v) {
-		 		switch (v.getId()) {
-
-		 		case R.id.buttonSave1:
-		 			Intent intent = new Intent(WriteNewMemo.this, OptionsActivity.class);
-		 			Memo memo = new Memo();
-		 			intent.putExtra("memo", memo);
-		 			startActivity(intent);
-		 			break;
-		 		case R.id.buttonNext:
-		 			Intent Options = new Intent(WriteNewMemo.this, OptionsActivity.class);
-		 			startActivity(Options);
-		 			break;
-		 		case R.id.buttonBack:
-		 			Intent Main = new Intent(WriteNewMemo.this, MainActivity.class);
-	            	startActivity(Main);
-                    break;
-        		
-		 		}
-
-		 	}
 	
 	public void back(View v) {
 		
