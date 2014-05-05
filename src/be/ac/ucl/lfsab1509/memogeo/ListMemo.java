@@ -27,7 +27,7 @@ public class ListMemo extends Activity implements View.OnClickListener
 	private CustomCursorAdapter customAdapter;
     DatabaseHandler db;
 	private ListView listdata;
-	private Button deleteListMemo;
+	private Button addListMemo;
 	private Button chooseDate;
 	   
 		 public void onCreate(Bundle savedInstanceState) {
@@ -58,9 +58,9 @@ public class ListMemo extends Activity implements View.OnClickListener
 		            });*/
 		     		    
 		    	// delete 2
-		    	    final Button deleteListMemo = (Button) findViewById(R.id.delete_list_memo);
-		    		this.deleteListMemo = (Button) findViewById(R.id.delete_list_memo);//Bouton et champ de la date
-		    		this.deleteListMemo.setOnClickListener(this);
+		    	    final Button addListMemo = (Button) findViewById(R.id.buttonAdd);
+		    		this.addListMemo = (Button) findViewById(R.id.buttonAdd);//Bouton et champ de la date
+		    		this.addListMemo.setOnClickListener(this);
 		    	 	
 		     	 }
 	 
