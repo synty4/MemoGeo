@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.app.AlarmManager;
@@ -35,13 +36,19 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 	Context mContext;
 	BroadcastReceiver br;
 	
+	public static final String EVENT_ID_INTENT_EXTRA = "EventIDIntentExtraKey";
+	
 	double latTest = 50.768229;// Arbre de la maison
 	double longTest = 4.647869;
 	double latTestHome = 50.768219;// Ma maison
 	double longTestHome = 4.648526;
+	double latBridge = 50.768140;
+	double longBridge = 4.649188;
 	double latTestBarbe = 50.668491;
 	double longTestBarbe = 4.621887;
-	float radius = 10;
+	float radius = 15f;
+	
+	private ArrayList<Memo> mPositions;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,7 +57,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 		mp = MediaPlayer.create(this, R.raw.gameover);// Crée un MediaPlayer qui
 														// lira le fichier audio
 														// du dossier raw
-
+		
 		this.chooseTime = (Button) findViewById(R.id.buttonTime);// Bouton et
 																	// champ de
 																	// l'heure
@@ -78,9 +85,105 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 		this.geoTimer = (Button) findViewById(R.id.buttonGeoTimer);// Bouton Geo
 																	// Timer
 		this.geoTimer.setOnClickListener(this);
-
+		
+		setup("intent");
+		createPositions();
+        geoRegisterIntents();
+		
 	}
 
+	private void createPositions() {
+		Memo memo1 = new Memo();
+		memo1.setTitle("memo1");
+		memo1.setLatitude(latTest);
+		memo1.setLongitude(longTest);
+		
+		Memo memo2 = new Memo();
+		memo1.setTitle("memo2");
+		memo1.setLatitude(latTestHome);
+		memo1.setLongitude(longTestHome);
+		
+		Memo memo3 = new Memo();
+		memo1.setTitle("memo3");
+		memo1.setLatitude(latBridge);
+		memo1.setLongitude(longBridge);
+		
+    	mPositions = new ArrayList<Memo>();
+    	mPositions.add(memo1);
+    	mPositions.add(memo2);
+    	mPositions.add(memo3);
+    }
+	
+	private void geoRegisterIntents() {
+    	for(int i = 0; i < mPositions.size(); i++) {
+    		
+    		setProximityAlert(mPositions.get(i).getLatitude(), 
+    				mPositions.get(i).getLongitude(), 
+    				i+1, 
+    				i);
+    	}
+    }
+	
+	private void setProximityAlert(double lat, double lon, final long eventID, int requestCode)
+	{	
+    	LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+    	
+    	Intent intent = new Intent("be.ac.ucl.lfsab1509.memogeo");
+    	intent.putExtra("EventId", mPositions.get(requestCode).getTitle());
+    	PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+    	
+    	locManager.addProximityAlert(lat, lon, radius, -1, pendingIntent);
+    }
+	
+	private void timeRegisterIntents() {
+
+		String dates = ("" + selectDate.getText().toString());
+		String times = ("" + selectTime.getText().toString());
+    	
+		for(int i = 0; i < mPositions.size(); i++) {
+    		
+    		mPositions.get(i).setTitle("Title"+i);
+    		
+    		int year,
+			month,
+			day,
+			hour,
+			minut;// R�cup�re les infos du m�mo pour les passer � la cr�ation de
+					// l'alarme.
+			String date[] = dates.split("/");
+			String time[] = times.split(":");
+
+			year = Integer.parseInt(date[2]);
+			month = Integer.parseInt(date[1]) - 1;// car les mois en android
+													// commence � 0.
+			day = Integer.parseInt(date[0]);
+			hour = Integer.parseInt(time[0]);
+			minut = Integer.parseInt(time[1])+i;
+
+			Calendar calendar = Calendar.getInstance();
+			
+			calendar.set(year, month, day, hour, minut, 0); // set(int year, int
+															// month, int day,
+															// int hourOfDay,
+															// int minute, int
+															// second
+			setTimedAlert(calendar.getTimeInMillis(), i+1, i);
+    	}
+    }
+	
+	private void setTimedAlert(long hour ,final long eventID, int requestCode)
+	{	    	
+    	Intent intent = new Intent("be.ac.ucl.lfsab1509.memogeo");
+    	intent.putExtra("EventId", mPositions.get(requestCode).getTitle());
+    	PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+		manager = (AlarmManager) (this
+				.getSystemService(Context.ALARM_SERVICE));
+		manager.set(AlarmManager.RTC_WAKEUP, hour,
+				pendingIntent);
+ 
+    }
+	
 	// Prépare the alarm.
 	private void setup(String memo) {
 		final String title = memo;
@@ -88,17 +191,11 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 		br = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context c, Intent i) {
-				Toast.makeText(getApplicationContext(), "" + title,
-						Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), title+ " " + i.getStringExtra("EventId"), Toast.LENGTH_LONG).show();
 				mp.start();
-				c.unregisterReceiver(this);
 			}
 		};
 		registerReceiver(br, new IntentFilter("be.ac.ucl.lfsab1509.memogeo"));
-		// timePendingIntent = PendingIntent.getBroadcast(this, 0, new
-		// Intent("be.ac.ucl.lfsab1509.memogeo"), 0);
-		// manager = (AlarmManager)
-		// (this.getSystemService(Context.ALARM_SERVICE));
 	}
 
 	// OnClick listeners
@@ -124,50 +221,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 
 			Toast.makeText(getApplicationContext(), "Launch time timer",
 					Toast.LENGTH_LONG).show();
-
-			Memo timedMemo = new Memo();// Cr�� un objet m�mo
-
-			timedMemo.setTime("" + selectTime.getText().toString());// Ajoute le
-																	// string de
-																	// l'heure
-																	// au m�mo
-			timedMemo.setDate("" + selectDate.getText().toString());// Ajoute le
-																	// string de
-																	// la date
-																	// au m�mo
-			timedMemo.setMemo("Test Timed Memo");// Permet de tester le m�mo
-
-			Calendar calendar = Calendar.getInstance();
-
-			int year,
-			month,
-			day,
-			hour,
-			minut;// R�cup�re les infos du m�mo pour les passer � la cr�ation de
-					// l'alarme.
-			String date[] = timedMemo.getDate().split("/");
-			String time[] = timedMemo.getTime().split(":");
-
-			year = Integer.parseInt(date[2]);
-			month = Integer.parseInt(date[1]) - 1;// car les mois en android
-													// commence � 0.
-			day = Integer.parseInt(date[0]);
-			hour = Integer.parseInt(time[0]);
-			minut = Integer.parseInt(time[1]);
-
-			calendar.set(year, month, day, hour, minut, 0); // set(int year, int
-															// month, int day,
-															// int hourOfDay,
-															// int minute, int
-															// second)
-			setup(timedMemo.getMemo());
-			timePendingIntent = PendingIntent.getBroadcast(this, 0, new Intent(
-					"be.ac.ucl.lfsab1509.memogeo"), 0);
-			manager = (AlarmManager) (this
-					.getSystemService(Context.ALARM_SERVICE));
-			manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-					timePendingIntent);
-
+			timeRegisterIntents();
 			break;
 
 		case R.id.buttonGeoTimer:
