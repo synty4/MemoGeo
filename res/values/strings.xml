@@ -22,8 +22,7 @@
     <string name="next_button">Next</string>
     <string name="newMemo">New memo</string>
     <string name="option">Options</string>
-    <string name="textViewTitle">Title:</string>
-    <string name="textViewDescription">Description:</string>
+    <string name="textViewTitle">Title</string>
     <string name="time">Time</string>
     <string name="timers">Timers</string>
     <string name="timeTimer">Time Timer</string>
@@ -35,7 +34,8 @@
     <string name="save">Save</string>
     <string name="view">View</string>
     <string name="where">Where</string>
-    <string name="when">When</string>    
+    <string name="when">When</string> 
+    <string name="write_here">Write your memo here.</string>    
     
     <string name="API_key_Adrien">AIzaSyDi_gj56nXHbM3TNZF09UzBEEhCvkd5zHg</string>
     <string name="API_key_Adrien2">AIzaSyCwoTGigGx6ARja81LqOYaChO9AX0nvqzU</string>
