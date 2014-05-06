@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.renderscript.Sampler.Value;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -270,7 +271,34 @@ public void deleteMemo(String id) {
 	//return result;
 }
 
+public void deleteAll() {
+	
+	//boolean result = false;
+	
+	String query = "Select * FROM " + TABLE_MEMO ;
 
+	SQLiteDatabase db = this.getWritableDatabase();
+	
+	Cursor cursor = db.rawQuery(query, null);
+	
+	if (cursor!=null) {
+		MemoInformation memo = new MemoInformation();
+		db.delete(TABLE_MEMO, null, new String[]{});
+		cursor.close();
+	}
+	else{
+		return;
+	}
+        db.close();
+}
+
+
+
+
+private Context getApplicationContext() {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 //Getting The number of mémo in the db
 public int getMemoInformationCount() {
