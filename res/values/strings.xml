@@ -32,7 +32,8 @@
     <string name="title_activity_window">WindowActivity</string>
     <string name="title_head_list_memo">Your List Memo :</string>
     <string name="save">Save</string>
-    <string name="view">View</string>
+    <string name="selectPos">Select position</string>
+    <string name="view">View or Edit</string>
     <string name="where">Where</string>
     <string name="when">When</string> 
     <string name="write_here">Write your memo here.</string>    

@@ -1,26 +1,12 @@
 package be.ac.ucl.lfsab1509.memogeo;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
-
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Intent;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.maps.MapActivity;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.MapFragment;
@@ -31,17 +17,28 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Map extends FragmentActivity {
+public class Map extends Activity implements View.OnClickListener {
 
 	private GoogleMap mapObject;
 	private Marker marker;
 	private Circle circle;
-	private Context mContext;
+	private Button selectPos;
+
+	Memo memo;
+
+	double lat;
+	double lng;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
+
+		this.selectPos = (Button) findViewById(R.id.buttonSelectPos);
+		this.selectPos.setOnClickListener(this);
+
+		Intent memoReceiver = getIntent();
+		memo = (Memo) memoReceiver.getSerializableExtra("memo");
 
 		try {
 			initializeMap();
@@ -56,6 +53,31 @@ public class Map extends FragmentActivity {
 			mapObject = ((MapFragment) getFragmentManager().findFragmentById(
 					R.id.map)).getMap();
 
+			GPSTracker gps = new GPSTracker(this);
+
+			Toast.makeText(
+					getApplicationContext(),
+					"LATLNG : " + memo.getLatitude() + " "
+							+ memo.getLongitude(), Toast.LENGTH_SHORT).show();
+
+			if (-90.0 < memo.getLatitude() && memo.getLatitude() > 90.0//essai pour centrer la map sur une position de memo déjà connue.
+					&& -180.0 < memo.getLongitude()
+					&& memo.getLongitude() > 180.0) {
+				mapObject
+						.animateCamera(CameraUpdateFactory.newLatLngZoom(
+								new LatLng(memo.getLatitude(), memo
+										.getLongitude()), 12));
+				marker = mapObject.addMarker(new MarkerOptions().position(
+						new LatLng(memo.getLatitude(), memo.getLongitude()))
+						.draggable(true));
+				circle = mapObject.addCircle(new CircleOptions()
+						.center(new LatLng(memo.getLatitude(), memo
+								.getLongitude())).radius(10).strokeWidth(5));
+			} else {
+				mapObject.animateCamera(CameraUpdateFactory.newLatLngZoom(
+						new LatLng(gps.getLatitude(), gps.getLongitude()), 12));
+			}
+
 			mapObject.setOnMapClickListener(new OnMapClickListener() {
 
 				@Override
@@ -64,13 +86,20 @@ public class Map extends FragmentActivity {
 						marker = mapObject.addMarker(new MarkerOptions()
 								.position(point).draggable(true));
 						circle = mapObject.addCircle(new CircleOptions()
-						.center(point)
-						.radius(10)
-						.strokeWidth(5)
-						);
+								.center(point).radius(10).strokeWidth(5));
+						lat = (marker.getPosition().latitude);
+						lng = (marker.getPosition().longitude);
+
 					} else {
 						marker.setPosition(point);
 						circle.setCenter(point);
+
+						lat = (marker.getPosition().latitude);
+						lng = (marker.getPosition().longitude);
+
+						Toast.makeText(getApplicationContext(),
+								"Lat : " + lat + " Long : " + lng,
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			});
@@ -84,8 +113,21 @@ public class Map extends FragmentActivity {
 		}
 	}
 
-	
-	
+	public void onClick(View v) {
+
+		switch (v.getId()) {
+		case R.id.buttonSelectPos:
+
+			memo.setLatitude(lat);
+			memo.setLongitude(lng);
+
+			Intent options = new Intent(Map.this, OptionsActivity.class);
+			options.putExtra("memo", memo);
+			startActivity(options);
+
+			break;
+		}
+	}
 
 	@Override
 	protected void onResume() {

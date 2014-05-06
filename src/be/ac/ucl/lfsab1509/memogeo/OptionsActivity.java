@@ -1,5 +1,6 @@
 package be.ac.ucl.lfsab1509.memogeo;
 
+import DataBase.DatabaseHandler;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class OptionsActivity extends Activity implements View.OnClickListener {
 
@@ -15,9 +17,11 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private Button chooseDate;
 	private Button openMap;
 	private Button here;
+	private Button save;
 	private EditText selectTime;
 	private EditText selectDate;
 	private EditText selectAddress;
+	Memo memo;
 	//private TextView test;
 	
 	@Override
@@ -36,19 +40,31 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		this.selectDate = (EditText) findViewById(R.id.editTextDate);
 		
 		
-		this.openMap = (Button) findViewById(R.id.buttonMap);//Bouton de la map
+		this.openMap = (Button) findViewById(R.id.buttonMap);
 		this.openMap.setOnClickListener(this);
 		
-		this.here = (Button) findViewById(R.id.buttonHere);//Bouton et champ de l'heure
+		this.here = (Button) findViewById(R.id.buttonHere);
 		this.here.setOnClickListener(this);
 		
 		this.selectAddress = (EditText) findViewById(R.id.editTextAddress);
 		
-		// Getting the intent.
-		Intent intent = getIntent();
+		this.save = (Button) findViewById(R.id.buttonSave);
+		this.save.setOnClickListener(this);
 		
-		// Getting the memo object from the intent.
-		Memo memo = (Memo) intent.getParcelableExtra("memo");
+		Intent memoReceiver = getIntent();
+ 		memo = (Memo) memoReceiver.getSerializableExtra("memo");
+ 		
+ 		//if(memo.getLatitude() != 0.0 && memo.getLongitude() != 0.0)
+ 		if(memo.getAddress()=="")
+ 		{	
+ 			GPSTracker gps = new GPSTracker(this);
+ 			editTextAddress(gps.getAddress(memo.getLatitude(), memo.getLongitude()));
+ 		}
+ 		else editTextAddress(memo.getAddress());
+ 		    
+ 		editTextTime(memo.getTime());
+ 		editTextDate(memo.getDate());
+ 		
 	}
 	
 	@Override
@@ -77,9 +93,12 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				break;
 				
 			case R.id.buttonMap:
+                
 				Intent StartMap = new Intent(OptionsActivity.this, Map.class);
+				StartMap.putExtra("memo", memo);
              	startActivity(StartMap);
              	break;
+             	
 			case R.id.buttonHere : 
 				
 				GPSTracker gps = new GPSTracker(this);
@@ -87,6 +106,9 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				if(gps.canGetLocation()){
 	                
 	                editTextAddress(gps.getAddress(gps.getLatitude(), gps.getLongitude()));
+	                memo.setLatitude(gps.getLatitude());
+	                memo.setLongitude(gps.getLongitude()); 
+	                Toast.makeText(getApplicationContext(), "LATLNG : "+memo.getLatitude()+" "+memo.getLongitude(), Toast.LENGTH_SHORT).show();
 	                
 	            }else{
 	                // can't get location
@@ -94,6 +116,16 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	                // Ask user to enable GPS/network in settings
 	                gps.showSettingsAlert();
 	            }
+				break;
+			
+			case R.id.buttonSave:
+				memo.setAddress(selectAddress.getText().toString());
+				memo.setTime(selectTime.getText().toString());
+				memo.setDate(selectDate.getText().toString());
+				
+				DatabaseHandler db = new DatabaseHandler(this);
+				db.addMemoInformation(memo);
+				Toast.makeText(getApplicationContext(), "memo saved", Toast.LENGTH_SHORT).show();
 		}
 		
 	}

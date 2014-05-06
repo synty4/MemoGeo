@@ -1,11 +1,14 @@
 package be.ac.ucl.lfsab1509.memogeo;
 
+import java.io.Serializable;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public class Memo implements Parcelable
+public class Memo implements Serializable
 {
+	private int id;
 	private String title;
 	private String memo;
 	private String address;
@@ -17,6 +20,7 @@ public class Memo implements Parcelable
 	// Constructor
 	public Memo(String title, String memo, String address, double longitude, double latitude, String time, String date)
 	{
+
 		this.title = title;
 		this.memo = memo;
 		this.address = address;
@@ -82,14 +86,12 @@ public class Memo implements Parcelable
 				+ longitude + ", latitude=" + latitude + ", time=" + time + ", date=" + date + "]";
 	}
 
-	@Override
 	public int describeContents() 
 	{
 		// Return 0 because the class does not contain a FileDescriptor.
 		return 0;
 	}
 
-	@Override
 	public void writeToParcel(Parcel destination, int flags)
 	{
 		destination.writeString(title);
@@ -124,4 +126,13 @@ public class Memo implements Parcelable
 		time = in.readString();
 		date = in.readString();
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }
