@@ -18,7 +18,6 @@ public class CustomCursorAdapter extends CursorAdapter {
 	DatabaseHandler db;
 	
 
-
 	@SuppressWarnings("deprecation")
 	public CustomCursorAdapter(Context context, Cursor c) {
      
