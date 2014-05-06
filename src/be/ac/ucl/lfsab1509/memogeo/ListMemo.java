@@ -1,7 +1,6 @@
 
 package be.ac.ucl.lfsab1509.memogeo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import DataBase.DatabaseHandler;
@@ -9,24 +8,17 @@ import DataBase.MemoInformation;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-
-import java.util.Arrays;
 
 
 
@@ -41,7 +33,10 @@ public class ListMemo extends Activity implements View.OnClickListener
 	private Button deleteListMemo;
 	private Button chooseDate;
 	private MemoInformation memo;
+	private Cursor c=null;
 	
+	//private List<ListViewItem> items;
+
 	//private ListView lv;
 	//private ArrayAdapter<String> adapter;
 	//private List<String> arr;
@@ -54,21 +49,9 @@ public class ListMemo extends Activity implements View.OnClickListener
 		    db = new DatabaseHandler(this);
 		  
 		    listdata = (ListView)findViewById(R.id.list_data);
-		    final Cursor c = db.getAllTable1();
+		    c = db.getAllTable1();
 		    customAdapter = new CustomCursorAdapter(this.getApplicationContext(),c);
 		    listdata.setAdapter(customAdapter);
-		    
-		    /**lv.setOnItemLongClickListener(new OnItemLongClickListener() {
-	            // setting onItemLongClickListener and passing the position to the function
-	               
-		    	 // setting onItemLongClickListener and passing the position to the function
-                @Override
-              public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-              int position, long arg3) {
-              removeItemFromList(position);   
-          
-             return true;
-      }**/
                 
 		    listdata.setOnItemClickListener(new OnItemClickListener() 
                 {
@@ -76,6 +59,7 @@ public class ListMemo extends Activity implements View.OnClickListener
                    	    public void onItemClick(AdapterView<?> adapter, View view, final int position, long arg)   {
                         		
                    		Object listItem =  listdata.getItemAtPosition(position);
+                   		//ListViewItem item = items.get(position);
                    		Toast.makeText(getApplicationContext(), "You selected item "+ position + ": " + listItem, Toast.LENGTH_SHORT).show();
                         		
                    	    Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
@@ -86,7 +70,8 @@ public class ListMemo extends Activity implements View.OnClickListener
                 				//listdata.removeViewAt(position);
                    			    memo = new MemoInformation();
                    				db.deleteMemoInformation(memo);
-                   				customAdapter.notifyDataSetChanged();   
+                   				customAdapter.notifyDataSetChanged();  
+                   				
                   				}
                   		    });
                        		alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
