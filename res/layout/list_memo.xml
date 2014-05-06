@@ -32,6 +32,7 @@
         android:text="@string/memoList"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,6 +48,8 @@
             android:layout_marginTop="2dip"
             android:drawSelectorOnTop="false"
             android:visibility="visible" />
+        
+        
         <!-- android:choiceMode="multipleChoice" -->
     </RelativeLayout>
 
