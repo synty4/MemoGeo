@@ -104,7 +104,19 @@ public Cursor getAllTable1() {
 
 }
 
+public Cursor getById(String id){
+	String[] args={id};
+	SQLiteDatabase db = this.getWritableDatabase();
 
+	Cursor cur =  db.rawQuery( "select "+KEY_ID+" _id from "+TABLE_MEMO+"WHERE_id=?", args);
+
+	return cur;
+	
+}
+	
+	public String getTitle(Cursor c){
+		return (c.getString(1));
+	}
 
 
 
@@ -217,6 +229,9 @@ public int updateMemoInformation(MemoInformation memo) {
  * deleteMemo() will delete a single memo from database
  * @param memo = MemoInformation class object 
  */
+
+/**
+
 // Deleting single memo
 public void deleteMemoInformation(MemoInformation memo) {
    SQLiteDatabase db = this.getWritableDatabase();
@@ -225,14 +240,35 @@ public void deleteMemoInformation(MemoInformation memo) {
    db.close();
 }
 
-/***
+
 //Deleting single MemoInformation 
-public void deleteMemo(int delmemo) {
+public void deleteMemo(String id) {
     SQLiteDatabase db = this.getWritableDatabase();
-    db.delete(TABLE_MEMO, KEY_ID + " = ?", new String[] {Integer.toString(delmemo)});
+    db.delete(TABLE_MEMO, KEY_ID + " = ?", new String[] {id});
     db.close();
+}**/
+
+public void deleteMemo(String id) {
+	
+	//boolean result = false;
+	
+	String query = "Select * FROM " + TABLE_MEMO + " WHERE " + KEY_ID + " =  \"" + id + "\"";
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	
+	Cursor cursor = db.rawQuery(query, null);
+	MemoInformation memo = new MemoInformation();
+	
+	if (cursor.moveToFirst()) {
+		memo.setId(Integer.parseInt(cursor.getString(0)));
+		db.delete(TABLE_MEMO, KEY_ID + " = ?",
+	    new String[] { String.valueOf(memo.getId()) });
+		cursor.close();
+		//result = true;
+	}
+        db.close();
+	//return result;
 }
-**/
 
 
 

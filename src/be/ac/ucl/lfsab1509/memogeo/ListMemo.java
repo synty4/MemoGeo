@@ -12,10 +12,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -34,6 +36,7 @@ public class ListMemo extends Activity implements View.OnClickListener
 	private Button chooseDate;
 	private MemoInformation memo;
 	private Cursor c=null;
+	String memoId;
 	
 	//private List<ListViewItem> items;
 
@@ -54,10 +57,13 @@ public class ListMemo extends Activity implements View.OnClickListener
 		    listdata.setAdapter(customAdapter);
                 
 		    listdata.setOnItemClickListener(new OnItemClickListener() 
-                {
+                { //J'ai ajouté long id commme parametre
                    	@Override
-                   	    public void onItemClick(AdapterView<?> adapter, View view, final int position, long arg)   {
-                        		
+                   	    public void onItemClick(AdapterView<?> adapter, View view, final int position, long id)   {
+                       //Get the id of the item in the list clicked on
+                   		//this will be used to update the changes
+                   		memoId = String.valueOf(id);
+                   		
                    		Object listItem =  listdata.getItemAtPosition(position);
                    		//ListViewItem item = items.get(position);
                    		Toast.makeText(getApplicationContext(), "You selected item "+ position + ": " + listItem, Toast.LENGTH_SHORT).show();
@@ -66,13 +72,30 @@ public class ListMemo extends Activity implements View.OnClickListener
                    	 	alertDialogBuilder.setTitle("Delete item");
                    	 	alertDialogBuilder.setMessage("Are you sure?");
                    	 	alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                   			public void onClick(DialogInterface dialog,int id) {
+                   			@SuppressWarnings("null")
+							public void onClick(DialogInterface dialog,int id) {
                 				//listdata.removeViewAt(position);
-                   			    memo = new MemoInformation();
-                   				db.deleteMemoInformation(memo);
+                   				
+                   				if (memoId==null){
+                   					return;
+                   				}
+                   				else{
+                               		Toast.makeText(getApplicationContext(), "You selected item "+memoId, Toast.LENGTH_SHORT).show();
+                   					db.deleteMemo(memoId);
+                   					memoId=null;
+                   				
+                   					customAdapter = new CustomCursorAdapter(getApplicationContext(),c);	
+									listdata.setAdapter(customAdapter);
+                   					
+                   				}
+                   				
+                   				//c.requery()
+                   			   // memo = new MemoInformation();
+                   				//db.deleteMemoInformation(memo);
                    				customAdapter.notifyDataSetChanged();  
                    				
                   				}
+
                   		    });
                        		alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
                        			public void onClick(DialogInterface dialog,int id) {
@@ -81,6 +104,7 @@ public class ListMemo extends Activity implements View.OnClickListener
                        		});
                        	 
                        		AlertDialog alertDialog = alertDialogBuilder.create();
+                       		//Show the dialog
                        		alertDialog.show();
                         		
                      	}
