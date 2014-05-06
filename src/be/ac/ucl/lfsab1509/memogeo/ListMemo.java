@@ -158,6 +158,7 @@ public class ListMemo extends Activity implements View.OnClickListener
 			case R.id.delete_list_memo:
 				Intent listdeleteMemo = new Intent(ListMemo.this, ListMemo.class);
 				startActivity(listdeleteMemo);
+				db.deleteAll();
 				break;
 				
 
