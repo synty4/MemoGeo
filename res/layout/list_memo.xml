@@ -32,7 +32,6 @@
         android:text="@string/memoList"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,14 +45,11 @@
             android:layout_height="320dp"
             android:layout_marginBottom="2dip"
             android:layout_marginTop="2dip"
-            android:drawSelectorOnTop="false"
-            android:visibility="visible" />
-        
-        
-        <!-- android:choiceMode="multipleChoice" -->
+            android:visibility="visible" 
+            android:choiceMode="singleChoice"/>
     </RelativeLayout>
 
-    <!-- RelativeLayout  for control buttons -->
+    <!-- RelativeLayout for control buttons -->
 
     <RelativeLayout
         android:layout_width="fill_parent"

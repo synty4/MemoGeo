@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
- <color name="white">#FFFFFF</color>
- <color name="yellow">#FFFF00</color>
- <color name="silver">#C0C0C0</color>
- <color name="aqua">#00FFFF</color>
- <color name="blue">#0000FF</color>
- <color name="navy">#000080</color>
- <color name="black">#000000</color>
- <color name=" midnightblue">#191970</color>
- <color name="darkblue">#00008b</color>
-
- <color name="mediumblue">#0000cd</color>
- <color name="royalblue">#4169e1</color>
-  <color name="mediumturquoise">#48d1cc</color>
-  
- <color name="cornflowerblue">#6495ed</color>
- <color name="darkturquoise">#00ced1</color>
- <color name="deepskyblue">#00bfff</color>
- <color name="dodgerblue">#1e90ff</color>
-
- <color name="lightseagreen">#20b2aa</color>
  
-  <color name="lightskyblue">#87cefa</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="navy">#000080</color>
+    <color name="black">#000000</color>
+    <color name="midnightblue">#191970</color>
+    <color name="darkblue">#00008b</color>
+    <color name="mediumblue">#0000cd</color>
+    <color name="royalblue">#4169e1</color>
+    <color name="mediumturquoise">#48d1cc</color>
+    <color name="cornflowerblue">#6495ed</color>
+    <color name="darkturquoise">#00ced1</color>
+    <color name="deepskyblue">#00bfff</color>
+    <color name="dodgerblue">#1e90ff</color>
+    <color name="lightseagreen">#20b2aa</color>
+    <color name="lightskyblue">#87cefa</color>
+
 </resources>

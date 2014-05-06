@@ -113,7 +113,7 @@ public class GPSTracker extends Service implements LocationListener {
     }
      
     public String getAddress(double lat, double lng) {
-		String addr = "error";
+		String addr = "";
 		try {
 			Geocoder here = new Geocoder(mContext, Locale.getDefault());
 			List<Address> address = here.getFromLocation(lat, lng, 1);
