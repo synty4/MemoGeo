@@ -83,7 +83,8 @@ public class ListMemo extends Activity implements View.OnClickListener
                                		Toast.makeText(getApplicationContext(), "You selected item "+memoId, Toast.LENGTH_SHORT).show();
                    					db.deleteMemo(memoId);
                    					memoId=null;
-                   				
+                   					c.moveToFirst();
+                   			
                    					customAdapter = new CustomCursorAdapter(getApplicationContext(),c);	
 									listdata.setAdapter(customAdapter);
                    					
