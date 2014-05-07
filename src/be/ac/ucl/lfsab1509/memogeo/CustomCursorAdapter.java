@@ -4,7 +4,6 @@ import DataBase.DatabaseHandler;
 import android.R.color;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,31 +47,24 @@ public class CustomCursorAdapter extends CursorAdapter {
     
 }
 
-
 class MemoHolder{
 	
     // here we are setting our data
     // that means, take the data from the cursor and put it in views
-	private TextView numero;
-	private TextView textViewPersonName;
 	
+	private TextView title;
 	
 	MemoHolder(View row, Cursor c){
-		numero = (TextView) row.findViewById(R.id.title_container1);
-	   
-	    numero.setBackgroundColor(Color.argb(255, 0, 0, 0));
-	    
-	    textViewPersonName = (TextView) row.findViewById(R.id.title_container);
-	  
-	    numero.setBackgroundColor(color.background_light);
 		
+	    title = (TextView) row.findViewById(R.id.title_container);
+	  
+	    title.setBackgroundColor(color.background_light);
 		
 	}
 	
 void populateFrom(Cursor c, DatabaseHandler db){
 	
-	 numero.setText(c.getString(c.getColumnIndex(c.getColumnName(0))));
-	  textViewPersonName.setText(c.getString(c.getColumnIndex(c.getColumnName(1))));
-}
+	title.setText(c.getString(c.getColumnIndex(c.getColumnName(1))));
+	}
 	
 }

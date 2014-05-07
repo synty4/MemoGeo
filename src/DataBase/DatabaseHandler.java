@@ -264,8 +264,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				return (c.getString(1));
 			}
 
-
-
 public void deleteMemo(String id) {
 	
 	//boolean result = false;
@@ -287,5 +285,22 @@ public void deleteMemo(String id) {
         db.close();
 	//return result;
 }
+
+public void deleteAll() {	
+	
+	String query = "Select * FROM " + TABLE_MEMO ;
+	SQLiteDatabase db = this.getWritableDatabase();
+	Cursor cursor = db.rawQuery(query, null);
+	
+	if (cursor!=null) {
+		db.delete(TABLE_MEMO, null, new String[]{});
+		cursor.close();
+	}
+	else{
+		return;
+	}
+        db.close();
 }
+
+ }
 
