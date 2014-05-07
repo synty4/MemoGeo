@@ -9,7 +9,7 @@
     <string name="choose">Choose</string>
     <string name="date">Date</string>
     <string name="delete">Delete</string>
-    <string name="edit">Edit</string>
+<!--     <string name="edit">Edit</string> -->
     <string name="geoTimer">Geo Timer</string>
     <string name="here">Here</string>
     <string name="hintTime">HH:MM</string>
