@@ -248,5 +248,44 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// return count
 		return cursor.getCount();
 	}
+	
+	public Cursor getById(String id){
+	String[] args={id};
+		//Add a comment to this line
+		SQLiteDatabase db = this.getWritableDatabase();
+		 
+		Cursor cur =  db.rawQuery( "select "+KEY_ID+" _id from "+TABLE_MEMO+"WHERE_id=?", args);
+		
+			return cur;
+			
+		}
+			
+			public String getTitle(Cursor c){
+				return (c.getString(1));
+			}
 
+
+
+public void deleteMemo(String id) {
+	
+	//boolean result = false;
+	
+	String query = "Select * FROM " + TABLE_MEMO + " WHERE " + KEY_ID + " =  \"" + id + "\"";
+
+	SQLiteDatabase db = this.getWritableDatabase();
+	
+	Cursor cursor = db.rawQuery(query, null);
+	Memo memo = new Memo();
+	
+	if (cursor.moveToFirst()) {
+		memo.setId(Integer.parseInt(cursor.getString(0)));
+		db.delete(TABLE_MEMO, KEY_ID + " = ?",
+	    new String[] { String.valueOf(memo.getId()) });
+		cursor.close();
+		//result = true;
+	}
+        db.close();
+	//return result;
 }
+}
+
