@@ -173,8 +173,17 @@ public void delete(View v){
 			intent.putExtra("memo", memo);
 			startActivity(intent);
 			break;	
+			
+		case R.id.buttonDeleteAll:
+			Intent listdeleteMemo = new Intent(ListMemo.this, ListMemo.class);
+			startActivity(listdeleteMemo);
+			db.deleteAll();
+			break;
 		}
 	}
+
+	
+
 
 	public void home(View v) {
 
