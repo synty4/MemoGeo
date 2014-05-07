@@ -13,7 +13,7 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 	private Button options;
  	private EditText titleBox;
  	private EditText descriptionBox;
- 	private Button save;
+ 	//private Button save;
  	Memo memo;
 	
 	@Override
@@ -33,8 +33,8 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
  	    this.options = (Button) findViewById(R.id.buttonOption);
  		this.options.setOnClickListener(this);
 	    
- 		this.save = (Button) findViewById(R.id.buttonSave1);
- 		this.save.setOnClickListener(this);	
+ 		//this.save = (Button) findViewById(R.id.buttonSave1);
+ 		//this.save.setOnClickListener(this);	
  		
  	}	
  	
