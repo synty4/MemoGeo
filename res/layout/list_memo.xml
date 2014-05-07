@@ -99,6 +99,15 @@
             android:layout_marginRight="40dp"
             android:layout_toRightOf="@+id/buttonView"
             android:text="@string/delete" />
+         <Button
+            android:id="@+id/buttonDeleteAll"
+            style="@style/MyButton.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/buttonAdd"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/delete_list_memo"
+            android:text="@string/deleteAll" /> 
     </RelativeLayout>
 
 </RelativeLayout>
