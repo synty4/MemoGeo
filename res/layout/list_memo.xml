@@ -68,7 +68,7 @@
             android:onClick="add"
             android:text="@string/add" />
 
-        <Button
+       <!--  <Button
             android:id="@+id/buttonEdit"
             style="@style/MyButton.Small"
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
             android:layout_alignBaseline="@+id/buttonAdd"
             android:layout_marginLeft="30dp"
             android:layout_toRightOf="@+id/buttonAdd"
-            android:text="@string/edit" />
+            android:text="@string/edit" /> -->
 
         <Button
             android:id="@+id/buttonView"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/buttonAdd"
             android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/buttonEdit"
+            android:layout_toRightOf="@+id/buttonAdd"
             android:onClick="view"
             android:text="@string/view" />
 
