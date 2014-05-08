@@ -121,7 +121,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// I changed the parameter to be a string....
 
 	public Memo getMemoInformation(String title) {
-		
+
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		String[] param = new String[1];
@@ -132,20 +132,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ " , " + KEY_LONGITUDE + " , " + KEY_TIME + " , " + KEY_DATE
 				+ " FROM " + TABLE_MEMO + " WHERE " + KEY_TITLE + " = ? ",
 				param);
-		
+
 		Memo memo = new Memo();
 
-		if(cursor.moveToFirst())
-		{
+		if (cursor.moveToFirst()) {
 			memo = new Memo(cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
-							cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
-							cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)), 
-							cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)), 
-							cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
-							cursor.getString(cursor.getColumnIndex(KEY_TIME)), 
-							cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+					cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
+					cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
+					cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
+					cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
+					cursor.getString(cursor.getColumnIndex(KEY_TIME)),
+					cursor.getString(cursor.getColumnIndex(KEY_DATE)));
 		}
-		
+
 		return memo;
 	}
 
@@ -155,40 +154,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	 * @return all m�mos from the database in an arrayList format
 	 */
 
-	public List<Memo> getAllMemoInformation() {
+	public ArrayList<Memo> getAllMemoInformation() {
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		
-		List<Memo> memoList = new ArrayList<Memo>();
+		ArrayList<Memo> memoList = new ArrayList<Memo>();
 		// Select All Query
 		String selectQuery = "SELECT * FROM " + TABLE_MEMO;
 
-
 		Cursor cursor = db.rawQuery(selectQuery, null);
-
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
-			Memo memoInfo = new Memo(
-					        cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
-							cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
-							cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)), 
-							cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)), 
-							cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
-							cursor.getString(cursor.getColumnIndex(KEY_TIME)), 
-							cursor.getString(cursor.getColumnIndex(KEY_DATE)));
-			
+			Memo memoInfo = new Memo(cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+					cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
+					cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
+					cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
+					cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
+					cursor.getString(cursor.getColumnIndex(KEY_TIME)),
+					cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+
 			// Adding MemoInfo to list
 			memoList.add(memoInfo);
+			System.out.println("premier");
 			while (cursor.moveToNext()) {
-				Memo memoInfoLooped = new Memo(
-				cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
-				cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
-				cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)), 
-				cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)), 
-				cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
-				cursor.getString(cursor.getColumnIndex(KEY_TIME)), 
-				cursor.getString(cursor.getColumnIndex(KEY_DATE)));
-				// Adding MemoInfo to list
+				Memo memoInfoLooped = new Memo(cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+						cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
+						cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
+						cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
+						cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
+						cursor.getString(cursor.getColumnIndex(KEY_TIME)),
+						cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+				// Adding MemoInfoLooped to list
 				memoList.add(memoInfoLooped);
 			}
 		}
@@ -203,24 +198,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	 * @return
 	 */
 
-	public int updateMemoInformation(Memo memo, String title) throws NullPointerException {
-		if (title == null){throw new NullPointerException();}
-		else{
-		SQLiteDatabase db = this.getWritableDatabase();
+	public int updateMemoInformation(Memo memo, String title)
+			throws NullPointerException {
+		if (title == null) {
+			throw new NullPointerException();
+		} else {
+			SQLiteDatabase db = this.getWritableDatabase();
 
-		// updating single memo
-		ContentValues values = new ContentValues();
-		values.put(KEY_TITLE, memo.getTitle());
-		values.put(KEY_DESCRIPTION, memo.getMemo());
-		values.put(KEY_ADDRESS, memo.getAddress());
-		values.put(KEY_LATITUDE, memo.getLatitude());
-		values.put(KEY_LONGITUDE, memo.getLongitude());
-		values.put(KEY_TIME, memo.getTime());
-		values.put(KEY_DATE, memo.getDate());
+			// updating single memo
+			ContentValues values = new ContentValues();
+			values.put(KEY_TITLE, memo.getTitle());
+			values.put(KEY_DESCRIPTION, memo.getMemo());
+			values.put(KEY_ADDRESS, memo.getAddress());
+			values.put(KEY_LATITUDE, memo.getLatitude());
+			values.put(KEY_LONGITUDE, memo.getLongitude());
+			values.put(KEY_TIME, memo.getTime());
+			values.put(KEY_DATE, memo.getDate());
 
-		// updating row
-		return db.update(TABLE_MEMO, values, KEY_TITLE + " = ? ",
-				new String[] { title });}
+			// updating row
+			return db.update(TABLE_MEMO, values, KEY_TITLE + " = ? ",
+					new String[] { title });
+		}
 	}
 
 	/***
@@ -252,59 +250,59 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// return count
 		return cursor.getCount();
 	}
-	
-	public Cursor getById(String id){
-	String[] args={id};
-		//Add a comment to this line
+
+	public Cursor getById(String id) {
+		String[] args = { id };
+		// Add a comment to this line
 		SQLiteDatabase db = this.getWritableDatabase();
-		 
-		Cursor cur =  db.rawQuery( "select "+KEY_ID+" _id from "+TABLE_MEMO+"WHERE_id=?", args);
-		
-			return cur;
-			
+
+		Cursor cur = db.rawQuery("select " + KEY_ID + " _id from " + TABLE_MEMO
+				+ "WHERE_id=?", args);
+
+		return cur;
+
+	}
+
+	public String getTitle(Cursor c) {
+		return (c.getString(1));
+	}
+
+	public void deleteMemo(String id) {
+
+		// boolean result = false;
+
+		String query = "Select * FROM " + TABLE_MEMO + " WHERE " + KEY_ID
+				+ " =  \"" + id + "\"";
+
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		Cursor cursor = db.rawQuery(query, null);
+		Memo memo = new Memo();
+
+		if (cursor.moveToFirst()) {
+			memo.setId(Integer.parseInt(cursor.getString(0)));
+			db.delete(TABLE_MEMO, KEY_ID + " = ?",
+					new String[] { String.valueOf(memo.getId()) });
+			cursor.close();
+			// result = true;
 		}
-			
-			public String getTitle(Cursor c){
-				return (c.getString(1));
-			}
-
-public void deleteMemo(String id) {
-	
-	//boolean result = false;
-	
-	String query = "Select * FROM " + TABLE_MEMO + " WHERE " + KEY_ID + " =  \"" + id + "\"";
-
-	SQLiteDatabase db = this.getWritableDatabase();
-	
-	Cursor cursor = db.rawQuery(query, null);
-	Memo memo = new Memo();
-	
-	if (cursor.moveToFirst()) {
-		memo.setId(Integer.parseInt(cursor.getString(0)));
-		db.delete(TABLE_MEMO, KEY_ID + " = ?",
-	    new String[] { String.valueOf(memo.getId()) });
-		cursor.close();
-		//result = true;
+		db.close();
+		// return result;
 	}
-        db.close();
-	//return result;
+
+	public void deleteAll() {
+
+		String query = "Select * FROM " + TABLE_MEMO;
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(query, null);
+
+		if (cursor != null) {
+			db.delete(TABLE_MEMO, null, new String[] {});
+			cursor.close();
+		} else {
+			return;
+		}
+		db.close();
+	}
+
 }
-
-public void deleteAll() {	
-	
-	String query = "Select * FROM " + TABLE_MEMO ;
-	SQLiteDatabase db = this.getWritableDatabase();
-	Cursor cursor = db.rawQuery(query, null);
-	
-	if (cursor!=null) {
-		db.delete(TABLE_MEMO, null, new String[]{});
-		cursor.close();
-	}
-	else{
-		return;
-	}
-        db.close();
-}
-
- }
-
