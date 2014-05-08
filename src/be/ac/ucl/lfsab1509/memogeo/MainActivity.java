@@ -35,14 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 		this.timers = (Button) findViewById(R.id.timers);
 		this.timers.setOnClickListener(this);
-
-		Memo memo1 = new Memo("Medicament","Mal de tete ", "Traverse d'Esope 5, 1348", 0.0 , 0.0 , "20:42", "20/12/2014");
-
-		db.addMemoInformation(memo1);
 		
-		Memo memo2 = new Memo("Livre calculabilité", "Biblio INGI ",
-				" Place Sainte Barbe 2, 1348", 0.0 , 0.0 ,"12:12", "30/06/2014");
-		db.addMemoInformation(memo2);
+		
 	}
 
 	@Override
