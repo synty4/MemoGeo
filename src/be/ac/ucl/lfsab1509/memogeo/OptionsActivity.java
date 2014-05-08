@@ -76,7 +76,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 
 	@Override
 	// Handles all the buttons.
-	public void onClick(View v) {
+	public void onClick(View v) throws NullPointerException{
 		
 		switch (v.getId())
 		{
@@ -124,6 +124,9 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				memo.setDate(selectDate.getText().toString());
 				
 				DatabaseHandler db = new DatabaseHandler(this);
+				try
+				{db.updateMemoInformation(memo, memo.getTitle());}
+				catch (NullPointerException e){throw e;}
 				db.addMemoInformation(memo);
 				Toast.makeText(getApplicationContext(), "memo saved", Toast.LENGTH_SHORT).show();
 		}
