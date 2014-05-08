@@ -33,7 +33,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_LONGITUDE = "longitude";
 	private static final String KEY_TIME = "time";
 	private static final String KEY_DATE = "date";
-
+	
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
@@ -127,22 +127,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String[] param = new String[1];
 		param[0] = title;
 
-		Cursor cursor = db.rawQuery("SELECT " + KEY_TITLE + " , "
+		Cursor cursor = db.rawQuery("SELECT " + KEY_ID + " , "+ KEY_TITLE + " , "
 				+ KEY_DESCRIPTION + " , " + KEY_ADDRESS + " , " + KEY_LATITUDE
 				+ " , " + KEY_LONGITUDE + " , " + KEY_TIME + " , " + KEY_DATE
 				+ " FROM " + TABLE_MEMO + " WHERE " + KEY_TITLE + " = ? ",
 				param);
-
+		
 		Memo memo = new Memo();
 
 		if (cursor.moveToFirst()) {
-			memo = new Memo(cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+			memo = new Memo(
+					cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
 					cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
 					cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
 					cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
 					cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
 					cursor.getString(cursor.getColumnIndex(KEY_TIME)),
-					cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+					cursor.getString(cursor.getColumnIndex(KEY_DATE))
+					);
 		}
 
 		return memo;
@@ -157,36 +159,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public ArrayList<Memo> getAllMemoInformation() {
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		ArrayList<Memo> memoList = new ArrayList<Memo>();
 		// Select All Query
-		String selectQuery = "SELECT * FROM " + TABLE_MEMO;
+		//String selectQuery = "SELECT " + KEY_TITLE + " , "
+			//	+ KEY_DESCRIPTION + " , " + KEY_ADDRESS + " , " + KEY_LATITUDE
+				//+ " , " + KEY_LONGITUDE + " , " + KEY_TIME + " , " + KEY_DATE
+				//+ " FROM " + TABLE_MEMO;
 
-		Cursor cursor = db.rawQuery(selectQuery, null);
+		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MEMO, null);
+		
+		ArrayList<Memo> memoList = new ArrayList<Memo>();
+		
+		
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
-			Memo memoInfo = new Memo(cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
-					cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
-					cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
-					cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
-					cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
-					cursor.getString(cursor.getColumnIndex(KEY_TIME)),
-					cursor.getString(cursor.getColumnIndex(KEY_DATE)));
-
-			// Adding MemoInfo to list
-			memoList.add(memoInfo);
-			System.out.println("premier");
-			while (cursor.moveToNext()) {
-				Memo memoInfoLooped = new Memo(cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+			do {
+				memoList.add(new Memo(
+						cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
 						cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
 						cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
 						cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
 						cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
 						cursor.getString(cursor.getColumnIndex(KEY_TIME)),
-						cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+						cursor.getString(cursor.getColumnIndex(KEY_DATE))
+						));
 				// Adding MemoInfoLooped to list
-				memoList.add(memoInfoLooped);
-			}
+			} while (cursor.moveToNext());
 		}
+		db.close();
 		return memoList;
 	}
 

@@ -123,12 +123,14 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				memo.setTime(selectTime.getText().toString());
 				memo.setDate(selectDate.getText().toString());
 				
+				
+				
 				DatabaseHandler db = new DatabaseHandler(this);
 				try
 				{db.updateMemoInformation(memo, memo.getTitle());}
 				catch (NullPointerException e){throw e;}
 				db.addMemoInformation(memo);
-				Toast.makeText(getApplicationContext(), "memo saved", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "memo saved"+memo.toString(), Toast.LENGTH_LONG).show();
 		}
 		
 	}
