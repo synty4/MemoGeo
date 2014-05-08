@@ -55,14 +55,9 @@ public class Map extends Activity implements View.OnClickListener {
 
 			GPSTracker gps = new GPSTracker(this);
 
-			Toast.makeText(
-					getApplicationContext(),
-					"LATLNG : " + memo.getLatitude() + " "
-							+ memo.getLongitude(), Toast.LENGTH_SHORT).show();
-
-			if (-90.0 < memo.getLatitude() && memo.getLatitude() > 90.0//essai pour centrer la map sur une position de memo déjà connue.
-					&& -180.0 < memo.getLongitude()
-					&& memo.getLongitude() > 180.0) {
+			if (-90.0 <= memo.getLatitude() && memo.getLatitude() <= 90.0//essai pour centrer la map sur une position de memo déjà connue.
+					&& -180.0 <= memo.getLongitude()
+					&& memo.getLongitude() <= 180.0 && memo.getLatitude() != 0.0 && memo.getLongitude() != 0.0) {
 				mapObject
 						.animateCamera(CameraUpdateFactory.newLatLngZoom(
 								new LatLng(memo.getLatitude(), memo
@@ -94,12 +89,9 @@ public class Map extends Activity implements View.OnClickListener {
 						marker.setPosition(point);
 						circle.setCenter(point);
 
-						lat = (marker.getPosition().latitude);
-						lng = (marker.getPosition().longitude);
+						lat = (point.latitude);
+						lng = (point.longitude);
 
-						Toast.makeText(getApplicationContext(),
-								"Lat : " + lat + " Long : " + lng,
-								Toast.LENGTH_SHORT).show();
 					}
 				}
 			});
