@@ -157,11 +157,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	public List<Memo> getAllMemoInformation() {
 
+		SQLiteDatabase db = this.getReadableDatabase();
+		
 		List<Memo> memoList = new ArrayList<Memo>();
 		// Select All Query
 		String selectQuery = "SELECT * FROM " + TABLE_MEMO;
 
-		SQLiteDatabase db = this.getReadableDatabase();
+
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		// looping through all rows and adding to list
@@ -201,7 +203,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	 * @return
 	 */
 
-	public int updateMemoInformation(Memo memo, String title) {
+	public int updateMemoInformation(Memo memo, String title) throws NullPointerException {
+		if (title == null){throw new NullPointerException();}
+		else{
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		// updating single memo
@@ -216,7 +220,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// updating row
 		return db.update(TABLE_MEMO, values, KEY_TITLE + " = ? ",
-				new String[] { title });
+				new String[] { title });}
 	}
 
 	/***
