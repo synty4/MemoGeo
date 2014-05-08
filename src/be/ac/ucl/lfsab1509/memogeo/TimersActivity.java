@@ -32,9 +32,7 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 	private EditText selectTime;
 	private EditText selectDate;
 	private MediaPlayer mp = new MediaPlayer();
-	private ArrayList<Memo> memos;
 
-	DatabaseHandler db;
 	
 	AlarmManager manager;
 	PendingIntent timePendingIntent, geoPendingIntent;
@@ -86,12 +84,9 @@ public class TimersActivity extends Activity implements View.OnClickListener{
 	}
 
 	private void createMemoList() {
-		Memo memo1 =new Memo("1", "test", "", 40.0, 80.0,"14:47","08/05/2014");
-		Memo memo2 =new Memo("2", "testing", "", 30.0, 80.0,"14:48","08/05/2014");
-		memos = new ArrayList<Memo>();
-		memos.add(memo1);
-		memos.add(memo2);
-		geoRegisterIntents(memos);
+		DatabaseHandler db = new DatabaseHandler(this);
+		ArrayList<Memo> memos = new ArrayList<Memo>(db.getAllMemoInformation());
+		//geoRegisterIntents(memos); Faut encore tester ceci.
 		timeRegisterIntents(memos);
 		
     }
