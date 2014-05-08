@@ -121,11 +121,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// I changed the parameter to be a string....
 
 	public Memo getMemoInformation(String title) {
+		
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		String[] param = new String[1];
 		param[0] = title;
-		// null,//group by null,//having null,//order by null//limit
 
 		Cursor cursor = db.rawQuery("SELECT " + KEY_TITLE + " , "
 				+ KEY_DESCRIPTION + " , " + KEY_ADDRESS + " , " + KEY_LATITUDE
@@ -159,35 +159,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		List<Memo> memoList = new ArrayList<Memo>();
 		// Select All Query
-		String selectQuery = "SELECT  * FROM " + TABLE_MEMO;
+		String selectQuery = "SELECT * FROM " + TABLE_MEMO;
 
-		SQLiteDatabase db = this.getWritableDatabase();
+		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		// looping through all rows and adding to list
-		Memo memoInfo;
 		if (cursor.moveToFirst()) {
-			memoInfo = new Memo();
-			memoInfo.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE)));
-			memoInfo.setMemo(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
-			memoInfo.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
-			memoInfo.setLatitude(cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)));
-			memoInfo.setLongitude(cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)));
-			memoInfo.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
-			memoInfo.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+			Memo memoInfo = new Memo(
+					        cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+							cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
+							cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)), 
+							cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)), 
+							cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
+							cursor.getString(cursor.getColumnIndex(KEY_TIME)), 
+							cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+			
 			// Adding MemoInfo to list
 			memoList.add(memoInfo);
 			while (cursor.moveToNext()) {
-				memoInfo = new Memo();
-				memoInfo.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE)));
-				memoInfo.setMemo(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
-				memoInfo.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
-				memoInfo.setLatitude(cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)));
-				memoInfo.setLongitude(cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)));
-				memoInfo.setTime(cursor.getString(cursor.getColumnIndex(KEY_TIME)));
-				memoInfo.setDate(cursor.getString(cursor.getColumnIndex(KEY_DATE)));
+				Memo memoInfoLooped = new Memo(
+				cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+				cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
+				cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)), 
+				cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)), 
+				cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE)),
+				cursor.getString(cursor.getColumnIndex(KEY_TIME)), 
+				cursor.getString(cursor.getColumnIndex(KEY_DATE)));
 				// Adding MemoInfo to list
-				memoList.add(memoInfo);
+				memoList.add(memoInfoLooped);
 			}
 		}
 		return memoList;
