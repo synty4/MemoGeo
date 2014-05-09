@@ -69,10 +69,10 @@ public class ListMemo extends Activity implements View.OnClickListener {
             		//this will be used to update the changes
             		memoId = String.valueOf(id);
             		index = position+1;
-            		Object listItem =  listData.getItemAtPosition(position);
-            		//ListViewItem item = items.get(position);
-            		//Toast.makeText(getApplicationContext(), "You selected item "+ listData.get, Toast.LENGTH_SHORT).show();
-            
+            		
+            		
+            		String title = db.getTitle(c);
+            		Toast.makeText(getApplicationContext(), "You have selected memo : "+ title, Toast.LENGTH_SHORT).show();
             	
             	}          		
             	    
