@@ -200,7 +200,7 @@ public void delete(View v){
 			description=db.getDescription(c);
 			Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
     	 	alertDialogBuilder.setTitle("Alert Memo");
-    	 	alertDialogBuilder.setMessage("Title:"+title+"\n"+"Memo:"+description);
+    	 	alertDialogBuilder.setMessage("Title: "+title+"\n"+"\n"+"Memo: "+description);
     	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
     			@SuppressWarnings("null")
 				public void onClick(DialogInterface dialog,int id) {
