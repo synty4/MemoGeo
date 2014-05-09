@@ -79,10 +79,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			startActivity(writeNewMemo);
 			break;
 		case R.id.open_map:
-			memo.setTitle("");
-			memo.setMemo("");
-			Intent map = new Intent(MainActivity.this, Map.class);
-			map.putExtra("memo", memo);
+
+			Intent map = new Intent(MainActivity.this, Overview.class);
+
 			startActivity(map);
 			break;
 		case R.id.list_memo:

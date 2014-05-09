@@ -150,11 +150,48 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				}
 				
 				else{
+					if(selectDate.length() <1 ){
+						//	Toast.makeText(getApplicationContext(), "Pease enter an address", Toast.LENGTH_SHORT).show();
+							
+							Builder alertDialogBuilder = new AlertDialog.Builder(OptionsActivity.this);
+				    	 	alertDialogBuilder.setTitle("date error");
+				    	 	alertDialogBuilder.setMessage("Please enter a day");
+				    	 	
+				        		alertDialogBuilder.setNegativeButton("OK",new DialogInterface.OnClickListener() {
+				        			public void onClick(DialogInterface dialog,int id) {
+				        				dialog.cancel();
+				        			}
+				        		});
+				        	 
+				        		AlertDialog alertDialog = alertDialogBuilder.create();
+				        		//Show the dialog
+				        		alertDialog.show();
+					
+						return;}
+					else{
+						if(selectTime.length() <1){
+							//	Toast.makeText(getApplicationContext(), "Pease enter an address", Toast.LENGTH_SHORT).show();
+								
+								Builder alertDialogBuilder = new AlertDialog.Builder(OptionsActivity.this);
+					    	 	alertDialogBuilder.setTitle("time error");
+					    	 	alertDialogBuilder.setMessage("Please enter an hour");
+					    	 	
+					        		alertDialogBuilder.setNegativeButton("OK",new DialogInterface.OnClickListener() {
+					        			public void onClick(DialogInterface dialog,int id) {
+					        				dialog.cancel();
+					        			}
+					        		});
+					        	 
+					        		AlertDialog alertDialog = alertDialogBuilder.create();
+					        		//Show the dialog
+					        		alertDialog.show();
+						
+							return;}
 				memo.setAddress(selectAddress.getText().toString());
 				memo.setTime(selectTime.getText().toString());
 				memo.setDate(selectDate.getText().toString());
 				}
-				
+				}
 				
 				DatabaseHandler db = new DatabaseHandler(this);
 				try
