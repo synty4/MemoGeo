@@ -28,12 +28,6 @@ public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTim
         return new TimePickerDialog(getActivity(), this, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
     }
-		
-		public void putParentActivity(int x)
-		
-			{
-				parentActivity = x;
-			}
 			
 	
 	@Override
@@ -57,15 +51,8 @@ public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTim
 		// Generate the string Time for the optionsActivity class
 		//((OptionsActivity) getActivity()).EditTextTime(hour+":"+min);
 		
-		if (parentActivity == 1)
-			
-				{
-						((OptionsActivity) getActivity()).editTextTime(hour+":"+min);
-					}
-					else
-					{
-						((TimersActivity) getActivity()).editTextTime(hour+":"+min);
-					}
+		((OptionsActivity) getActivity()).editTextTime(hour+":"+min);
+				
 		
 	}
 

@@ -21,6 +21,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private Button openMap;
 	private Button here;
 	private Button save;
+	private Button back;
 	private EditText selectTime;
 	private EditText selectDate;
 	private EditText selectAddress;
@@ -32,12 +33,15 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_options);
 		
-		this.chooseTime = (Button) findViewById(R.id.buttonTime);//Bouton et champ de l'heure
+		this.back = (Button) findViewById(R.id.back2);
+		this.back.setOnClickListener(this);
+		
+		this.chooseTime = (Button) findViewById(R.id.buttonTime);
 		this.chooseTime.setOnClickListener(this);
 		
 		this.selectTime = (EditText) findViewById(R.id.editTextTime);
 		
-		this.chooseDate = (Button) findViewById(R.id.buttonDate);//Bouton et champ de la date
+		this.chooseDate = (Button) findViewById(R.id.buttonDate);
 		this.chooseDate.setOnClickListener(this);
 		
 		this.selectDate = (EditText) findViewById(R.id.editTextDate);
@@ -57,7 +61,6 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		Intent memoReceiver = getIntent();
  		memo = (Memo) memoReceiver.getSerializableExtra("memo");
  		
- 		//if(memo.getLatitude() != 0.0 && memo.getLongitude() != 0.0)
  		if(memo.getAddress()==null)
  		{	
  			GPSTracker gps = new GPSTracker(this);
@@ -83,15 +86,19 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		
 		switch (v.getId())
 		{
+			case R.id.back2:
+				Intent back = new Intent(OptionsActivity.this, WriteNewMemo.class);
+				back.putExtra("memo", memo);
+				startActivity(back);
+				break;
+		
 			case R.id.buttonTime:
 				ChooseTime chooseTime = new ChooseTime();
-				chooseTime.putParentActivity(1);
 				chooseTime.show(getFragmentManager(), "Time");
 				break;
 			
 			case R.id.buttonDate:
 				ChooseDate chooseDate = new ChooseDate();
-				chooseDate.putParentActivity(1);
 				chooseDate.show(getFragmentManager(), "Date");
 				break;
 				
@@ -110,8 +117,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	                
 	                editTextAddress(gps.getAddress(gps.getLatitude(), gps.getLongitude()));
 	                memo.setLatitude(gps.getLatitude());
-	                memo.setLongitude(gps.getLongitude()); 
-	                Toast.makeText(getApplicationContext(), "LATLNG : "+memo.getLatitude()+" "+memo.getLongitude(), Toast.LENGTH_SHORT).show();
+	                memo.setLongitude(gps.getLongitude());
 	                
 	            }else{
 	                // can't get location
@@ -155,7 +161,9 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				{db.updateMemoInformation(memo, memo.getTitle());}
 				catch (NullPointerException e){throw e;}
 				db.addMemoInformation(memo);
-				Toast.makeText(getApplicationContext(), "memo saved"+memo.toString(), Toast.LENGTH_LONG).show();
+				
+				Intent returnToMenu = new Intent(OptionsActivity.this, MainActivity.class);
+				startActivity(returnToMenu);
 		}
 		
 	}

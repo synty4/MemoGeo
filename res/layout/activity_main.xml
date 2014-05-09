@@ -37,15 +37,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/timers"
-        style="@style/MyButton.Large"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/timers"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
         android:id="@+id/list_memo"
         style="@style/MyButton.Large"
         android:layout_width="300dp"

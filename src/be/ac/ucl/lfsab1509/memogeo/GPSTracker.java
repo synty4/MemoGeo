@@ -41,7 +41,7 @@ public class GPSTracker extends Service implements LocationListener {
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // 10 meters
  
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 6 * 1; // 1 minute
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 3 * 1; //30 sec
  
     // Declaring a Location Manager
     protected LocationManager locationManager;
@@ -118,7 +118,7 @@ public class GPSTracker extends Service implements LocationListener {
 			Geocoder here = new Geocoder(mContext, Locale.getDefault());
 			List<Address> address = here.getFromLocation(lat, lng, 1);
 			if (address.isEmpty()) {
-				addr = "error";
+				addr = "No address found";
 			} else {
 				if (address.size() > 0) {
 					

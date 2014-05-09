@@ -11,8 +11,6 @@ import android.widget.DatePicker;
 public class ChooseDate extends DialogFragment implements DatePickerDialog.OnDateSetListener
 {
 	
-	private int parentActivity; 
-	
 	@Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
 	{
@@ -25,11 +23,6 @@ public class ChooseDate extends DialogFragment implements DatePickerDialog.OnDat
         // Create a new instance of DatePickerDialog and return it
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
-
-	public void putParentActivity(int x)
-		{
-			parentActivity = x;
-		}
 	
 	@Override
 	public void onDateSet(DatePicker view, int year, int month, int day) 
@@ -51,15 +44,8 @@ public class ChooseDate extends DialogFragment implements DatePickerDialog.OnDat
 		}
 		
 		// Generate the string Date for the optionsActivity class
-		//((OptionsActivity) getActivity()).EditTextDate(days+"/"+mon+"/"+year);
-		
-		if (parentActivity==1)
-				    {
-						((OptionsActivity) getActivity()).editTextDate(days+"/"+mon+"/"+year);
-				    }
-					else
-					{
-						((TimersActivity) getActivity()).editTextDate(days+"/"+mon+"/"+year);
-					}
+		//((OptionsActivity) getActivity()).EditTextDate(days+"/"+mon+"/"+year)
+		((OptionsActivity) getActivity()).editTextDate(days+"/"+mon+"/"+year);
+				    
 	}
 }

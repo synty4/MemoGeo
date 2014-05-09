@@ -162,12 +162,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		// Select All Query
-		//String selectQuery = "SELECT " + KEY_TITLE + " , "
-			//	+ KEY_DESCRIPTION + " , " + KEY_ADDRESS + " , " + KEY_LATITUDE
-				//+ " , " + KEY_LONGITUDE + " , " + KEY_TIME + " , " + KEY_DATE
-				//+ " FROM " + TABLE_MEMO;
+		String selectQuery = "SELECT " + KEY_TITLE + " , "
+			+ KEY_DESCRIPTION + " , " + KEY_ADDRESS + " , " + KEY_LATITUDE
+			+ " , " + KEY_LONGITUDE + " , " + KEY_TIME + " , " + KEY_DATE
+			+ " FROM " + TABLE_MEMO;
 
-		Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MEMO, null);
+		Cursor cursor = db.rawQuery(selectQuery, null);
 		
 		ArrayList<Memo> memoList = new ArrayList<Memo>();
 		
