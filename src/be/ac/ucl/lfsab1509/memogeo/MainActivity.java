@@ -10,10 +10,12 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.AlertDialog.Builder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.Menu;
@@ -198,17 +200,40 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				
 		        Memo memoToShow = new Memo();
 				memoToShow = (Memo) i.getSerializableExtra("memo");
+				final Intent editMemo = new Intent(MainActivity.this, WriteNewMemo.class);
+				editMemo.putExtra("memo", memoToShow);
 				
 				if(getHour(memoToShow)!=getTime())
 				{
-					Toast.makeText(getApplicationContext(), "alarm passed", Toast.LENGTH_SHORT).show();
+					return;
 				}
 				else
 				{
-				Intent editMemo = new Intent(MainActivity.this, WriteNewMemo.class);
-				editMemo.putExtra("memo", memoToShow);
-				startActivity(editMemo);
-				mp.start();
+					Builder alertDialogBuilder = new AlertDialog.Builder(
+							MainActivity.this);
+					alertDialogBuilder.setTitle("You have a new memo");
+					alertDialogBuilder.setMessage("Do you want to see your memo ? \n \n" + "Title : " + memoToShow.getTitle() );
+					alertDialogBuilder.setPositiveButton("Yes",
+							new DialogInterface.OnClickListener() {
+								@SuppressWarnings("null")
+								public void onClick(DialogInterface dialog, int id) {
+									
+									startActivity(editMemo);
+
+								}
+
+							});
+					alertDialogBuilder.setNegativeButton("No",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									dialog.cancel();
+								}
+							});
+
+					AlertDialog alertDialog = alertDialogBuilder.create();
+					// Show the dialog
+					alertDialog.show();
+					mp.start();
 				}
 			}
 		};
