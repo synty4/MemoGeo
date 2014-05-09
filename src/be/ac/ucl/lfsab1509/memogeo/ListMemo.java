@@ -131,7 +131,7 @@ public void delete(View v){
 				
 				//Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
 				Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
-				alertDialogBuilder.setTitle("Delete a Memo");
+				alertDialogBuilder.setTitle("Delete Error");
 	    	 	alertDialogBuilder.setMessage("Please select an Item");
 	    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 	    			@SuppressWarnings("null")
@@ -196,7 +196,7 @@ public void delete(View v){
 				
 				//Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
 				Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
-				alertDialogBuilder.setTitle("View a Memo");
+				alertDialogBuilder.setTitle("View Error");
 	    	 	alertDialogBuilder.setMessage("Please select an Item");
 	    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 	    			@SuppressWarnings("null")
@@ -229,7 +229,7 @@ public void delete(View v){
 				
 				//Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
 				Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
-				alertDialogBuilder.setTitle("Memo Geo Timer");
+				alertDialogBuilder.setTitle("Memo Geo Timer Error");
 	    	 	alertDialogBuilder.setMessage("Please enter an adress");
 	    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 	    			@SuppressWarnings("null")
