@@ -3,6 +3,9 @@ package be.ac.ucl.lfsab1509.memogeo;
 import DataBase.DatabaseHandler;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -119,10 +122,32 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 				break;
 			
 			case R.id.buttonSave:
+				if(selectAddress.length() <6){
+				//	Toast.makeText(getApplicationContext(), "Pease enter an address", Toast.LENGTH_SHORT).show();
+					
+					Builder alertDialogBuilder = new AlertDialog.Builder(OptionsActivity.this);
+		    	 	alertDialogBuilder.setTitle("Address error");
+		    	 	alertDialogBuilder.setMessage("You must add a address");
+		    	 	
+		        		alertDialogBuilder.setNegativeButton("OK",new DialogInterface.OnClickListener() {
+		        			public void onClick(DialogInterface dialog,int id) {
+		        				dialog.cancel();
+		        			}
+		        		});
+		        	 
+		        		AlertDialog alertDialog = alertDialogBuilder.create();
+		        		//Show the dialog
+		        		alertDialog.show();
+			
+				return;
+				
+				}
+				
+				else{
 				memo.setAddress(selectAddress.getText().toString());
 				memo.setTime(selectTime.getText().toString());
 				memo.setDate(selectDate.getText().toString());
-				
+				}
 				
 				
 				DatabaseHandler db = new DatabaseHandler(this);
@@ -135,23 +160,28 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		
 	}
 	
-	// Set the time in the EditText.
-	public void editTextTime(String time)
-	{
-		this.selectTime.setText(time);
-	}
 	
-	//Set the date in the EditText.
+	//Set the address in the EditText.
+		public void editTextAddress(String address)
+		{
+			this.selectAddress.setText(address);
+		}
+	
+		//Set the date in the EditText.
 	public void editTextDate(String date)
 	{
 		this.selectDate.setText(date);
 	}
 
-	//Set the address in the EditText.
-	public void editTextAddress(String address)
-	{
-		this.selectAddress.setText(address);
-	}
+	
+	// Set the time in the EditText.
+		public void editTextTime(String time)
+		{
+			this.selectTime.setText(time);
+		}
+		
+		
+		
 	
 public void backOptions(View v) {
 		
