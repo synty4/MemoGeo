@@ -26,14 +26,18 @@ public class ListMemo extends Activity implements View.OnClickListener {
 	private Button deleteAll;
 	private Button add;
 	private Button view;
-	
+	private Button tst;
 	private int index;
 	private Cursor c=null;
 	String memoId;
+	private Builder alertDialogBuilder;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_memo);
+		
+		this.tst = (Button) findViewById(R.id.test);
+		this.tst.setOnClickListener(this);
 		
 		this.delete = (Button) findViewById(R.id.delete_list_memo);
 		this.delete.setOnClickListener(this);
@@ -80,7 +84,6 @@ public class ListMemo extends Activity implements View.OnClickListener {
             		//this will be used to update the changes
             		memoId = String.valueOf(id);
             		index = position+1;
-            		
             		Object listItem =  listData.getItemAtPosition(position);
             		//ListViewItem item = items.get(position);
             		Toast.makeText(getApplicationContext(), "You selected item "+ position + ": " + listItem, Toast.LENGTH_SHORT).show();
@@ -120,6 +123,12 @@ public void delete(View v){
 
 		case R.id.delete_list_memo:
 		{
+			if (memoId==null){
+				
+				Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+				return;
+			}
+	else{
 			Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
     	 	alertDialogBuilder.setTitle("Delete item");
     	 	alertDialogBuilder.setMessage("Are you sure?");
@@ -127,21 +136,12 @@ public void delete(View v){
     			@SuppressWarnings("null")
 				public void onClick(DialogInterface dialog,int id) {
  				//listdata.removeViewAt(position);
-    				
-    				if (memoId==null){
-    					return;
-    				}
-    				else{
-                		Toast.makeText(getApplicationContext(), "You selected item "+memoId, Toast.LENGTH_SHORT).show();
     					db.deleteMemo(memoId);
     					memoId=null;
     					delete(v);
     				
     					customAdapter = new CustomCursorAdapter(getApplicationContext(),c);	
 						listData.setAdapter(customAdapter);
-    					
-    				}
-    				
     				//c.requery()
     			   // memo = new MemoInformation();
     				//db.deleteMemoInformation(memo);
@@ -159,19 +159,32 @@ public void delete(View v){
         		AlertDialog alertDialog = alertDialogBuilder.create();
         		//Show the dialog
         		alertDialog.show();
-         		
+    	 	}
       	}
 	
 			break;
 		case R.id.buttonAdd:
+			try{
 			intent.putExtra("memo", memo);
 			startActivity(intent);
+			 } catch( Exception e ) {
+                 e.printStackTrace();
+         }
+
 			break;
 		case R.id.buttonView:
-			if(c.moveToPosition(index-1))
-				memo = db.getMemoInformation(c.getString(c.getColumnIndex(c.getColumnName(1))));
-			intent.putExtra("memo", memo);
-			startActivity(intent);
+			if (memoId==null){
+				
+					Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+					return;
+			}
+			else{
+			    if(c.moveToPosition(index-1))
+			    	memo = db.getMemoInformation(c.getString(c.getColumnIndex(c.getColumnName(1))));
+			    	intent.putExtra("memo", memo);
+			    	startActivity(intent);
+			
+           }
 			break;	
 			
 		case R.id.buttonDeleteAll:
@@ -179,6 +192,32 @@ public void delete(View v){
 			startActivity(listdeleteMemo);
 			db.deleteAll();
 			break;
+			
+		case R.id.test:
+			String title;
+			String description;
+			title= db.getTitle(c);
+			description=db.getDescription(c);
+			Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
+    	 	alertDialogBuilder.setTitle("Alert Memo");
+    	 	alertDialogBuilder.setMessage("Title:"+title+"\n"+"Memo:"+description);
+    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+    			@SuppressWarnings("null")
+				public void onClick(DialogInterface dialog,int id) {
+    				dialog.cancel();
+    				//Toast.makeText(getApplicationContext(), "Title:" + title+"Memo:"+memo, Toast.LENGTH_SHORT).show();
+   				}
+
+   		    });
+        		//alertDialogBuilder.setNegativeButton("Snooze",new DialogInterface.OnClickListener() {
+        			//public void onClick(DialogInterface dialog,int id) {
+        				//dialog.cancel();
+        			//}
+        		//});
+        	 
+        		AlertDialog alertDialog = alertDialogBuilder.create();
+        		//Show the dialog
+        		alertDialog.show();
 		}
 	}
 

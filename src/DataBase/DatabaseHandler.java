@@ -86,6 +86,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.insert(TABLE_MEMO, null, values);
 		db.close(); // Closing database connection
 	}
+	
+	
 
 	public Cursor getAllData() {
 
@@ -105,7 +107,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		Cursor cur = db.rawQuery("SELECT " + KEY_ID + " , " + KEY_TITLE
+		Cursor cur = db.rawQuery("SELECT " + KEY_ID + " , " + KEY_TITLE+ " , " + KEY_DESCRIPTION
 				+ " FROM " + TABLE_MEMO, null);
 
 		return cur;
@@ -219,7 +221,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					new String[] { title });
 		}
 	}
-
+	
+	public String getTitle(Cursor c) {
+		return (c.getString(1));
+	}
+	public String getDescription(Cursor c) {
+		return (c.getString(2));
+	}
 	/***
 	 * deleteMemo() will delete a single memo from database
 	 * 
@@ -262,9 +270,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	}
 
-	public String getTitle(Cursor c) {
-		return (c.getString(1));
-	}
+	
 
 	public void deleteMemo(String id) {
 
