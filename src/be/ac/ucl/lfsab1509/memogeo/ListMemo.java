@@ -78,6 +78,7 @@ public class ListMemo extends Activity implements View.OnClickListener {
 		
 		 listData.setOnItemClickListener(new OnItemClickListener() 
          { //J'ai ajouté long id commme parametre
+			
             	@Override
             	    public void onItemClick(AdapterView<?> adapter, View view, final int position, long id)   {
                 //Get the id of the item in the list clicked on
@@ -87,6 +88,8 @@ public class ListMemo extends Activity implements View.OnClickListener {
             		Object listItem =  listData.getItemAtPosition(position);
             		//ListViewItem item = items.get(position);
             		Toast.makeText(getApplicationContext(), "You selected item "+ position + ": " + listItem, Toast.LENGTH_SHORT).show();
+            
+            	
             	}          		
             	    
          }); 
@@ -99,15 +102,15 @@ public boolean onCreateOptionsMenu(Menu menu) {
 	return true;
 }
 
-
 public void delete(View v){
 	
 	if(c.moveToPosition(index-1))
 	{
-		db.deleteMemoInformation(c.getString(c.getColumnIndex(c.getColumnName(1))));
 		Intent refresh = getIntent();
 		finish();
 		startActivity(refresh);
+		db.deleteMemoInformation(c.getString(c.getColumnIndex(c.getColumnName(1))));
+		
 	
 	}
 }
@@ -119,17 +122,32 @@ public void delete(View v){
 		Intent intent = new Intent(ListMemo.this, WriteNewMemo.class);
 		Memo memo = new Memo();
 		
+		
 		switch (v.getId()) {
 
 		case R.id.delete_list_memo:
 		{
 			if (memoId==null){
 				
-				Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
-				return;
+				//Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+				Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
+				alertDialogBuilder.setTitle("Delete a Memo");
+	    	 	alertDialogBuilder.setMessage("Please select an Item");
+	    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+	    			@SuppressWarnings("null")
+					public void onClick(DialogInterface dialog,int id) {
+	    				dialog.cancel();
+	    			}
+	    	 	 });
+	    	 	AlertDialog alertDialog = alertDialogBuilder.create();
+        		//Show the dialog
+        		alertDialog.show();
+
+	    	 	
 			}
 	else{
-			Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
+			//Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
+		    Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
     	 	alertDialogBuilder.setTitle("Delete item");
     	 	alertDialogBuilder.setMessage("Are you sure?");
     	 	alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
@@ -173,10 +191,23 @@ public void delete(View v){
 
 			break;
 		case R.id.buttonView:
+			
 			if (memoId==null){
 				
-					Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
-					return;
+				//Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+				Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
+				alertDialogBuilder.setTitle("View a Memo");
+	    	 	alertDialogBuilder.setMessage("Please select an Item");
+	    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+	    			@SuppressWarnings("null")
+					public void onClick(DialogInterface dialog,int id) {
+	    				dialog.cancel();
+	    			}
+	    	 	 });
+	    	 	AlertDialog alertDialog = alertDialogBuilder.create();
+        		//Show the dialog
+        		alertDialog.show();
+
 			}
 			else{
 			    if(c.moveToPosition(index-1))
@@ -194,10 +225,29 @@ public void delete(View v){
 			break;
 			
 		case R.id.test:
+			if (memoId==null){
+				
+				//Toast.makeText(getApplicationContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+				Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
+				alertDialogBuilder.setTitle("Memo Geo Timer");
+	    	 	alertDialogBuilder.setMessage("Please enter an adress");
+	    	 	alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+	    			@SuppressWarnings("null")
+					public void onClick(DialogInterface dialog,int id) {
+	    				dialog.cancel();
+	    			}
+	    	 	 });
+	    	 	AlertDialog alertDialog = alertDialogBuilder.create();
+        		//Show the dialog
+        		alertDialog.show();
+		}
+		else
+		{
 			String title;
 			String description;
 			title= db.getTitle(c);
 			description=db.getDescription(c);
+			
 			Builder alertDialogBuilder = new AlertDialog.Builder(ListMemo.this);
     	 	alertDialogBuilder.setTitle("Alert Memo");
     	 	alertDialogBuilder.setMessage("Title: "+title+"\n"+"\n"+"Memo: "+description);
@@ -219,6 +269,8 @@ public void delete(View v){
         		//Show the dialog
         		alertDialog.show();
 		}
+		}
+		
 	}
 
 	
