@@ -9,11 +9,11 @@
     <string name="choose">Choose</string>
     <string name="date">Date</string>
     <string name="delete">Delete</string>
-    <string name="deleteAll">Delete All</string> 
+    <string name="deleteAll">Delete All</string>
     <string name="geoTimer">Geo Timer</string>
     <string name="here">Here</string>
     <string name="hintTime">HH:MM</string>
-    <string name="hintDate">DD/MM/YYYY</string>    
+    <string name="hintDate">DD/MM/YYYY</string>
     <string name="list_memo">List Memo</string>
     <string name="launch">Launch</string>
     <string name="map">Map</string>
@@ -33,14 +33,15 @@
     <string name="title_head_list_memo">Your List Memo :</string>
     <string name="save">Save</string>
     <string name="selectPos">Select position</string>
+    <string name="selectMemo">Edit Memo</string>
     <string name="view">View or Edit</string>
     <string name="where">Where</string>
-    <string name="when">When</string> 
-    <string name="write_here">Write your memo here.</string>    
-   
+    <string name="when">When</string>
+    <string name="write_here">Write your memo here.</string>
     <string name="API_key_Adrien"> AIzaSyBRtPkAJ_Pv4HYwOY2Hr6GfPiZySXS8WCs</string>
     <string name="API_key_Adrien2">AIzaSyCwoTGigGx6ARja81LqOYaChO9AX0nvqzU</string>
     <string name="API_key_Olivier">AIzaSyAJVQ-drhijcMdPBp1O1gIJ5HYlHptmw4U</string>
-  
+    <string name="title_activity_overview">Overview</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
