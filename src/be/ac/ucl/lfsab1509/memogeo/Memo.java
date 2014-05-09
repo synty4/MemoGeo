@@ -18,7 +18,7 @@ public class Memo implements Serializable
 	private String date;
 	
 	// Constructor
-	public Memo(String title, String memo, String address, double longitude, double latitude, String time, String date)
+	public Memo(String title, String memo, String address, double latitude, double longitude, String time, String date)
 	{
 
 		this.title = title;
