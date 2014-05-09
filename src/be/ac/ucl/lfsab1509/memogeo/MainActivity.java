@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.AlertDialog.Builder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -18,13 +19,14 @@ import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
 	private Button newMemo;
 	private Button map;
 	private Button memoList;
+	
+	private Builder alertDialogBuilder;
 	
 	private MediaPlayer mp = new MediaPlayer();
 	
@@ -56,7 +58,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		this.memoList = (Button) findViewById(R.id.list_memo);
 		this.memoList.setOnClickListener(this);
 		
-		setup("intent");
+		setup();
 		createMemoList();	
 	}
 
@@ -157,7 +159,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private void setTimedAlert(long hour ,final long eventID, int requestCode, List<Memo> memos)
 	{	    	
     	Intent intent = new Intent("be.ac.ucl.lfsab1509.memogeo");
-    	intent.putExtra("EventId", memos.get(requestCode).getTitle());
     	intent.putExtra("memo", memos.get(requestCode));
     	PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
@@ -168,13 +169,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 	
 	// Prépare the alarm.
-	public void setup(String memo) {
-		final String title = memo;
+	public void setup() {
 
 		br = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context c, Intent i) {
-				Toast.makeText(getApplicationContext(), title+ " : " + i.getStringExtra("EventId"), Toast.LENGTH_LONG).show();
+				
+				Memo memoToShow = new Memo();
+				memoToShow = (Memo) i.getSerializableExtra("memo");
+				
+				Intent editMemo = new Intent(MainActivity.this, WriteNewMemo.class);
+				editMemo.putExtra("memo", memoToShow);
+				startActivity(editMemo);
+				
 				mp.start();
 			}
 		};
