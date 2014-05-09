@@ -202,7 +202,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				final Intent editMemo = new Intent(MainActivity.this, WriteNewMemo.class);
 				editMemo.putExtra("memo", memoToShow);
 				
-				if(getHour(memoToShow)<getTime())// TODO, check de position 
+				if(getHour(memoToShow)!=getTime())// TODO, check de position 
 				{
 					return;
 				}
