@@ -61,7 +61,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		Intent memoReceiver = getIntent();
  		memo = (Memo) memoReceiver.getSerializableExtra("memo");
  		
- 		if(memo.getAddress()==null)
+ 		if(memo.getLatitude() !=0.0 && memo.getLongitude() !=0.0)
  		{	
  			GPSTracker gps = new GPSTracker(this);
  			editTextAddress(gps.getAddress(memo.getLatitude(), memo.getLongitude()));
