@@ -127,7 +127,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 					
 					Builder alertDialogBuilder = new AlertDialog.Builder(OptionsActivity.this);
 		    	 	alertDialogBuilder.setTitle("Address error");
-		    	 	alertDialogBuilder.setMessage("You must add a address");
+		    	 	alertDialogBuilder.setMessage("Please enter an address");
 		    	 	
 		        		alertDialogBuilder.setNegativeButton("OK",new DialogInterface.OnClickListener() {
 		        			public void onClick(DialogInterface dialog,int id) {
