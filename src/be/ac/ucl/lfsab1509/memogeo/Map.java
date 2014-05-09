@@ -1,3 +1,4 @@
+
 package be.ac.ucl.lfsab1509.memogeo;
 
 import android.os.Bundle;
@@ -5,23 +6,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+//import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+//import com.google.android.gms.maps.GoogleMap;
+//import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+//import com.google.android.gms.maps.MapFragment;
+//import com.google.android.gms.maps.CameraUpdateFactory;
+//import com.google.android.gms.maps.model.Circle;
+//import com.google.android.gms.maps.model.CircleOptions;
+//import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.maps.model.Marker;
+//import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Map extends Activity implements View.OnClickListener {
 
-	private GoogleMap mapObject;
-	private Marker marker;
-	private Circle circle;
+	//private GoogleMap mapObject;
+	//private Marker marker;
+	//private Circle circle;
 	private Button selectPos;
 
 	Memo memo;
@@ -39,15 +40,15 @@ public class Map extends Activity implements View.OnClickListener {
 
 		Intent memoReceiver = getIntent();
 		memo = (Memo) memoReceiver.getSerializableExtra("memo");
-
+/**
 		try {
 			initializeMap();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+**/
 	}
-
+/**
 	private void initializeMap() {
 		if (mapObject == null) {
 			mapObject = ((MapFragment) getFragmentManager().findFragmentById(
@@ -104,7 +105,7 @@ public class Map extends Activity implements View.OnClickListener {
 			}
 		}
 	}
-
+**/
 	public void onClick(View v) {
 
 		switch (v.getId()) {
@@ -124,7 +125,7 @@ public class Map extends Activity implements View.OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		initializeMap();
+		//initializeMap();
 	}
 
 }
