@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 public class ChooseTime extends DialogFragment implements TimePickerDialog.OnTimeSetListener
 {
-	private int parentActivity;
 		
 		public Dialog onCreateDialog(Bundle savedInstanceState)
 		{

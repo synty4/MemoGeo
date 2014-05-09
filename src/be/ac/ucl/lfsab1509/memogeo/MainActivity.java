@@ -19,6 +19,7 @@ import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -128,33 +129,53 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private void timeRegisterIntents(ArrayList<Memo> memos) {
     	
 		for(int i = 0; i < memos.size(); i++) {
-    			
-    		int year,
-			month,
-			day,
-			hour,
-			minut;// R�cup�re les infos du m�mo pour les passer � la cr�ation de
-					// l'alarme.
-			String date[] = memos.get(i).getDate().split("/");
-			String time[] = memos.get(i).getTime().split(":");
-
-			year = Integer.parseInt(date[2]);
-			month = Integer.parseInt(date[1]) - 1;// car les mois en android
-												 // commence � 0.
-			day = Integer.parseInt(date[0]);
-			hour = Integer.parseInt(time[0]);
-			minut = Integer.parseInt(time[1]);
-
-			Calendar calendar = Calendar.getInstance();
-			
-			calendar.set(year, month, day, hour, minut, 0); // set(int year, int
-															// month, int day,
-															// int hourOfDay,
-															// int minute, int
-															// second
-			setTimedAlert(calendar.getTimeInMillis(), i+1, i, memos);
+			setTimedAlert(getHour(memos.get(i)), i+1 , i , memos);
     	}
     }
+	
+	private long getTime()
+	{
+		final Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        
+        Calendar calendar = Calendar.getInstance();
+		calendar.set(year, month, day, hour, minute, 0);
+		
+		return calendar.getTimeInMillis();
+	}
+	
+	private long getHour(Memo memo)
+	{
+		int year,
+		month,
+		day,
+		hour,
+		minut;// R�cup�re les infos du m�mo pour les passer � la cr�ation de
+				// l'alarme.
+		String date[] = memo.getDate().split("/");
+		String time[] = memo.getTime().split(":");
+
+		year = Integer.parseInt(date[2]);
+		month = Integer.parseInt(date[1]) - 1;// car les mois en android
+											 // commence � 0.
+		day = Integer.parseInt(date[0]);
+		hour = Integer.parseInt(time[0]);
+		minut = Integer.parseInt(time[1]);
+
+		Calendar calendar = Calendar.getInstance();
+		
+		calendar.set(year, month, day, hour, minut, 0); // set(int year, int
+														// month, int day,
+														// int hourOfDay,
+														// int minute, int
+														// second
+		
+		return calendar.getTimeInMillis();
+	}
 	
 	private void setTimedAlert(long hour ,final long eventID, int requestCode, List<Memo> memos)
 	{	    	
@@ -175,14 +196,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			@Override
 			public void onReceive(Context c, Intent i) {
 				
-				Memo memoToShow = new Memo();
+		        Memo memoToShow = new Memo();
 				memoToShow = (Memo) i.getSerializableExtra("memo");
 				
+				if(getHour(memoToShow)!=getTime())
+				{
+					Toast.makeText(getApplicationContext(), "alarm passed", Toast.LENGTH_SHORT).show();
+				}
+				else
+				{
 				Intent editMemo = new Intent(MainActivity.this, WriteNewMemo.class);
 				editMemo.putExtra("memo", memoToShow);
 				startActivity(editMemo);
-				
 				mp.start();
+				}
 			}
 		};
 		registerReceiver(br, new IntentFilter("be.ac.ucl.lfsab1509.memogeo"));
