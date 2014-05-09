@@ -97,7 +97,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		DatabaseHandler db = new DatabaseHandler(this);
 		ArrayList<Memo> memos = new ArrayList<Memo>(db.getAllMemoInformation());
 		geoRegisterIntents(memos);
-		//timeRegisterIntents(memos);
+		timeRegisterIntents(memos);
 		
     }
 	
@@ -109,7 +109,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     				i+1, 
     				i, memos);
     	}
-    	Toast.makeText(getApplicationContext(), "geo alerts launched", Toast.LENGTH_SHORT).show();
     }
 	
 	private void setProximityAlert(double lat, double lon, final long eventID, int requestCode, List<Memo> memos)
@@ -135,7 +134,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			minut;// R�cup�re les infos du m�mo pour les passer � la cr�ation de
 					// l'alarme.
 			String date[] = memos.get(i).getDate().split("/");
-			Toast.makeText(getApplicationContext(), "memo values :" + date[0]+ date[1]+ date[2], Toast.LENGTH_SHORT).show();
 			String time[] = memos.get(i).getTime().split(":");
 
 			year = Integer.parseInt(date[2]);
@@ -161,7 +159,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	Intent intent = new Intent("be.ac.ucl.lfsab1509.memogeo");
     	intent.putExtra("EventId", memos.get(requestCode).getTitle());
     	intent.putExtra("memo", memos.get(requestCode));
-    	Toast.makeText(getApplicationContext(), "memo values :"+memos.get(requestCode).getTitle()+" "+memos.get(requestCode).getTime(), Toast.LENGTH_SHORT).show();
     	PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
 		manager = (AlarmManager) (this

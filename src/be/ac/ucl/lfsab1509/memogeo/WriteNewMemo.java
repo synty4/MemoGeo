@@ -1,6 +1,5 @@
 package be.ac.ucl.lfsab1509.memogeo;
 
-import DataBase.DatabaseHandler;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -54,28 +53,10 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 	
 	
 	public void back(View v) {
-		
-		//if(v.getId() == R.id.buttonSave1){
-			
-		//}else if(v.getId() == R.id.buttonOption){
-			// code pour lancer les options.
-			// 1. create intent.
+	
 			Intent intent = new Intent(WriteNewMemo.this, MainActivity.class);
-
-			// 2. create memo object.
-			Memo memo = new Memo();
-			//editTextMemo = (EditText) findViewById(R.id.editTextMem);
-			//memo.setMemo(editTextMemo.getText().toString());
-
-			// 3. put object in the intent.
 			intent.putExtra("memo", memo);
-
-			// 4. Start the next activity.
 			startActivity(intent);
-			
-		
-		
-		
 	}
 	
 	
@@ -85,33 +66,4 @@ public class WriteNewMemo extends Activity implements View.OnClickListener {
 		descriptionBox.setText("");
 		
 	}
-	
-	public void add(View view){
- 		DatabaseHandler db = new DatabaseHandler(this);
- 		
- 		Memo myMemo= new Memo();
- 		myMemo.setTitle(titleBox.getText().toString());
- 		myMemo.setMemo(descriptionBox.getText().toString());
- 		
-
-		db.addMemoInformation(myMemo);	
- 	}
-	
-
-    public void view (View view) {
-     	DatabaseHandler db = new DatabaseHandler(this);
- 	
-	     //MemoInformation myMemo= db.getMemoInfo(titleBox.getText().toString());
-	     Memo myMemo= db.getMemoInformation(titleBox.getText().toString());
- 			
-			
-			db.addMemoInformation(myMemo);
- 
- 	     if (myMemo != null) {
- 		   titleBox.setText(String.valueOf(myMemo.getTitle()));
- 		   descriptionBox.setText(String.valueOf(myMemo.getMemo()));
-       } else {
- 	         titleBox.setText("No Match Found");
-       }        	
-   }
  }
