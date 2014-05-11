@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
 
+<resources>
     <string name="action_settings">Settings</string>
     <string name="add">Add</string>
     <string name="address">Address</string>
@@ -41,7 +40,8 @@
     <string name="API_key_Adrien"> AIzaSyBRtPkAJ_Pv4HYwOY2Hr6GfPiZySXS8WCs</string>
     <string name="API_key_Adrien2">AIzaSyCwoTGigGx6ARja81LqOYaChO9AX0nvqzU</string>
     <string name="API_key_Olivier">AIzaSyAJVQ-drhijcMdPBp1O1gIJ5HYlHptmw4U</string>
+    <string name="API_key_Syntyche">AIzaSyATI1cQCC2GGsPelA8EEeib4I4RUFGbna0</string>
     <string name="title_activity_overview">Overview</string>
     <string name="hello_world">Hello world!</string>
-
+    
 </resources>

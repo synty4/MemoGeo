@@ -101,12 +101,15 @@
         </activity>
 
         <!-- on lie la clef API (pour le meilleur ou pour le pire) -->
-        <meta-data
+       
+         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/API_key_Adrien2" />
+            android:value="@string/API_key_Syntyche" />
+         
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        
 
         
     </application>

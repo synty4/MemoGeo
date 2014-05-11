@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,13 +20,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 public class Map extends Activity implements View.OnClickListener {
 
 	private GoogleMap mapObject;
 	private Marker marker;
 	private Circle circle;
 	private Button selectPos;
-
+	private EditText AddressBox;
 	Memo memo;
 
 	double lat;
@@ -89,6 +91,9 @@ public class Map extends Activity implements View.OnClickListener {
 								.center(point).radius(10).strokeWidth(5));
 						lat = (marker.getPosition().latitude);
 						lng = (marker.getPosition().longitude);
+						Toast.makeText(getApplicationContext(),
+								"Latitude: "+lat+"Longitude: "+lng, Toast.LENGTH_SHORT)
+								.show();
 
 					} else {
 						marker.setPosition(point);
@@ -115,15 +120,17 @@ public class Map extends Activity implements View.OnClickListener {
 		switch (v.getId()) {
 		case R.id.buttonSelectPos:
 
-			memo.setLatitude(lat);
-			memo.setLongitude(lng);
 			
-			lat = 0.0;
-			lng = 0.0;
+			
+			 // editTextAddress(memo.setLatitude(lat), memo.setLongitude(lng));
+            
+			
+			//lat = 0.0;
+			//lng = 0.0;
 
-			Intent options = new Intent(Map.this, OptionsActivity.class);
-			options.putExtra("memo", memo);
-			startActivity(options);
+			Intent opt = new Intent(Map.this, OptionsActivity.class);
+			opt.putExtra("memo", memo);
+			startActivity(opt);
 
 			break;
 		}
