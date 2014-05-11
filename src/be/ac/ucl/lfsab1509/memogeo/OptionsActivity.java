@@ -24,7 +24,7 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 	private Button back;
 	private EditText selectTime;
 	private EditText selectDate;
-	private EditText selectAddress;
+	static EditText selectAddress;
 	Memo memo;
 	//private TextView test;
 	
@@ -88,12 +88,9 @@ public class OptionsActivity extends Activity implements View.OnClickListener {
 		{
 			case R.id.back2:
 				Intent back = new Intent(OptionsActivity.this, WriteNewMemo.class);
-				memo.setTitle("");
-				memo.setMemo("");
 				back.putExtra("memo", memo);
 				startActivity(back);
 				break;
-				
 		
 			case R.id.buttonTime:
 				ChooseTime chooseTime = new ChooseTime();
