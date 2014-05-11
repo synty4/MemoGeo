@@ -27,7 +27,7 @@ public class Map extends Activity implements View.OnClickListener {
 	private Marker marker;
 	private Circle circle;
 	private Button selectPos;
-	private EditText AddressBox;
+	private EditText addressBox;
 	Memo memo;
 
 	double lat;
@@ -37,7 +37,8 @@ public class Map extends Activity implements View.OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map);
-
+		
+		addressBox=OptionsActivity.selectAddress;
 		this.selectPos = (Button) findViewById(R.id.buttonSelectPos);
 		this.selectPos.setOnClickListener(this);
 
@@ -91,10 +92,7 @@ public class Map extends Activity implements View.OnClickListener {
 								.center(point).radius(10).strokeWidth(5));
 						lat = (marker.getPosition().latitude);
 						lng = (marker.getPosition().longitude);
-						Toast.makeText(getApplicationContext(),
-								"Latitude: "+lat+"Longitude: "+lng, Toast.LENGTH_SHORT)
-								.show();
-
+						
 					} else {
 						marker.setPosition(point);
 						circle.setCenter(point);
@@ -103,6 +101,12 @@ public class Map extends Activity implements View.OnClickListener {
 						lng = (point.longitude);
 
 					}
+					Toast.makeText(getApplicationContext(),
+							"Latitude: "+lat+" and "+"Longitude: "+lng, Toast.LENGTH_SHORT)
+							.show();
+					
+					memo.setLatitude(lat);
+					memo.setLongitude(lng);
 				}
 			});
 
@@ -118,17 +122,13 @@ public class Map extends Activity implements View.OnClickListener {
 	public void onClick(View v) {
 
 		switch (v.getId()) {
-		case R.id.buttonSelectPos:
-
-			
-			
-			 // editTextAddress(memo.setLatitude(lat), memo.setLongitude(lng));
-            
+		case R.id.buttonSelectPos:    
 			
 			//lat = 0.0;
 			//lng = 0.0;
 
 			Intent opt = new Intent(Map.this, OptionsActivity.class);
+			addressBox.setText(memo.getAddress());
 			opt.putExtra("memo", memo);
 			startActivity(opt);
 
