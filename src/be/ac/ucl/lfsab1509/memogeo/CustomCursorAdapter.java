@@ -58,7 +58,8 @@ class MemoHolder{
 		
 	    title = (TextView) row.findViewById(R.id.title_container);
 	  
-	    title.setBackgroundColor(color.background_light);
+	   // title.setBackgroundColor(color.background_light);
+	    
 		
 	}
 	
